@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31129.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACCSetupManager", "ACCSetupManager.csproj", "{01AE823B-E1F8-442E-90D3-1BA6A193CC1D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{01AE823B-E1F8-442E-90D3-1BA6A193CC1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01AE823B-E1F8-442E-90D3-1BA6A193CC1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01AE823B-E1F8-442E-90D3-1BA6A193CC1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01AE823B-E1F8-442E-90D3-1BA6A193CC1D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DE3E89EE-427D-452A-B0A7-AC6AF1B5D4B8}
+	EndGlobalSection
+EndGlobal
