@@ -44,9 +44,11 @@ namespace ACCSetupManager
     {
       var serviceCollection = new ServiceCollection();
 
+      serviceCollection.AddSingleton<IConfiguration>(this.configuration);
       serviceCollection.AddSingleton<ISetupFileProvider, SetupFileProvider>();
       serviceCollection.AddSingleton<IMasterSetupSync, MasterSetupSync>();
       serviceCollection.AddSingleton<IFolderNameMapper, FolderNameMapper>();
+      serviceCollection.AddSingleton<IHierarchyBuilder, HierarchyBuilder>();
 
       serviceCollection.AddSingleton<MainViewModel>();
 

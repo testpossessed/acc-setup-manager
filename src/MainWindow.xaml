@@ -4,35 +4,60 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ACCSetupManager"
+        xmlns:models="clr-namespace:ACCSetupManager.Models"
         mc:Ignorable="d"
-        Title="ACC Setup Manger" WindowStartupLocation="CenterScreen" WindowState="Maximized">
-    <DockPanel>
-        <Menu DockPanel.Dock="Top">
-            <MenuItem Header="_File">
-                <MenuItem Header="_Close"></MenuItem>
-                <MenuItem Header="_Save"></MenuItem>
-                <MenuItem Header="Save _as..."></MenuItem>
-                <MenuItem Header="E_xit"></MenuItem>
-            </MenuItem>
-        </Menu>
+        Title="ACC Setup Manger"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized">
+  <DockPanel>
+    <Menu DockPanel.Dock="Top">
+      <MenuItem Header="_File">
+        <MenuItem Header="_Close" />
+        <MenuItem Header="_Save" />
+        <MenuItem Header="Save _as..." />
+        <MenuItem Header="E_xit" />
+      </MenuItem>
+    </Menu>
 
-        <StatusBar DockPanel.Dock="Bottom">
-            <StatusBarItem><TextBlock Text="{Binding Path=StatusMessage}"/></StatusBarItem>
-        </StatusBar>
+    <StatusBar DockPanel.Dock="Bottom">
+      <StatusBarItem>
+        <TextBlock Text="{Binding Path=StatusMessage}" />
+      </StatusBarItem>
+    </StatusBar>
 
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="3*" />
-            </Grid.ColumnDefinitions>
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition />
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="3*" />
+      </Grid.ColumnDefinitions>
 
-            <GridSplitter Grid.Column="1"
-                          HorizontalAlignment="Center"
-                          VerticalAlignment="Stretch"
-                          Width="3"
-                          ShowsPreview="True" />
+      <TreeView>
+        <TreeView.Resources>
+          <HierarchicalDataTemplate DataType="{x:Type models:Vehicle}"
+                                    ItemsSource="{Binding Circuits}">
+            <TreeViewItem Header="{Binding Name}" />
+          </HierarchicalDataTemplate>
+          <HierarchicalDataTemplate DataType="{x:Type models:Circuit}"
+                                    ItemsSource="{Binding Setups}">
+            <TreeViewItem Header="{Binding Name}" />
+          </HierarchicalDataTemplate>
+          <HierarchicalDataTemplate DataType="{x:Type models:Setup}">
+            <TreeViewItem Header="{Binding Name}" />
+          </HierarchicalDataTemplate>
 
-        </Grid>
-    </DockPanel>
+        </TreeView.Resources>
+        <TreeViewItem Header="Master Setups (ACC)" ItemsSource="{Binding MasterTreeHierarchy}" IsExpanded="True" />
+        <TreeViewItem Header="Versions"
+                      ItemsSource="{Binding VersionTreeHierarchy}" IsExpanded="True" />
+      </TreeView>
+
+      <GridSplitter Grid.Column="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Stretch"
+                    Width="3"
+                    ShowsPreview="True" />
+
+    </Grid>
+  </DockPanel>
 </Window>

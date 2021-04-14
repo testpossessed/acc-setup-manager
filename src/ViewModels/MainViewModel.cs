@@ -1,25 +1,31 @@
 ﻿using System;
-using System.IO;
+using System.Collections.ObjectModel;
 using ACCSetupManager.Abstractions;
-using ACCSetupManager.Services;
+using ACCSetupManager.Models;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 
 namespace ACCSetupManager.ViewModels
 {
   public class MainViewModel : ObservableObject
   {
+    private readonly IHierarchyBuilder hierarchyBuilder;
     private readonly IMasterSetupSync masterSetupSync;
     private readonly ISetupFileProvider setupFileProvider;
     private string statusMessage = "Started";
 
-    public MainViewModel(IMasterSetupSync masterSetupSync, ISetupFileProvider setupFileProvider)
+    public MainViewModel(IMasterSetupSync masterSetupSync,
+      IHierarchyBuilder hierarchyBuilder,
+      ISetupFileProvider setupFileProvider)
     {
       this.masterSetupSync = masterSetupSync;
+      this.hierarchyBuilder = hierarchyBuilder;
       this.setupFileProvider = setupFileProvider;
 
       this.SyncMasterSetups();
-      this.EnsureMastersAreVersioned();
+      this.LoadTreeData();
     }
+
+    public ObservableCollection<Vehicle> MasterTreeHierarchy { get; private set; }
 
     public string StatusMessage
     {
@@ -27,63 +33,24 @@ namespace ACCSetupManager.ViewModels
       set => this.SetProperty(ref this.statusMessage, value);
     }
 
-    private void EnsureFolderExists(string targetFolderPath)
+    public ObservableCollection<Vehicle> VersionTreeHierarchy { get; private set; }
+
+    private void LoadTreeData()
     {
-      if(!Directory.Exists(targetFolderPath))
-      {
-        Directory.CreateDirectory(targetFolderPath);
-      }
-    }
+      this.StatusMessage = "Loading master setups...";
+      this.MasterTreeHierarchy =
+        new ObservableCollection<Vehicle>(this.hierarchyBuilder.BuildMasterHierarchy());
 
-    private void EnsureMastersAreVersioned()
-    {
-      this.StatusMessage = "Updating versions for master setups...";
-      this.EnsureFolderExists(PathProvider.VersionsFolderPath);
-      var masterCarFolderPaths = Directory.GetDirectories(PathProvider.MasterSetupsFolderPath);
-      foreach(var masterCarFolderPath in masterCarFolderPaths)
-      {
-        this.EnsureMastersAreVersionedForCar(masterCarFolderPath);
-      }
-    }
+      this.StatusMessage = "Loading versions...";
+      this.VersionTreeHierarchy =
+        new ObservableCollection<Vehicle>(this.hierarchyBuilder.BuildVersionsHierarchy());
 
-    private void EnsureMastersAreVersionedForCar(string masterCarFolderPath)
-    {
-      var folderName = PathProvider.GetLastFolderName(masterCarFolderPath);
-      var versionedCarFolderPath = Path.Combine(PathProvider.VersionsFolderPath, folderName);
-      this.EnsureFolderExists(versionedCarFolderPath);
-
-      var masterTrackFolderPaths = Directory.GetDirectories(masterCarFolderPath);
-      foreach(var masterTrackFolderPath in masterTrackFolderPaths)
-      {
-        this.EnsureMastersAreVersionedForTrack(versionedCarFolderPath, masterTrackFolderPath);
-      }
-    }
-
-    private void EnsureMastersAreVersionedForTrack(string versionedCarFolderPath,
-      string masterTrackFolderPath)
-    {
-      var trackFolderName = PathProvider.GetLastFolderName(masterTrackFolderPath);
-      var carFolderName = PathProvider.GetLastFolderName(versionedCarFolderPath);
-      var versionedTrackFolderPath = Path.Combine(versionedCarFolderPath, trackFolderName);
-      this.EnsureFolderExists(versionedTrackFolderPath);
-
-      var masterSetupFilePaths = Directory.GetFiles(masterTrackFolderPath, "*.json");
-      foreach(var masterSetupFilePath in masterSetupFilePaths)
-      {
-        var masterSetupFileName = Path.GetFileName(masterSetupFilePath);
-        var latestVersion =
-          this.setupFileProvider.LatestVersion(carFolderName, trackFolderName, masterSetupFileName);
-        if(latestVersion == null)
-        {
-          this.setupFileProvider.CreateNewVersionFromSource(carFolderName, trackFolderName, masterSetupFilePath);
-        }
-      }
+      this.StatusMessage = "Ready";
     }
 
     private void SyncMasterSetups()
     {
-      this.StatusMessage = "Synchronising master setups...";
-      this.masterSetupSync.SyncMasters();
+      this.masterSetupSync.SyncMasters(status => this.StatusMessage = $"{status}...");
     }
   }
 }

@@ -8,6 +8,6 @@ namespace ACCSetupManager.Models
         public double[] RodLength { get; set; }
         public int Splitter { get; set; }
         public int RearWing { get; set; }
-        public int BrakeDuct { get; set; }
+        public int[] BrakeDuct { get; set; }
     }
 }

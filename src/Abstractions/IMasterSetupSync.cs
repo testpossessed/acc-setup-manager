@@ -1,7 +1,9 @@
-﻿namespace ACCSetupManager.Abstractions
+﻿using System;
+
+namespace ACCSetupManager.Abstractions
 {
   public interface IMasterSetupSync
   {
-    void SyncMasters();
+    void SyncMasters(Action<string> statusCallback);
   }
 }
