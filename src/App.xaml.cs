@@ -37,7 +37,7 @@ namespace ACCSetupManager
                               .LoadConfigurationFromSection(this.configuration)
                               .GetCurrentClassLogger();
       LogManager.Configuration.Variables["appDataFolder"] = PathProvider.AppDataFolderPath;
-      this.logger.Log(LogLevel.Info, "ACC Setup Manager started");
+      this.logger.Log(LogLevel.Info, "ACC SetupViewModel Manager started");
     }
 
     private void ConfigureServices()
@@ -48,7 +48,7 @@ namespace ACCSetupManager
       serviceCollection.AddSingleton<ISetupFileProvider, SetupFileProvider>();
       serviceCollection.AddSingleton<IMasterSetupSync, MasterSetupSync>();
       serviceCollection.AddSingleton<IFolderNameMapper, FolderNameMapper>();
-      serviceCollection.AddSingleton<IHierarchyBuilder, HierarchyBuilder>();
+      serviceCollection.AddSingleton<IHierarchyProvider, HierarchyProvider>();
 
       serviceCollection.AddSingleton<MainViewModel>();
 

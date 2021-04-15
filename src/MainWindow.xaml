@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ACCSetupManager"
         xmlns:models="clr-namespace:ACCSetupManager.Models"
+        xmlns:viewModels="clr-namespace:ACCSetupManager.ViewModels"
         mc:Ignorable="d"
-        Title="ACC Setup Manger"
+        Title="ACC SetupViewModel Manger"
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized">
   <DockPanel>
@@ -34,15 +35,15 @@
 
       <TreeView>
         <TreeView.Resources>
-          <HierarchicalDataTemplate DataType="{x:Type models:Vehicle}"
+          <HierarchicalDataTemplate DataType="{x:Type viewModels:VehicleViewModel}"
                                     ItemsSource="{Binding Circuits}">
             <TreeViewItem Header="{Binding Name}" />
           </HierarchicalDataTemplate>
-          <HierarchicalDataTemplate DataType="{x:Type models:Circuit}"
+          <HierarchicalDataTemplate DataType="{x:Type viewModels:CircuitViewModel}"
                                     ItemsSource="{Binding Setups}">
             <TreeViewItem Header="{Binding Name}" />
           </HierarchicalDataTemplate>
-          <HierarchicalDataTemplate DataType="{x:Type models:Setup}">
+          <HierarchicalDataTemplate DataType="{x:Type viewModels:SetupViewModel}">
             <TreeViewItem Header="{Binding Name}" />
           </HierarchicalDataTemplate>
 

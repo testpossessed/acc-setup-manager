@@ -4,7 +4,7 @@ namespace ACCSetupManager.Abstractions
 {
   public interface IFolderNameMapper
   {
-    string GetFriendlyCarName(string folderName);
-    string GetFriendlyTrackName(string folderName);
+    string GetFriendlyCircuitName(string folderName);
+    string GetFriendlyVehicleName(string folderName);
   }
 }

@@ -13,13 +13,13 @@ namespace ACCSetupManager.Services
       this.configuration = configuration;
     }
 
-    public string GetFriendlyCarName(string folderName)
+    public string GetFriendlyVehicleName(string folderName)
     {
       var carFolderConfig = this.configuration.GetSection("CarFolders");
       return carFolderConfig[folderName];
     }
 
-    public string GetFriendlyTrackName(string folderName)
+    public string GetFriendlyCircuitName(string folderName)
     {
       var trackFolderConfig = this.configuration.GetSection("TrackFolders");
       return trackFolderConfig[folderName];
