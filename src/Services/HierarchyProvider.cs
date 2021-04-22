@@ -4,110 +4,131 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Threading;
-using ACCSetupManager.Abstractions;
 using ACCSetupManager.Models;
 using ACCSetupManager.ViewModels;
 
 namespace ACCSetupManager.Services
 {
-  public class HierarchyProvider : IHierarchyProvider
+  internal static class HierarchyProvider
   {
-    private readonly Dispatcher dispatcher;
-    private readonly IFolderNameMapper folderNameMapper;
+    private static readonly Dispatcher dispatcher;
 
-    public HierarchyProvider(IFolderNameMapper folderNameMapper)
+    static HierarchyProvider()
     {
-      this.folderNameMapper = folderNameMapper;
-      this.dispatcher = Application.Current.Dispatcher;
+      dispatcher = Application.Current.Dispatcher;
     }
 
-    public void AddMasterSetupFileToHierarchy(SetupFileInfo setupFileInfo,
+    internal static void AddMasterSetupFileToHierarchy(SetupFileInfo setupFileInfo,
       ICollection<VehicleViewModel> hierarchy)
     {
-      var circuit = this.GetCircuitFromHierarchy(setupFileInfo, hierarchy);
+      var circuit = GetCircuitFromHierarchy(setupFileInfo, hierarchy);
 
-      this.dispatcher.InvokeAsync(() => circuit.Setups.Add(new SetupViewModel
-                                                           {
-                                                             Name = Path.GetFileName(setupFileInfo
-                                                               .MasterSetupFilePath),
-                                                             FilePath = setupFileInfo.MasterSetupFilePath
-                                                           }));
+      dispatcher.InvokeAsync(() => circuit.Setups.Add(new SetupViewModel
+                                                      {
+                                                        Name = Path.GetFileName(setupFileInfo
+                                                          .MasterSetupFilePath),
+                                                        FilePath = setupFileInfo.MasterSetupFilePath
+                                                      }));
     }
 
-    public void AddVersionedSetupFileToHierarchy(SetupFileInfo setupFileInfo,
+    internal static void AddVersionedSetupFileToHierarchy(SetupFileInfo setupFileInfo,
       ICollection<VehicleViewModel> hierarchy)
     {
-      var circuit = this.GetCircuitFromHierarchy(setupFileInfo, hierarchy);
+      var circuit = GetCircuitFromHierarchy(setupFileInfo, hierarchy);
 
-      this.dispatcher.InvokeAsync(() => circuit.Setups.Add(new SetupViewModel
-                                                           {
-                                                             Name = Path.GetFileName(setupFileInfo
-                                                               .VersionSetupFilePath),
-                                                             FilePath = setupFileInfo.VersionSetupFilePath
-                                                           }));
+      dispatcher.InvokeAsync(() => circuit.Setups.Add(new SetupViewModel
+                                                      {
+                                                        Name = Path.GetFileName(setupFileInfo
+                                                          .VersionSetupFilePath),
+                                                        FilePath =
+                                                          setupFileInfo.VersionSetupFilePath
+                                                      }));
     }
 
-    public IEnumerable<VehicleViewModel> BuildMasterHierarchy()
+    internal static IEnumerable<VehicleViewModel> BuildMasterHierarchy()
     {
-      return this.BuildHierarchy(PathProvider.MasterSetupsFolderPath);
+      return BuildHierarchy(PathProvider.MasterSetupsFolderPath, false);
     }
 
-    public IEnumerable<VehicleViewModel> BuildVersionsHierarchy()
+    internal static IEnumerable<VehicleViewModel> BuildVersionsHierarchy()
     {
-      return this.BuildHierarchy(PathProvider.VersionsFolderPath);
+      return BuildHierarchy(PathProvider.VersionsFolderPath, true);
     }
 
-    public CircuitViewModel GetCircuitFromHierarchy(SetupFileInfo setupFileInfo,
+    internal static void DeleteSetupFromHierarchy(SetupFileInfo setupFileInfo,
       ICollection<VehicleViewModel> hierarchy)
     {
-      var vehicle = hierarchy.FirstOrDefault(v => v.FolderName == setupFileInfo.VehicleIdentifier);
+      var vehicle = hierarchy.FirstOrDefault(v => v.Identifier == setupFileInfo.VehicleIdentifier);
+      if(vehicle != null)
+      {
+        var circuit =
+          vehicle.Circuits.FirstOrDefault(c => c.Identifier == setupFileInfo.CircuitIdentifier);
+        if(circuit == null)
+        {
+          return;
+        }
+
+        var setup =
+          circuit.Setups.FirstOrDefault(s => s.FilePath == setupFileInfo.MasterSetupFilePath);
+        if(setup != null)
+        {
+          dispatcher.InvokeAsync(() => circuit.Setups.Remove(setup));
+        }
+      }
+    }
+
+    internal static CircuitViewModel GetCircuitFromHierarchy(SetupFileInfo setupFileInfo,
+      ICollection<VehicleViewModel> hierarchy)
+    {
+      var vehicle = hierarchy.FirstOrDefault(v => v.Identifier == setupFileInfo.VehicleIdentifier);
       if(vehicle == null)
       {
         vehicle = new VehicleViewModel
                   {
-                    FolderName = setupFileInfo.VehicleIdentifier,
-                    Name = this.folderNameMapper.GetFriendlyVehicleName(setupFileInfo.VehicleIdentifier)
+                    Identifier = setupFileInfo.VehicleIdentifier,
+                    Name = FolderNameMapper.GetFriendlyVehicleName(setupFileInfo.VehicleIdentifier)
                   };
-        this.dispatcher.InvokeAsync(() => hierarchy.Add(vehicle));
+        dispatcher.InvokeAsync(() => hierarchy.Add(vehicle));
       }
 
-      var circuit = vehicle.Circuits.FirstOrDefault(c => c.FolderName == setupFileInfo.CircuitIdentifier);
+      var circuit =
+        vehicle.Circuits.FirstOrDefault(c => c.Identifier == setupFileInfo.CircuitIdentifier);
       if(circuit == null)
       {
         circuit = new CircuitViewModel
                   {
-                    FolderName = setupFileInfo.CircuitIdentifier,
-                    Name = this.folderNameMapper.GetFriendlyCircuitName(setupFileInfo.CircuitIdentifier)
+                    Identifier = setupFileInfo.CircuitIdentifier,
+                    Name = FolderNameMapper.GetFriendlyCircuitName(setupFileInfo.CircuitIdentifier)
                   };
 
-        this.dispatcher.InvokeAsync(() => vehicle.Circuits.Insert(0, circuit));
+        dispatcher.InvokeAsync(() => vehicle.Circuits.Insert(0, circuit));
       }
 
       return circuit;
     }
 
-    private IEnumerable<VehicleViewModel> BuildHierarchy(string rootFolder)
+    private static IEnumerable<VehicleViewModel> BuildHierarchy(string rootFolder, bool isVersion)
     {
       var result = new List<VehicleViewModel>();
 
-      var masterVehicleFolderPaths = Directory.GetDirectories(rootFolder);
-      foreach(var masterVehicleFolderPath in masterVehicleFolderPaths)
+      var vehicleFolderPaths = Directory.GetDirectories(rootFolder);
+      foreach(var vehicleFolderPath in vehicleFolderPaths)
       {
-        var vehicleIdentifier = PathProvider.GetLastFolderName(masterVehicleFolderPath);
+        var vehicleIdentifier = PathProvider.GetLastFolderName(vehicleFolderPath);
         var vehicle = new VehicleViewModel
                       {
-                        FolderName = vehicleIdentifier,
-                        Name = this.folderNameMapper.GetFriendlyVehicleName(vehicleIdentifier)
+                        Identifier = vehicleIdentifier,
+                        Name = FolderNameMapper.GetFriendlyVehicleName(vehicleIdentifier)
                       };
 
-        var circuitFolderPaths = Directory.GetDirectories(masterVehicleFolderPath);
+        var circuitFolderPaths = Directory.GetDirectories(vehicleFolderPath);
         foreach(var circuitFolderPath in circuitFolderPaths)
         {
           var circuitIdentifier = PathProvider.GetLastFolderName(circuitFolderPath);
           var circuit = new CircuitViewModel
                         {
-                          FolderName = circuitIdentifier,
-                          Name = this.folderNameMapper.GetFriendlyCircuitName(circuitIdentifier)
+                          Identifier = circuitIdentifier,
+                          Name = FolderNameMapper.GetFriendlyCircuitName(circuitIdentifier)
                         };
 
           var setupFilePaths = Directory.GetFiles(circuitFolderPath);
@@ -117,7 +138,10 @@ namespace ACCSetupManager.Services
             var setup = new SetupViewModel
                         {
                           Name = fileNameWithoutExtension,
-                          FilePath = setupFilePath
+                          FilePath = setupFilePath,
+                          VehicleIdentifier = vehicleIdentifier,
+                          CircuitIdentifier = circuitIdentifier,
+                          IsVersion = isVersion
                         };
             circuit.Setups.Add(setup);
           }

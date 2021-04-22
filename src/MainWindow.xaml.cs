@@ -3,11 +3,11 @@ using System.Windows;
 
 namespace ACCSetupManager
 {
-    public partial class MainWindow : Window
+  public partial class MainWindow : Window
+  {
+    public MainWindow()
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+      this.InitializeComponent();
     }
+  }
 }

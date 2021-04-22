@@ -1,33 +1,38 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.IO;
-using ACCSetupManager.Abstractions;
+using System.Windows.Input;
+using ACCSetupManager.Messages;
 using ACCSetupManager.Models;
 using ACCSetupManager.Services;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Input;
+using Microsoft.Toolkit.Mvvm.Messaging;
 
 namespace ACCSetupManager.ViewModels
 {
-  public class MainViewModel : ObservableObject
+  public class MainViewModel : ObservableRecipient
   {
-    private readonly IHierarchyProvider hierarchyProvider;
-    private readonly IMasterSetupSync masterSetupSync;
-    private readonly ISetupFileProvider setupFileProvider;
+    private SetupViewModel currentSetup;
     private FileSystemWatcher fileWatcher;
     private string statusMessage = "Started";
 
-    public MainViewModel(IMasterSetupSync masterSetupSync,
-      IHierarchyProvider hierarchyProvider,
-      ISetupFileProvider setupFileProvider)
+    public MainViewModel()
     {
-      this.masterSetupSync = masterSetupSync;
-      this.hierarchyProvider = hierarchyProvider;
-      this.setupFileProvider = setupFileProvider;
+      this.ShowSetup = new RelayCommand<SetupViewModel>(this.HandleShowSetup);
+      this.Setup = new SetupFileViewerViewModel
+                   {
+                     IsActive = true
+                   };
 
       this.SyncMasterSetups();
       this.LoadTreeData();
       this.InitialiseFileWatcher();
     }
+
+    public SetupFileViewerViewModel Setup { get; }
+
+    public ICommand ShowSetup { get; }
 
     public ObservableCollection<VehicleViewModel> MasterTreeHierarchy { get; private set; }
 
@@ -41,14 +46,14 @@ namespace ACCSetupManager.ViewModels
 
     private void AddSetupFileToHierarchies(SetupFileInfo setupFileInfo)
     {
-      this.hierarchyProvider.AddMasterSetupFileToHierarchy(setupFileInfo, this.MasterTreeHierarchy);
-      this.hierarchyProvider.AddVersionedSetupFileToHierarchy(setupFileInfo, this.VersionTreeHierarchy);
+      HierarchyProvider.AddMasterSetupFileToHierarchy(setupFileInfo, this.MasterTreeHierarchy);
+      HierarchyProvider.AddVersionedSetupFileToHierarchy(setupFileInfo, this.VersionTreeHierarchy);
     }
 
     private void HandleSetupFileChanged(object sender, FileSystemEventArgs eventArgs)
     {
       var setupFileInfo = this.ProcessFileCreateOrChangeEvent(eventArgs);
-      this.hierarchyProvider.AddVersionedSetupFileToHierarchy(setupFileInfo, this.VersionTreeHierarchy);
+      HierarchyProvider.AddVersionedSetupFileToHierarchy(setupFileInfo, this.VersionTreeHierarchy);
     }
 
     private void HandleSetupFileCreated(object sender, FileSystemEventArgs eventArgs)
@@ -57,7 +62,28 @@ namespace ACCSetupManager.ViewModels
       this.AddSetupFileToHierarchies(setupFileInfo);
     }
 
-    private void HandleSetupFileDeleted(object sender, FileSystemEventArgs eventArgs) { }
+    private void HandleSetupFileDeleted(object sender, FileSystemEventArgs eventArgs)
+    {
+      var setupFileInfo = SetupFileProvider.ParseFilePath(eventArgs.FullPath);
+      if(File.Exists(setupFileInfo.MasterSetupFilePath))
+      {
+        File.Delete(setupFileInfo.MasterSetupFilePath);
+      }
+
+      HierarchyProvider.DeleteSetupFromHierarchy(setupFileInfo, this.MasterTreeHierarchy);
+    }
+
+    private void HandleShowSetup(SetupViewModel setup)
+    {
+      if(this.currentSetup != null)
+      {
+        this.currentSetup.IsSelected = false;
+      }
+
+      setup.IsSelected = true;
+      this.currentSetup = setup;
+      this.Messenger.Send(new SelectedSetupChanged(setup));
+    }
 
     private void InitialiseFileWatcher()
     {
@@ -75,21 +101,21 @@ namespace ACCSetupManager.ViewModels
     {
       this.StatusMessage = "Loading master setups...";
       this.MasterTreeHierarchy =
-        new ObservableCollection<VehicleViewModel>(this.hierarchyProvider.BuildMasterHierarchy());
+        new ObservableCollection<VehicleViewModel>(HierarchyProvider.BuildMasterHierarchy());
 
       this.StatusMessage = "Loading versions...";
       this.VersionTreeHierarchy =
-        new ObservableCollection<VehicleViewModel>(this.hierarchyProvider.BuildVersionsHierarchy());
+        new ObservableCollection<VehicleViewModel>(HierarchyProvider.BuildVersionsHierarchy());
 
       this.StatusMessage = "Ready";
     }
 
     private SetupFileInfo ProcessFileCreateOrChangeEvent(FileSystemEventArgs eventArgs)
     {
-      var setupFileInfo = this.setupFileProvider.ParseFilePath(eventArgs.FullPath);
+      var setupFileInfo = SetupFileProvider.ParseFilePath(eventArgs.FullPath);
 
       File.Copy(eventArgs.FullPath, setupFileInfo.MasterSetupFilePath, true);
-      setupFileInfo.VersionSetupFilePath = this.setupFileProvider.CreateNewVersionFromSource(
+      setupFileInfo.VersionSetupFilePath = SetupFileProvider.CreateNewVersionFromSource(
         setupFileInfo.VehicleIdentifier,
         setupFileInfo.CircuitIdentifier,
         setupFileInfo.MasterSetupFilePath);
@@ -99,7 +125,7 @@ namespace ACCSetupManager.ViewModels
 
     private void SyncMasterSetups()
     {
-      this.masterSetupSync.SyncMasters(status => this.StatusMessage = $"{status}...");
+      MasterSetupSync.SyncMasters(status => this.StatusMessage = $"{status}...");
     }
   }
 }

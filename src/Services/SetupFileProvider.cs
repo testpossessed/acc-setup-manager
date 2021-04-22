@@ -1,15 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using ACCSetupManager.Abstractions;
 using ACCSetupManager.Models;
 using Newtonsoft.Json;
 
 namespace ACCSetupManager.Services
 {
-  public class SetupFileProvider : ISetupFileProvider
+  internal static class SetupFileProvider
   {
-    public string CreateNewVersionFromSource(string carFolderName,
+    internal static string CreateNewVersionFromSource(string carFolderName,
       string trackFolderName,
       string masterSetupFilePath)
     {
@@ -25,24 +25,53 @@ namespace ACCSetupManager.Services
       return versionedFilePath;
     }
 
-    public SetupFile GetSetupFile(string filePath)
+    internal static SetupFile GetSetupFile(string filePath)
     {
       var json = File.ReadAllText(filePath);
       return JsonConvert.DeserializeObject<SetupFile>(json);
     }
 
-    public string[] GetSourceSetupFilePaths()
+    internal static string[] GetSourceSetupFilePaths()
     {
-      return Directory.GetFiles(PathProvider.AccSetupsFolderPath, "*.json", SearchOption.AllDirectories);
+      return Directory.GetFiles(PathProvider.AccSetupsFolderPath,
+        "*.json",
+        SearchOption.AllDirectories);
     }
 
-    public SetupFile LatestVersion(string carIdentifier, string trackIdentifier, string masterSetupFileName)
+    internal static IList<SetupFileInfo> GetVersions(string vehicleIdentifier,
+      string circuitIdentifier,
+      string prefix)
+    {
+      var versionsFolderPath = Path.Combine(PathProvider.VersionsFolderPath,
+        vehicleIdentifier,
+        circuitIdentifier);
+      var filePaths = Directory.GetFiles(versionsFolderPath, $"{prefix}-*.json");
+
+      return filePaths.Select(fp => new SetupFileInfo
+                                    {
+                                      CircuitIdentifier = circuitIdentifier,
+                                      VehicleIdentifier = vehicleIdentifier,
+                                      FileName = Path.GetFileNameWithoutExtension(fp),
+                                      MasterSetupFilePath =
+                                        Path.Combine(PathProvider.MasterSetupsFolderPath,
+                                          vehicleIdentifier,
+                                          circuitIdentifier,
+                                          $"{prefix}.json"),
+                                      VersionSetupFilePath = fp
+                                    })
+                      .ToList();
+    }
+
+    internal static SetupFile LatestVersion(string carIdentifier,
+      string trackIdentifier,
+      string masterSetupFileName)
     {
       var versionedTrackFolderPath =
         Path.Combine(PathProvider.VersionsFolderPath, carIdentifier, trackIdentifier);
 
       var versionedSetupFilePrefix = Path.GetFileNameWithoutExtension(masterSetupFileName);
-      var filePaths = Directory.GetFiles(versionedTrackFolderPath, $"{versionedSetupFilePrefix}*.json");
+      var filePaths =
+        Directory.GetFiles(versionedTrackFolderPath, $"{versionedSetupFilePrefix}*.json");
       if(!filePaths.Any())
       {
         return null;
@@ -52,10 +81,10 @@ namespace ACCSetupManager.Services
                                     .OrderByDescending(fp => fp.CreationTimeUtc)
                                     .Last();
 
-      return this.GetSetupFile(latestFileInfo.FullName);
+      return GetSetupFile(latestFileInfo.FullName);
     }
 
-    public SetupFileInfo ParseFilePath(string filePath)
+    internal static SetupFileInfo ParseFilePath(string filePath)
     {
       var result = new SetupFileInfo();
 

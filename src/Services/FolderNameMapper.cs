@@ -1,28 +1,19 @@
 ﻿using System;
-using ACCSetupManager.Abstractions;
-using Microsoft.Extensions.Configuration;
 
 namespace ACCSetupManager.Services
 {
-  public class FolderNameMapper: IFolderNameMapper
+  internal static class FolderNameMapper
   {
-    private readonly IConfiguration configuration;
-
-    public FolderNameMapper(IConfiguration configuration)
+    internal static string GetFriendlyCircuitName(string folderName)
     {
-      this.configuration = configuration;
-    }
-
-    public string GetFriendlyVehicleName(string folderName)
-    {
-      var carFolderConfig = this.configuration.GetSection("CarFolders");
-      return carFolderConfig[folderName];
-    }
-
-    public string GetFriendlyCircuitName(string folderName)
-    {
-      var trackFolderConfig = this.configuration.GetSection("TrackFolders");
+      var trackFolderConfig = Configuration.GetSection("TrackFolders");
       return trackFolderConfig[folderName];
+    }
+
+    internal static string GetFriendlyVehicleName(string folderName)
+    {
+      var carFolderConfig = Configuration.GetSection("CarFolders");
+      return carFolderConfig[folderName];
     }
   }
 }

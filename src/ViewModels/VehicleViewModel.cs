@@ -11,7 +11,7 @@ namespace ACCSetupManager.ViewModels
     }
 
     public ObservableCollection<CircuitViewModel> Circuits { get; set; }
-    public string FolderName { get; set; }
+    public string Identifier { get; set; }
     public string Name { get; set; }
   }
 }

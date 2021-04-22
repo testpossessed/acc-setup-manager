@@ -1,26 +1,18 @@
 ﻿using System;
 using System.IO;
-using ACCSetupManager.Abstractions;
 
 namespace ACCSetupManager.Services
 {
-  public class MasterSetupSync : IMasterSetupSync
+  internal static class MasterSetupSync
   {
-    private readonly ISetupFileProvider setupFileProvider;
-
-    public MasterSetupSync(ISetupFileProvider setupFileProvider)
-    {
-      this.setupFileProvider = setupFileProvider;
-    }
-
-    public void SyncMasters(Action<string> statusCallback)
+    internal static void SyncMasters(Action<string> statusCallback)
     {
       statusCallback("Synchronising master setups");
-      this.EnsureMasterSetupsFolderExists();
-      this.UpdateMasterSetupsFromSource(statusCallback);
+      EnsureMasterSetupsFolderExists();
+      UpdateMasterSetupsFromSource(statusCallback);
     }
 
-    private void CopyFolderRecursively(string sourceFolder,
+    private static void CopyFolderRecursively(string sourceFolder,
       string destinationFolder,
       Action<string> statusCallback)
     {
@@ -45,11 +37,11 @@ namespace ACCSetupManager.Services
         var folderName = PathProvider.GetLastFolderName(sourceFolderPath);
         var targetFolderPath = Path.Combine(destinationFolder, folderName!);
         statusCallback($"Processing ${targetFolderPath}");
-        this.CopyFolderRecursively(sourceFolderPath, targetFolderPath, statusCallback);
+        CopyFolderRecursively(sourceFolderPath, targetFolderPath, statusCallback);
       }
     }
 
-    private void EnsureFolderExists(string targetFolderPath)
+    private static void EnsureFolderExists(string targetFolderPath)
     {
       if(!Directory.Exists(targetFolderPath))
       {
@@ -57,54 +49,54 @@ namespace ACCSetupManager.Services
       }
     }
 
-    private void EnsureMastersAreVersioned(Action<string> statusCallback)
+    private static void EnsureMastersAreVersioned(Action<string> statusCallback)
     {
       statusCallback("Updating versions for master setups");
-      this.EnsureFolderExists(PathProvider.VersionsFolderPath);
+      EnsureFolderExists(PathProvider.VersionsFolderPath);
       var masterCarFolderPaths = Directory.GetDirectories(PathProvider.MasterSetupsFolderPath);
       foreach(var masterCarFolderPath in masterCarFolderPaths)
       {
-        this.EnsureMastersAreVersionedForCar(masterCarFolderPath);
+        EnsureMastersAreVersionedForCar(masterCarFolderPath);
       }
     }
 
-    private void EnsureMastersAreVersionedForCar(string masterCarFolderPath)
+    private static void EnsureMastersAreVersionedForCar(string masterCarFolderPath)
     {
       var folderName = PathProvider.GetLastFolderName(masterCarFolderPath);
       var versionedCarFolderPath = Path.Combine(PathProvider.VersionsFolderPath, folderName);
-      this.EnsureFolderExists(versionedCarFolderPath);
+      EnsureFolderExists(versionedCarFolderPath);
 
       var masterTrackFolderPaths = Directory.GetDirectories(masterCarFolderPath);
       foreach(var masterTrackFolderPath in masterTrackFolderPaths)
       {
-        this.EnsureMastersAreVersionedForTrack(versionedCarFolderPath, masterTrackFolderPath);
+        EnsureMastersAreVersionedForTrack(versionedCarFolderPath, masterTrackFolderPath);
       }
     }
 
-    private void EnsureMastersAreVersionedForTrack(string versionedCarFolderPath,
+    private static void EnsureMastersAreVersionedForTrack(string versionedCarFolderPath,
       string masterTrackFolderPath)
     {
       var trackFolderName = PathProvider.GetLastFolderName(masterTrackFolderPath);
       var carFolderName = PathProvider.GetLastFolderName(versionedCarFolderPath);
       var versionedTrackFolderPath = Path.Combine(versionedCarFolderPath, trackFolderName);
-      this.EnsureFolderExists(versionedTrackFolderPath);
+      EnsureFolderExists(versionedTrackFolderPath);
 
       var masterSetupFilePaths = Directory.GetFiles(masterTrackFolderPath, "*.json");
       foreach(var masterSetupFilePath in masterSetupFilePaths)
       {
         var masterSetupFileName = Path.GetFileName(masterSetupFilePath);
         var latestVersion =
-          this.setupFileProvider.LatestVersion(carFolderName, trackFolderName, masterSetupFileName);
+          SetupFileProvider.LatestVersion(carFolderName, trackFolderName, masterSetupFileName);
         if(latestVersion == null)
         {
-          this.setupFileProvider.CreateNewVersionFromSource(carFolderName,
+          SetupFileProvider.CreateNewVersionFromSource(carFolderName,
             trackFolderName,
             masterSetupFilePath);
         }
       }
     }
 
-    private void EnsureMasterSetupsFolderExists()
+    private static void EnsureMasterSetupsFolderExists()
     {
       if(!Directory.Exists(PathProvider.MasterSetupsFolderPath))
       {
@@ -112,12 +104,12 @@ namespace ACCSetupManager.Services
       }
     }
 
-    private void UpdateMasterSetupsFromSource(Action<string> statusCallback)
+    private static void UpdateMasterSetupsFromSource(Action<string> statusCallback)
     {
       var sourceFolder = PathProvider.AccSetupsFolderPath;
       var destinationFolder = PathProvider.MasterSetupsFolderPath;
-      this.CopyFolderRecursively(sourceFolder, destinationFolder, statusCallback);
-      this.EnsureMastersAreVersioned(statusCallback);
+      CopyFolderRecursively(sourceFolder, destinationFolder, statusCallback);
+      EnsureMastersAreVersioned(statusCallback);
     }
   }
 }

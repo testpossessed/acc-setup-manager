@@ -11,7 +11,7 @@ namespace ACCSetupManager.ViewModels
       this.Setups = new ObservableCollection<SetupViewModel>();
     }
 
-    public string FolderName { get; set; }
+    public string Identifier { get; set; }
     public string Name { get; set; }
     public ObservableCollection<SetupViewModel> Setups { get; set; }
   }

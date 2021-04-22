@@ -44,13 +44,22 @@
             <TreeViewItem Header="{Binding Name}" />
           </HierarchicalDataTemplate>
           <HierarchicalDataTemplate DataType="{x:Type viewModels:SetupViewModel}">
-            <TreeViewItem Header="{Binding Name}" />
+            <TreeViewItem Header="{Binding Name}" IsSelected="{Binding IsSelected}">
+              <TreeViewItem.InputBindings>
+                <MouseBinding MouseAction="LeftClick"
+                              Command="{Binding DataContext.ShowSetup, RelativeSource={RelativeSource Mode=FindAncestor,  AncestorType={x:Type local:MainWindow}}}"
+                              CommandParameter="{Binding}" />
+              </TreeViewItem.InputBindings>
+            </TreeViewItem>
           </HierarchicalDataTemplate>
 
         </TreeView.Resources>
-        <TreeViewItem Header="Master Setups (ACC)" ItemsSource="{Binding MasterTreeHierarchy}" IsExpanded="True" />
+        <TreeViewItem Header="Master Setups (ACC)"
+                      ItemsSource="{Binding MasterTreeHierarchy}"
+                      IsExpanded="True" />
         <TreeViewItem Header="Versions"
-                      ItemsSource="{Binding VersionTreeHierarchy}" IsExpanded="True" />
+                      ItemsSource="{Binding VersionTreeHierarchy}"
+                      IsExpanded="True" />
       </TreeView>
 
       <GridSplitter Grid.Column="1"
@@ -59,6 +68,9 @@
                     Width="3"
                     ShowsPreview="True" />
 
+      <local:SetupFileViewer Grid.Column="2"
+                             HorizontalAlignment="Stretch"
+                             VerticalAlignment="Stretch" DataContext="{Binding Setup}" />
     </Grid>
   </DockPanel>
 </Window>
