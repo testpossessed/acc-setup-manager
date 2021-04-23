@@ -4,6 +4,7 @@ using System.Windows;
 using ACCSetupManager.Services;
 using ACCSetupManager.ViewModels;
 using NLog;
+using Syncfusion.SfSkinManager;
 
 namespace ACCSetupManager
 {
@@ -44,6 +45,8 @@ namespace ACCSetupManager
 
     private void InitialiseApp()
     {
+      Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NDM0NzY2QDMxMzkyZTMxMmUzMFl0aU45OEpZZzR2cEpFUUZEYnZLUC9DeXd5YkM4UFhRRDVEZXlDai9hUEE9");
+      SfSkinManager.ApplyStylesOnApplication = true;
       this.EnsureAppDataFolderExists();
       this.EnsureConfigExists();
     }

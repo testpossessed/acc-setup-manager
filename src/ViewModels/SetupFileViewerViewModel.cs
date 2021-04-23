@@ -51,13 +51,12 @@ namespace ACCSetupManager.ViewModels
       }
 
       var length = fileName!.Length - 20;
-      return fileName.Substring(0, length);
+      return $"{fileName.Substring(0, length)}-";
     }
 
     private void LoadSetupFile()
     {
-      this.setupFile = SetupFileProvider.GetSetupFile(this.setup.FilePath);
-      this.SetupFile = new SetupFileViewModel(this.setupFile);
+      this.SetupFile = new SetupFileViewModel(this.setup.FilePath);
 
       var prefix = this.GetPrefix();
       var setupVersions = SetupFileProvider.GetVersions(this.setup.VehicleIdentifier,

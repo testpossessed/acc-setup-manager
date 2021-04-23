@@ -15,7 +15,7 @@ namespace ACCSetupManager.Models
     public double CamberFrontAdjustment { get; set; }
     public double CamberRearAdjustment { get; set; }
     public double CasterAdjustment { get; set; }
-    public double CasterFactor { get; set; }
+    public double[] CasterFactor { get; set; }
     public double CasterFixed { get; set; }
     public int EcuAdjustment { get; set; }
     public int EcuFixed { get; set; }
@@ -42,5 +42,58 @@ namespace ACCSetupManager.Models
     public double[] WheelRatesFront { get; set; }
     public double[] WheelRatesRear { get; set; }
     public int WingAdjustment { get; set; }
+
+    private double CasterFactorValue => this.CasterFactor[0] / this.CasterFactor[1];
+
+    internal double ToCamber(double rawValue, Location location)
+    {
+      return rawValue * this.CamberFactor + (location == Location.Front
+                                                          ? this.CamberFrontAdjustment
+                                                          : this.CamberRearAdjustment);
+    }
+
+    internal double ToCamberRaw(double camber, Location location)
+    {
+      return (camber - (location == Location.Front
+                          ? this.CamberFrontAdjustment
+                          : this.CamberRearAdjustment)) / this.CamberFactor;
+    }
+
+    internal double ToCaster(double rawValue)
+    {
+      return Math.Round(rawValue * this.CasterFactorValue + this.CasterAdjustment,
+        1,
+        MidpointRounding.ToPositiveInfinity);
+    }
+
+    internal double ToCasterRaw(double caster)
+    {
+      return (caster - this.CasterAdjustment) / this.CasterFactorValue;
+    }
+
+    internal double ToPressurePsi(double rawValue)
+    {
+      return Math.Round(rawValue * this.TyrePressureFactor + this.TyrePressureAdjustment,
+        1,
+        MidpointRounding.ToPositiveInfinity);
+    }
+
+    internal double ToPressureRaw(double pressurePsi)
+    {
+      return (pressurePsi - this.TyrePressureAdjustment) / this.TyrePressureFactor;
+    }
+
+    internal double ToToe(double rawValue, Location location)
+    {
+      return rawValue * this.ToeFactor + (location == Location.Front
+                                            ? this.ToeFrontAdjustment
+                                            : this.ToeRearAdjustment);
+    }
+
+    internal double ToToeRaw(double toe, Location location)
+    {
+      return (toe - (location == Location.Front? this.ToeFrontAdjustment: this.ToeRearAdjustment))
+             / this.ToeFactor;
+    }
   }
 }

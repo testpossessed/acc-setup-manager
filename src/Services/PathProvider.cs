@@ -12,22 +12,27 @@ namespace ACCSetupManager.Services
     public const string AppSettingsFileName = "appsettings.json";
     private const string MasterSetupsFolderName = "MasterSetups";
     private const string VersionsFolderName = "Versions";
+    private const string SetupDataFolderName = "SetupData";
 
     static PathProvider()
     {
       var processName = Process.GetCurrentProcess()
                                .ProcessName;
-      var localAppDataFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+      var localAppDataFolderPath =
+        Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
       AppDataFolderPath = Path.Combine(localAppDataFolderPath, processName);
       AppSettingsFilePath = Path.Combine(AppDataFolderPath, AppSettingsFileName);
       AppFolderPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly()
                                                     .Location);
       DefaultSettingsFilePath = Path.Combine(AppFolderPath!, AppSettingsFileName);
       MasterSetupsFolderPath = Path.Combine(AppDataFolderPath, MasterSetupsFolderName);
-      AccSetupsFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-        AccFolderName,
-        AccSetupsFolderName);
+      AccSetupsFolderPath =
+        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+          AccFolderName,
+          AccSetupsFolderName);
       VersionsFolderPath = Path.Combine(AppDataFolderPath, VersionsFolderName);
+      SetupDataFolderPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+        SetupDataFolderName);
     }
 
     public static string AccSetupsFolderPath { get; }
@@ -36,6 +41,7 @@ namespace ACCSetupManager.Services
     public static string AppSettingsFilePath { get; }
     public static string DefaultSettingsFilePath { get; }
     public static string MasterSetupsFolderPath { get; }
+    public static string SetupDataFolderPath { get; }
     public static string VersionsFolderPath { get; set; }
 
     public static string GetLastFolderName(string path)

@@ -4,28 +4,68 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:ACCSetupManager"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800">
+  <UserControl.Resources>
+    <Style TargetType="TextBlock">
+      <Setter Property="Margin"
+              Value="5" />
+      <Setter Property="FontSize"
+              Value="16" />
+    </Style>
+    <Style TargetType="syncfusion:UpDown">
+      <Setter Property="Margin"
+              Value="5" />
+      <Setter Property="NumberDecimalDigits"
+              Value="1" />
+      <Setter Property="Step"
+              Value="0.1" />
+      <Setter Property="HorizontalAlignment"
+              Value="Stretch" />
+      <Setter Property="EnableNegativeColors"
+              Value="False" />
+      <Setter Property="ApplyZeroColor"
+              Value="False" />
+      <Setter Property="TextAlignment"
+              Value="Right" />
+      <Setter Property="FontSize"
+              Value="16" />
+    </Style>
+    <Style TargetType="GroupBox">
+      <Setter Property="FontSize"
+              Value="16" />
+      <Setter Property="BorderThickness"
+              Value="1" />
+      <Setter Property="BorderBrush"
+              Value="White" />
+      <Setter Property="Padding"
+              Value="10" />
+      <Setter Property="Margin"
+              Value="10" />
+    </Style>
+  </UserControl.Resources>
   <Grid>
     <Grid.ColumnDefinitions>
       <ColumnDefinition Width="3*" />
       <ColumnDefinition Width="*" />
     </Grid.ColumnDefinitions>
 
-    <TabControl VerticalAlignment="Stretch"
-                HorizontalAlignment="Stretch">
-      <TabItem Header="Tyres">
-        <local:TyresView SetupFile="{Binding SetupFile}"
-                         HorizontalAlignment="Stretch"
-                         VerticalAlignment="Stretch" />
-      </TabItem>
-      <TabItem Header="Electronics" />
-      <TabItem Header="Fuel &amp; Strategy" />
-      <TabItem Header="Mechanical Grip" />
-      <TabItem Header="Dampers" />
-      <TabItem Header="Aero" />
-    </TabControl>
+    <syncfusion:TabControlExt VerticalAlignment="Stretch"
+                              HorizontalAlignment="Stretch">
+      <syncfusion:TabItemExt Header="Tyres">
+        <local:TyresView HorizontalAlignment="Stretch"
+                         VerticalAlignment="Stretch"
+                         DataContext="{Binding SetupFile.Tyres}"
+                         IsEnabled="False" />
+      </syncfusion:TabItemExt>
+      <syncfusion:TabItemExt Header="Electronics" />
+      <syncfusion:TabItemExt Header="Fuel &amp; Strategy" />
+      <syncfusion:TabItemExt Header="Mechanical Grip" />
+      <syncfusion:TabItemExt Header="Dampers" />
+      <syncfusion:TabItemExt Header="Aero" />
+    </syncfusion:TabControlExt>
 
     <Grid Grid.Column="1"
           HorizontalAlignment="Stretch"
@@ -38,12 +78,12 @@
 
       <StackPanel Orientation="Horizontal">
         <TextBlock Margin="5">Versions:</TextBlock>
-        <ComboBox MinWidth="100"
-                  Margin="5"
-                  ItemsSource="{Binding Versions}"
-                  Text="Versions"
-                  DisplayMemberPath="Name"
-                  SelectedValue="{Binding SelectedVersion, Mode=TwoWay}" />
+        <syncfusion:ComboBoxAdv MinWidth="100"
+                                Margin="5"
+                                ItemsSource="{Binding Versions}"
+                                Text="Versions"
+                                DisplayMemberPath="Name"
+                                SelectedValue="{Binding SelectedVersion, Mode=TwoWay}" />
       </StackPanel>
     </Grid>
   </Grid>

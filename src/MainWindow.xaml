@@ -1,24 +1,24 @@
-﻿<Window x:Class="ACCSetupManager.MainWindow"
+﻿<syncfusion:ChromelessWindow x:Class="ACCSetupManager.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ACCSetupManager"
-        xmlns:models="clr-namespace:ACCSetupManager.Models"
         xmlns:viewModels="clr-namespace:ACCSetupManager.ViewModels"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
         mc:Ignorable="d"
-        Title="ACC SetupViewModel Manger"
+        Title="ACC Setup Manager"
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized">
   <DockPanel>
-    <Menu DockPanel.Dock="Top">
-      <MenuItem Header="_File">
-        <MenuItem Header="_Close" />
-        <MenuItem Header="_Save" />
-        <MenuItem Header="Save _as..." />
-        <MenuItem Header="E_xit" />
-      </MenuItem>
-    </Menu>
+    <syncfusion:MenuAdv DockPanel.Dock="Top">
+      <syncfusion:MenuItemAdv Header="_File">
+        <syncfusion:MenuItemAdv Header="_Close" />
+        <syncfusion:MenuItemAdv Header="_Save" />
+        <syncfusion:MenuItemAdv Header="Save _as..." />
+        <syncfusion:MenuItemAdv Header="E_xit" />
+      </syncfusion:MenuItemAdv>
+    </syncfusion:MenuAdv>
 
     <StatusBar DockPanel.Dock="Bottom">
       <StatusBarItem>
@@ -73,4 +73,4 @@
                              VerticalAlignment="Stretch" DataContext="{Binding Setup}" />
     </Grid>
   </DockPanel>
-</Window>
+</syncfusion:ChromelessWindow>
