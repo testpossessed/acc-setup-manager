@@ -22,8 +22,8 @@ namespace ACCSetupManager.Services
         Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
       AppDataFolderPath = Path.Combine(localAppDataFolderPath, processName);
       AppSettingsFilePath = Path.Combine(AppDataFolderPath, AppSettingsFileName);
-      AppFolderPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly()
-                                                    .Location);
+      var executionFolder = AppDomain.CurrentDomain.BaseDirectory;
+      AppFolderPath = Path.GetDirectoryName(executionFolder);
       DefaultSettingsFilePath = Path.Combine(AppFolderPath!, AppSettingsFileName);
       MasterSetupsFolderPath = Path.Combine(AppDataFolderPath, MasterSetupsFolderName);
       AccSetupsFolderPath =
@@ -31,8 +31,7 @@ namespace ACCSetupManager.Services
           AccFolderName,
           AccSetupsFolderName);
       VersionsFolderPath = Path.Combine(AppDataFolderPath, VersionsFolderName);
-      SetupDataFolderPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-        SetupDataFolderName);
+      SetupDataFolderPath = Path.Combine(AppFolderPath, SetupDataFolderName);
     }
 
     public static string AccSetupsFolderPath { get; }
