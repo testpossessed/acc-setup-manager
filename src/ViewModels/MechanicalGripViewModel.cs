@@ -10,8 +10,9 @@ namespace ACCSetupManager.ViewModels
     private double bumpStopRange;
     private double bumpStopRateDown;
     private double bumpStopRateUp;
+    private string title;
     private double wheelRate;
-
+    
     public double BumpStopRange
     {
       get => this.bumpStopRange;
@@ -30,6 +31,12 @@ namespace ACCSetupManager.ViewModels
       set => this.SetProperty(ref this.bumpStopRateUp, value);
     }
 
+    public string Title
+    {
+      get => this.title;
+      set => this.SetProperty(ref this.title, value);
+    }
+
     public double WheelRate
     {
       get => this.wheelRate;
@@ -38,6 +45,7 @@ namespace ACCSetupManager.ViewModels
 
     internal void Apply(SetupFile setupFile, SetupSpec setupSpec, Location location)
     {
+      this.SetTitle(location);
       var mechanicalBalance = setupFile.AdvancedSetup.MechanicalBalance;
       var index = this.GetIndexFromLocation(location);
 
@@ -45,6 +53,25 @@ namespace ACCSetupManager.ViewModels
       this.BumpStopRateDown = setupSpec.ToBumpStopRate(mechanicalBalance.BumpStopRateDn[index]);
       this.BumpStopRateUp = setupSpec.ToBumpStopRate(mechanicalBalance.BumpStopRateUp[index]);
       this.WheelRate = setupSpec.ToWheelRate(mechanicalBalance.WheelRate[index], location);
+    }
+
+    private void SetTitle(Location location)
+    {
+      switch(location)
+      {
+        case Location.RightFront:
+          this.Title = "Right Front";
+          break;
+        case Location.LeftRear:
+          this.Title = "Left Rear";
+          break;
+        case Location.RightRear:
+          this.Title = "Right Rear";
+          break;
+        default:
+          this.Title = "Left Front";
+          break;
+      }
     }
 
     private int GetIndexFromLocation(Location location)

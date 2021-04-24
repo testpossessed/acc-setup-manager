@@ -74,7 +74,7 @@
                                    DataContext="{Binding SetupFile.FuelAndStrategy}"/>
       </syncfusion:TabItemExt>
       <syncfusion:TabItemExt Header="Mechanical Grip">
-        <local:MechanicalGripView HorizontalAlignment="Stretch" VerticalAlignment="Stretch" DataContext="{Binding SetupFile.MechanicalGrip}"></local:MechanicalGripView>
+        <local:MechanicalBalanceView HorizontalAlignment="Stretch" VerticalAlignment="Stretch" DataContext="{Binding SetupFile.MechanicalGrip}"></local:MechanicalBalanceView>
       </syncfusion:TabItemExt>
       <syncfusion:TabItemExt Header="Dampers" />
       <syncfusion:TabItemExt Header="Aero" />
