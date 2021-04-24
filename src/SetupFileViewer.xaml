@@ -60,7 +60,12 @@
                          DataContext="{Binding SetupFile.Tyres}"
                          IsEnabled="False" />
       </syncfusion:TabItemExt>
-      <syncfusion:TabItemExt Header="Electronics" />
+      <syncfusion:TabItemExt Header="Electronics">
+        <local:ElectronicsView HorizontalAlignment="Stretch"
+                               VerticalAlignment="Stretch"
+                               DataContext="{Binding SetupFile.Electronics}"
+                               IsEnabled="False" />
+      </syncfusion:TabItemExt>
       <syncfusion:TabItemExt Header="Fuel &amp; Strategy" />
       <syncfusion:TabItemExt Header="Mechanical Grip" />
       <syncfusion:TabItemExt Header="Dampers" />

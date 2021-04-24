@@ -19,11 +19,7 @@
       <RowDefinition />
       <RowDefinition />
     </Grid.RowDefinitions>
-
-    <Grid.Resources>
-
-    </Grid.Resources>
-
+ 
     <TextBlock Grid.Column="0"
                Grid.Row="0"
                Margin="5">

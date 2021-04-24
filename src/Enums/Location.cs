@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ACCSetupManager
+namespace ACCSetupManager.Enums
 {
   internal enum Location
   {

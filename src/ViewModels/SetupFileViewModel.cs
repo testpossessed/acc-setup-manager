@@ -1,4 +1,5 @@
 ﻿using System;
+using ACCSetupManager.Enums;
 using ACCSetupManager.Models;
 using ACCSetupManager.Services;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
@@ -16,6 +17,8 @@ namespace ACCSetupManager.ViewModels
       this.setupSpec = SetupSpecProvider.GetSetupSpec(this.setupFile.VehicleIdentifier);
       this.MapSetupFile();
     }
+
+    public ElectronicsViewModel Electronics { get; } = new();
 
     public TyresViewModel Tyres { get; } = new();
 
@@ -36,12 +39,21 @@ namespace ACCSetupManager.ViewModels
         this.setupSpec.ToCaster(this.setupFile.BasicSetup.Alignment.CasterRF);
     }
 
+    private void MapElectronics()
+    {
+      var electronics = this.setupFile.BasicSetup.Electronics;
+      this.Electronics.Abs = electronics.Abs;
+      this.Electronics.EcuMap = electronics.ECUMap;
+      this.Electronics.FuelMix = electronics.FuelMix;
+      this.Electronics.Tc1 = electronics.TC1;
+      this.Electronics.Tc2 = electronics.TC2;
+      this.Electronics.TelemetryLaps = electronics.TelemetryLaps;
+    }
+
     private void MapSetupFile()
     {
-      this.MapTyrePressures();
-      this.MapToe();
-      this.MapCamber();
-      this.MapCaster();
+      this.MapTyres();
+      this.MapElectronics();
     }
 
     private void MapToe()
@@ -60,6 +72,14 @@ namespace ACCSetupManager.ViewModels
       this.Tyres.RightFront.PressurePsi = this.setupSpec.ToPressurePsi(tyrePressures[1]);
       this.Tyres.LeftRear.PressurePsi = this.setupSpec.ToPressurePsi(tyrePressures[2]);
       this.Tyres.RightRear.PressurePsi = this.setupSpec.ToPressurePsi(tyrePressures[3]);
+    }
+
+    private void MapTyres()
+    {
+      this.MapTyrePressures();
+      this.MapToe();
+      this.MapCamber();
+      this.MapCaster();
     }
   }
 }
