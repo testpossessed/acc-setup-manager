@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 
 namespace ACCSetupManager.ViewModels
@@ -7,20 +8,29 @@ namespace ACCSetupManager.ViewModels
   {
     private int frontBrakeCompound;
     private int fuelToAdd;
-
     private double leftFrontPsi;
-
     private double leftRearPsi;
 
+    private int pitStopNumber;
     private int rearBrakeCompound;
-
     private double rightFrontPsi;
-
     private double rightRearPsi;
-
     private int tyreCompound;
-
     private int tyreSet;
+
+    public ObservableCollection<TyreCompoundListItem> TyreCompounds { get; } = new()
+      {
+        new TyreCompoundListItem
+        {
+          Text = "Dry",
+          Value = 0
+        },
+        new TyreCompoundListItem
+        {
+          Text = "Wet",
+          Value = 1
+        }
+      };
 
     public int FrontBrakeCompound
     {
@@ -44,6 +54,12 @@ namespace ACCSetupManager.ViewModels
     {
       get => this.leftRearPsi;
       set => this.SetProperty(ref this.leftRearPsi, value);
+    }
+
+    public int PitStopNumber
+    {
+      get => this.pitStopNumber;
+      set => this.SetProperty(ref this.pitStopNumber, value);
     }
 
     public int RearBrakeCompound

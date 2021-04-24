@@ -4,6 +4,7 @@ using System.Windows;
 using ACCSetupManager.Services;
 using ACCSetupManager.ViewModels;
 using NLog;
+using Syncfusion.Licensing;
 using Syncfusion.SfSkinManager;
 
 namespace ACCSetupManager
@@ -43,9 +44,17 @@ namespace ACCSetupManager
       File.Copy(PathProvider.DefaultSettingsFilePath, PathProvider.AppSettingsFilePath);
     }
 
+    private void HandleUnhandledException(object sender, UnhandledExceptionEventArgs eventArgs)
+    {
+      var exception = eventArgs.ExceptionObject as Exception;
+      MessageBox.Show($"An unexpected error occurred: {exception?.Message}");
+    }
+
     private void InitialiseApp()
     {
-      Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NDM0NzY2QDMxMzkyZTMxMmUzMFl0aU45OEpZZzR2cEpFUUZEYnZLUC9DeXd5YkM4UFhRRDVEZXlDai9hUEE9");
+      AppDomain.CurrentDomain.UnhandledException += this.HandleUnhandledException;
+      SyncfusionLicenseProvider.RegisterLicense(
+        "NDM0NzY2QDMxMzkyZTMxMmUzMFl0aU45OEpZZzR2cEpFUUZEYnZLUC9DeXd5YkM4UFhRRDVEZXlDai9hUEE9");
       SfSkinManager.ApplyStylesOnApplication = true;
       this.EnsureAppDataFolderExists();
       this.EnsureConfigExists();

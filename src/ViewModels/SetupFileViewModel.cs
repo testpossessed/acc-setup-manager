@@ -61,16 +61,18 @@ namespace ACCSetupManager.ViewModels
       this.FuelAndStrategy.FuelPerLap = Math.Round(strategy.FuelPerLap, 1);
 
       this.FuelAndStrategy.PitStrategies.Clear();
-      foreach(var pitStrategy in strategy.PitStrategies)
+      for(var i = 0; i < strategy.PitStrategies.Length; i++)
       {
-        this.FuelAndStrategy.PitStrategies.Add(this.MapPitStrategy(pitStrategy));
+        var pitStrategy = strategy.PitStrategies[i];
+        this.FuelAndStrategy.PitStrategies.Add(this.MapPitStrategy(pitStrategy, i));
       }
     }
 
-    private PitStrategyViewModel MapPitStrategy(PitStrategy pitStrategy)
+    private PitStrategyViewModel MapPitStrategy(PitStrategy pitStrategy, int index)
     {
       return new()
              {
+               PitStopNumber = index + 1,
                FrontBrakeCompound = pitStrategy.FrontBrakePadCompound,
                FuelToAdd = pitStrategy.FuelToAdd,
                RearBrakeCompound = pitStrategy.RearBreakPadCompound,

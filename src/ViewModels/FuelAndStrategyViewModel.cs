@@ -21,12 +21,12 @@ namespace ACCSetupManager.ViewModels
         new TyreCompoundListItem
         {
           Text = "Dry",
-          Value = 1
+          Value = 0
         },
         new TyreCompoundListItem
         {
           Text = "Wet",
-          Value = 2
+          Value = 1
         }
       };
 

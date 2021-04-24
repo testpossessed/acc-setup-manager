@@ -9,8 +9,7 @@
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800"
-             d:DataContext="{d:DesignInstance viewModels:FuelAndStrategyViewModel}"
-             IsEnabled="False">
+             d:DataContext="{d:DesignInstance viewModels:FuelAndStrategyViewModel}">
   <Grid HorizontalAlignment="Stretch"
         VerticalAlignment="Top">
 
@@ -19,6 +18,11 @@
       <ColumnDefinition Width="2*" />
       <ColumnDefinition />
     </Grid.ColumnDefinitions>
+
+    <Grid.RowDefinitions>
+      <RowDefinition />
+      <RowDefinition />
+    </Grid.RowDefinitions>
 
     <Grid.Resources>
       <Style TargetType="syncfusion:UpDown">
@@ -41,7 +45,36 @@
       </Style>
     </Grid.Resources>
 
-    <local:FuelAndTyreStrategyView Grid.Column="1" Grid.Row="0" />
+    <local:FuelAndTyreStrategyView Grid.Column="1"
+                                   Grid.Row="0" />
+
+    <syncfusion:TabControlExt Grid.Column="0"
+                              Grid.Row="1"
+                              Grid.ColumnSpan="3"
+                              HorizontalAlignment="Stretch"
+                              ItemsSource="{Binding PitStrategies}"
+                              Margin="5">
+
+      <syncfusion:TabControlExt.ItemContainerStyle>
+        <Style TargetType="syncfusion:TabItemExt">
+          <Setter Property="HeaderTemplate">
+            <Setter.Value>
+              <DataTemplate>
+                <TextBlock>
+                  <Run>Pit Stop </Run>
+                  <Run Text="{Binding PitStopNumber}" />
+                </TextBlock>
+              </DataTemplate>
+            </Setter.Value>
+          </Setter>
+        </Style>
+      </syncfusion:TabControlExt.ItemContainerStyle>
+      <syncfusion:TabControlExt.ContentTemplate>
+        <DataTemplate>
+          <local:PitStopsStrategyView />
+        </DataTemplate>
+      </syncfusion:TabControlExt.ContentTemplate>
+    </syncfusion:TabControlExt>
 
   </Grid>
 </UserControl>
