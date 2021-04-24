@@ -198,8 +198,4 @@
     <PackageReference Include="Syncfusion.Tools.WPF" Version="19.1.0.57" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Enums\" />
-  </ItemGroup>
-
 </Project>

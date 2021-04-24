@@ -137,7 +137,7 @@
 
         <TextBlock Grid.Column="0"
                    Grid.Row="8">
-          Fuel Mix
+          Rear Brake Compound
         </TextBlock>
         <syncfusion:UpDown Grid.Column="1"
                            Grid.Row="8"

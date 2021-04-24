@@ -28,7 +28,7 @@ namespace ACCSetupManager.Models
     public double RideHeightRearAdjustment { get; set; }
     public int SplitterAdjustment { get; set; }
     public int SplitterFixed { get; set; }
-    public double SteerRatioAdjustment { get; set; }
+    public int SteerRatioAdjustment { get; set; }
     public double ToeFactor { get; set; }
     public double ToeFrontAdjustment { get; set; }
     public double ToeRearAdjustment { get; set; }
@@ -45,6 +45,16 @@ namespace ACCSetupManager.Models
     public int WingAdjustment { get; set; }
 
     private double CasterFactorValue => this.CasterFactor[0] / this.CasterFactor[1];
+
+    internal int ToArb(int rawValue)
+    {
+      return rawValue + this.AntiRollBarAdjustment;
+    }
+
+    internal int ToArbRaw(int arb)
+    {
+      return arb - this.AntiRollBarAdjustment;
+    }
 
     internal double ToCamber(double rawValue, Location location)
     {
@@ -95,6 +105,87 @@ namespace ACCSetupManager.Models
     {
       return (toe - (location == Location.Front? this.ToeFrontAdjustment: this.ToeRearAdjustment))
              / this.ToeFactor;
+    }
+
+    internal double ToBrakeBias(double rawValue)
+    {
+      return rawValue * this.BrakeBiasFactor + this.BrakeBiasAdjustment;
+    }
+
+    internal double ToBrakeBiasRaw(double brakeBias)
+    {
+      return (brakeBias - this.BrakeBiasAdjustment) / this.BrakeBiasFactor;
+    }
+
+    internal double ToBrakePower(double rawValue)
+    {
+      return rawValue + this.BrakePowerAdjustment;
+    }
+
+    internal double ToBrakePowerRaw(double brakePower)
+    {
+      return brakePower - this.BrakeBiasAdjustment;
+    }
+
+    internal double ToDifferentialPreload(double rawValue)
+    {
+      if(this.PreloadFixed >= 0)
+      {
+        return this.PreloadFixed;
+      }
+
+      return rawValue * this.PreloadAdjustment + this.PreloadAdjustment;
+    }
+
+    internal double ToDifferentialPreloadRaw(double differentialPreload)
+    {
+      if(this.PreloadFixed >= 0)
+      {
+        return this.PreloadFixed;
+      }
+
+      return (differentialPreload - this.PreloadAdjustment) / this.PreloadFactor;
+    }
+
+    internal double ToBumpStopRate(double rawValue)
+    {
+      return rawValue * this.BumpStopRateFactor + this.BumpStopRateAdjustment;
+    }
+
+    internal double ToBumpStopRateRaw(double bumpStopRate)
+    {
+      return (bumpStopRate - this.BumpStopRateAdjustment) / this.BumpStopRateFactor;
+    }
+
+    internal double ToWheelRate(int rawValue, Location location)
+    {
+      var wheelRateMode = (WheelRateMode)this.WheelRateMode;
+      if(wheelRateMode == Enums.WheelRateMode.Fixed)
+      {
+        return this.WheelRateFixed;
+      }
+
+      if(wheelRateMode == Enums.WheelRateMode.List )
+      {
+        if(location == Location.LeftFront || location == Location.RightFront)
+        {
+          return this.WheelRatesFront[rawValue];
+        }
+
+        return this.WheelRatesRear[rawValue];
+      }
+
+      if(location == Location.LeftFront || location == Location.RightFront)
+      {
+        return rawValue * this.WheelRateFrontFactor + this.WheelRateFrontAdjustment;
+      }
+
+      return rawValue * this.WheelRateRearFactor + this.WheelRateRearAdjustment;
+    }
+
+    public int ToSteerRatio(int rawValue)
+    {
+      return rawValue + this.SteerRatioAdjustment;
     }
   }
 }

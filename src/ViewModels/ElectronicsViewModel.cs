@@ -1,4 +1,5 @@
 ﻿using System;
+using ACCSetupManager.Models;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 
 namespace ACCSetupManager.ViewModels
@@ -46,6 +47,17 @@ namespace ACCSetupManager.ViewModels
     {
       get => this.telemetryLaps;
       set => this.SetProperty(ref this.telemetryLaps, value);
+    }
+
+    public void Apply(SetupFile setupFile)
+    {
+      var electronics = setupFile.BasicSetup.Electronics;
+      this.Abs = electronics.Abs;
+      this.EcuMap = electronics.ECUMap;
+      this.FuelMix = electronics.FuelMix;
+      this.Tc1 = electronics.TC1;
+      this.Tc2 = electronics.TC2;
+      this.TelemetryLaps = electronics.TelemetryLaps;
     }
   }
 }
