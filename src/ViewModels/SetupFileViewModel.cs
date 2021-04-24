@@ -19,7 +19,7 @@ namespace ACCSetupManager.ViewModels
     }
 
     public ElectronicsViewModel Electronics { get; } = new();
-
+    public FuelAndStrategyViewModel FuelAndStrategy { get; } = new();
     public TyresViewModel Tyres { get; } = new();
 
     private void MapCamber()
@@ -50,10 +50,44 @@ namespace ACCSetupManager.ViewModels
       this.Electronics.TelemetryLaps = electronics.TelemetryLaps;
     }
 
+    private void MapFuelAndStrategy()
+    {
+      var strategy = this.setupFile.BasicSetup.Strategy;
+      this.FuelAndStrategy.TyreCompound = this.setupFile.BasicSetup.Tyres.TyreCompound;
+      this.FuelAndStrategy.Fuel = strategy.Fuel;
+      this.FuelAndStrategy.PitStops = strategy.NPitStops;
+      this.FuelAndStrategy.FrontBrakeCompound = strategy.FrontBrakePadCompound;
+      this.FuelAndStrategy.RearBrakeCompound = strategy.RearBreakPadCompound;
+      this.FuelAndStrategy.FuelPerLap = Math.Round(strategy.FuelPerLap, 1);
+
+      this.FuelAndStrategy.PitStrategies.Clear();
+      foreach(var pitStrategy in strategy.PitStrategies)
+      {
+        this.FuelAndStrategy.PitStrategies.Add(this.MapPitStrategy(pitStrategy));
+      }
+    }
+
+    private PitStrategyViewModel MapPitStrategy(PitStrategy pitStrategy)
+    {
+      return new()
+             {
+               FrontBrakeCompound = pitStrategy.FrontBrakePadCompound,
+               FuelToAdd = pitStrategy.FuelToAdd,
+               RearBrakeCompound = pitStrategy.RearBreakPadCompound,
+               TyreSet = pitStrategy.TyreSet,
+               TyreCompound = pitStrategy.Tyres.TyreCompound,
+               LeftFrontPsi = this.setupSpec.ToPressurePsi(pitStrategy.Tyres.TyrePressure[0]),
+               RightFrontPsi = this.setupSpec.ToPressurePsi(pitStrategy.Tyres.TyrePressure[1]),
+               LeftRearPsi = this.setupSpec.ToPressurePsi(pitStrategy.Tyres.TyrePressure[2]),
+               RightRearPsi = this.setupSpec.ToPressurePsi(pitStrategy.Tyres.TyrePressure[03])
+             };
+    }
+
     private void MapSetupFile()
     {
       this.MapTyres();
       this.MapElectronics();
+      this.MapFuelAndStrategy();
     }
 
     private void MapToe()

@@ -66,7 +66,12 @@
                                DataContext="{Binding SetupFile.Electronics}"
                                IsEnabled="False" />
       </syncfusion:TabItemExt>
-      <syncfusion:TabItemExt Header="Fuel &amp; Strategy" />
+      <syncfusion:TabItemExt Header="Fuel &amp; Strategy">
+        <local:FuelAndStrategyView HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Stretch"
+                                   DataContext="{Binding SetupFile.FuelAndStrategy}"
+                                   IsEnabled="False" />
+      </syncfusion:TabItemExt>
       <syncfusion:TabItemExt Header="Mechanical Grip" />
       <syncfusion:TabItemExt Header="Dampers" />
       <syncfusion:TabItemExt Header="Aero" />
