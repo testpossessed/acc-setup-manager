@@ -1,0 +1,4 @@
+*.manifext binary
+*.application binary
+*.deploy binary
+* -text
