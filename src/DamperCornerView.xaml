@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="ACCSetupManager.MechanicalGripView"
+﻿<UserControl x:Class="ACCSetupManager.DamperCornerView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -9,7 +9,8 @@
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800"
-             d:DataContext="{d:DesignInstance viewModels:MechanicalGripCornerViewModel}">
+             d:DataContext="{d:DesignInstance viewModels:DamperCornerViewModel}"
+             IsEnabled="False">
   <Grid HorizontalAlignment="Stretch"
         VerticalAlignment="Stretch">
     <GroupBox Header="{Binding Title}">
@@ -31,53 +32,53 @@
         <TextBlock Grid.Column="0"
                    Grid.Row="0"
                    Margin="5">
-          Wheel Rate Nm
+          Bump
         </TextBlock>
         <syncfusion:UpDown Grid.Column="1"
                            Grid.Row="0"
-                           Value="{Binding WheelRate}"
-                           MinValue="115000"
-                           MaxValue="185000"
-                           Step="10000"
+                           Value="{Binding Bump}"
+                           MinValue="0"
+                           MaxValue="40"
+                           Step="1"
                            NumberDecimalDigits="0" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="1"
                    Margin="5">
-          Bump Stop Rate Down N
+          Fast Bump
         </TextBlock>
         <syncfusion:UpDown Grid.Column="1"
                            Grid.Row="1"
-                           Value="{Binding BumpStopRateDown}"
-                           MinValue="300"
-                           MaxValue="2500"
-                           Step="100"
+                           Value="{Binding FastBump}"
+                           MinValue="0"
+                           MaxValue="49"
+                           Step="1"
                            NumberDecimalDigits="0" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="2"
                    Margin="5">
-          Bump Stop Rate Up N
+          Rebound
         </TextBlock>
         <syncfusion:UpDown Grid.Column="1"
                            Grid.Row="2"
-                           Value="{Binding BumpStopRateUp}"
-                           MinValue="300"
-                           MaxValue="2500"
-                           Step="100"
+                           Value="{Binding Rebound}"
+                           MinValue="0"
+                           MaxValue="40"
+                           Step="1"
                            NumberDecimalDigits="0" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="3"
                    Margin="5">
-          Bump Stop Range
+          Fast Rebound
         </TextBlock>
         <syncfusion:UpDown Grid.Column="1"
                            Grid.Row="3"
-                           Value="{Binding BumpStopRange}"
-                           MinValue="300"
-                           MaxValue="0"
-                           Step="68"
+                           Value="{Binding FastRebound}"
+                           MinValue="0"
+                           MaxValue="49"
+                           Step="1"
                            NumberDecimalDigits="0" />
       </Grid>
     </GroupBox>

@@ -22,13 +22,17 @@ namespace ACCSetupManager.ViewModels
     public FuelAndStrategyViewModel FuelAndStrategy { get; } = new();
     public TyresViewModel Tyres { get; } = new();
     public MechanicalBalanceViewModel MechanicalGrip { get; } = new();
-  
+    public DampersViewModel Dampers { get; } = new();
+    public AeroViewModel Aero { get; } = new();
+
     private void MapSetupFile()
     {
       this.Tyres.Apply(this.setupFile, this.setupSpec);
       this.Electronics.Apply(this.setupFile);
       this.FuelAndStrategy.Apply(this.setupFile, this.setupSpec);
       this.MechanicalGrip.Apply(this.setupFile, this.setupSpec);
+      this.Dampers.Apply(this.setupFile);
+      this.Aero.Apply(this.setupFile, this.setupSpec);
     }
   }
 }

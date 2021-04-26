@@ -14,10 +14,10 @@ namespace ACCSetupManager.ViewModels
     private double differentialPreload;
     private int steerRatio;
 
-    public MechanicalGripViewModel LeftFrontMechanicalGroup { get; } = new();
-    public MechanicalGripViewModel LeftRearMechanicalGroup { get; } = new();
-    public MechanicalGripViewModel RightFrontMechanicalGroup { get; } = new();
-    public MechanicalGripViewModel RightRearMechanicalGroup { get; } = new();
+    public MechanicalGripCornerViewModel LeftFrontMechanicalGroup { get; } = new();
+    public MechanicalGripCornerViewModel LeftRearMechanicalGroup { get; } = new();
+    public MechanicalGripCornerViewModel RightFrontMechanicalGroup { get; } = new();
+    public MechanicalGripCornerViewModel RightRearMechanicalGroup { get; } = new();
 
     public int ArbFront
     {

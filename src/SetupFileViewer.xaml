@@ -71,13 +71,23 @@
       <syncfusion:TabItemExt Header="Fuel &amp; Strategy">
         <local:FuelAndStrategyView HorizontalAlignment="Stretch"
                                    VerticalAlignment="Stretch"
-                                   DataContext="{Binding SetupFile.FuelAndStrategy}"/>
+                                   DataContext="{Binding SetupFile.FuelAndStrategy}" />
       </syncfusion:TabItemExt>
       <syncfusion:TabItemExt Header="Mechanical Grip">
-        <local:MechanicalBalanceView HorizontalAlignment="Stretch" VerticalAlignment="Stretch" DataContext="{Binding SetupFile.MechanicalGrip}"></local:MechanicalBalanceView>
+        <local:MechanicalBalanceView HorizontalAlignment="Stretch"
+                                     VerticalAlignment="Stretch"
+                                     DataContext="{Binding SetupFile.MechanicalGrip}" />
       </syncfusion:TabItemExt>
-      <syncfusion:TabItemExt Header="Dampers" />
-      <syncfusion:TabItemExt Header="Aero" />
+      <syncfusion:TabItemExt Header="Dampers">
+        <local:DampersView HorizontalAlignment="Stretch"
+                           VerticalAlignment="Stretch"
+                           DataContext="{Binding SetupFile.Dampers}" />
+      </syncfusion:TabItemExt>
+      <syncfusion:TabItemExt Header="Aero">
+        <local:AeroView HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        DataContext="{Binding SetupFile.Aero}" />
+      </syncfusion:TabItemExt>
     </syncfusion:TabControlExt>
 
     <Grid Grid.Column="1"

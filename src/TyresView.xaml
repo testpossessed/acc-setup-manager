@@ -4,11 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:ACCSetupManager"
-             mc:Ignorable="d">
-  <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top">
+             xmlns:viewModels="clr-namespace:ACCSetupManager.ViewModels"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance viewModels:TyresViewModel}">
+  <Grid HorizontalAlignment="Stretch"
+        VerticalAlignment="Top">
 
     <Grid.Resources>
-    
+
     </Grid.Resources>
     <Grid.ColumnDefinitions>
       <ColumnDefinition />
@@ -21,27 +24,31 @@
     </Grid.RowDefinitions>
 
     <GroupBox Grid.Column="0"
-            Grid.Row="0" Header="Front Left">
+              Grid.Row="0"
+              Header="Front Left">
       <local:FrontTyreView DataContext="{Binding LeftFront}"
                            Margin="10" />
     </GroupBox>
 
     <GroupBox Grid.Column="1"
-            Grid.Row="0" Header="Front Right">
+              Grid.Row="0"
+              Header="Front Right">
       <local:FrontTyreView DataContext="{Binding RightFront}"
                            Margin="10" />
     </GroupBox>
 
     <GroupBox Grid.Column="0"
-            Grid.Row="1" Header="Rear Left">
+              Grid.Row="1"
+              Header="Rear Left">
       <local:RearTyreView DataContext="{Binding LeftRear}"
-                           Margin="10" />
+                          Margin="10" />
     </GroupBox>
 
     <GroupBox Grid.Column="1"
-            Grid.Row="1" Header="Rear Right">
+              Grid.Row="1"
+              Header="Rear Right">
       <local:RearTyreView DataContext="{Binding RightRear}"
-                           Margin="10" />
+                          Margin="10" />
     </GroupBox>
 
   </Grid>

@@ -24,8 +24,8 @@ namespace ACCSetupManager.Models
     public double PreloadFactor { get; set; }
     public double PreloadFixed { get; set; }
     public double ReboundSlowAdjustment { get; set; }
-    public double RideHeightFrontAdjustment { get; set; }
-    public double RideHeightRearAdjustment { get; set; }
+    public int RideHeightFrontAdjustment { get; set; }
+    public int RideHeightRearAdjustment { get; set; }
     public int SplitterAdjustment { get; set; }
     public int SplitterFixed { get; set; }
     public int SteerRatioAdjustment { get; set; }
@@ -56,11 +56,41 @@ namespace ACCSetupManager.Models
       return arb - this.AntiRollBarAdjustment;
     }
 
+    internal double ToBrakeBias(double rawValue)
+    {
+      return rawValue * this.BrakeBiasFactor + this.BrakeBiasAdjustment;
+    }
+
+    internal double ToBrakeBiasRaw(double brakeBias)
+    {
+      return (brakeBias - this.BrakeBiasAdjustment) / this.BrakeBiasFactor;
+    }
+
+    internal double ToBrakePower(double rawValue)
+    {
+      return rawValue + this.BrakePowerAdjustment;
+    }
+
+    internal double ToBrakePowerRaw(double brakePower)
+    {
+      return brakePower - this.BrakeBiasAdjustment;
+    }
+
+    internal double ToBumpStopRate(double rawValue)
+    {
+      return rawValue * this.BumpStopRateFactor + this.BumpStopRateAdjustment;
+    }
+
+    internal double ToBumpStopRateRaw(double bumpStopRate)
+    {
+      return (bumpStopRate - this.BumpStopRateAdjustment) / this.BumpStopRateFactor;
+    }
+
     internal double ToCamber(double rawValue, Location location)
     {
       return rawValue * this.CamberFactor + (location == Location.Front
-                                                          ? this.CamberFrontAdjustment
-                                                          : this.CamberRearAdjustment);
+                                               ? this.CamberFrontAdjustment
+                                               : this.CamberRearAdjustment);
     }
 
     internal double ToCamberRaw(double camber, Location location)
@@ -80,51 +110,6 @@ namespace ACCSetupManager.Models
     internal double ToCasterRaw(double caster)
     {
       return (caster - this.CasterAdjustment) / this.CasterFactorValue;
-    }
-
-    internal double ToPressurePsi(double rawValue)
-    {
-      return Math.Round(rawValue * this.TyrePressureFactor + this.TyrePressureAdjustment,
-        1,
-        MidpointRounding.ToPositiveInfinity);
-    }
-
-    internal double ToPressureRaw(double pressurePsi)
-    {
-      return (pressurePsi - this.TyrePressureAdjustment) / this.TyrePressureFactor;
-    }
-
-    internal double ToToe(double rawValue, Location location)
-    {
-      return rawValue * this.ToeFactor + (location == Location.Front
-                                            ? this.ToeFrontAdjustment
-                                            : this.ToeRearAdjustment);
-    }
-
-    internal double ToToeRaw(double toe, Location location)
-    {
-      return (toe - (location == Location.Front? this.ToeFrontAdjustment: this.ToeRearAdjustment))
-             / this.ToeFactor;
-    }
-
-    internal double ToBrakeBias(double rawValue)
-    {
-      return rawValue * this.BrakeBiasFactor + this.BrakeBiasAdjustment;
-    }
-
-    internal double ToBrakeBiasRaw(double brakeBias)
-    {
-      return (brakeBias - this.BrakeBiasAdjustment) / this.BrakeBiasFactor;
-    }
-
-    internal double ToBrakePower(double rawValue)
-    {
-      return rawValue + this.BrakePowerAdjustment;
-    }
-
-    internal double ToBrakePowerRaw(double brakePower)
-    {
-      return brakePower - this.BrakeBiasAdjustment;
     }
 
     internal double ToDifferentialPreload(double rawValue)
@@ -147,14 +132,78 @@ namespace ACCSetupManager.Models
       return (differentialPreload - this.PreloadAdjustment) / this.PreloadFactor;
     }
 
-    internal double ToBumpStopRate(double rawValue)
+    internal double ToPressurePsi(double rawValue)
     {
-      return rawValue * this.BumpStopRateFactor + this.BumpStopRateAdjustment;
+      return Math.Round(rawValue * this.TyrePressureFactor + this.TyrePressureAdjustment,
+        1,
+        MidpointRounding.ToPositiveInfinity);
     }
 
-    internal double ToBumpStopRateRaw(double bumpStopRate)
+    internal double ToPressureRaw(double pressurePsi)
     {
-      return (bumpStopRate - this.BumpStopRateAdjustment) / this.BumpStopRateFactor;
+      return (pressurePsi - this.TyrePressureAdjustment) / this.TyrePressureFactor;
+    }
+
+    internal int ToRearWing(int rawValue)
+    {
+      return rawValue + this.WingAdjustment;
+    }
+
+    internal int ToRearWingRaw(int rearWing)
+    {
+      return rearWing - this.WingAdjustment;
+    }
+
+    internal int ToRideHeight(int rawValue, Location location)
+    {
+      return rawValue + (location == Location.Front
+                           ? this.RideHeightFrontAdjustment
+                           : this.RideHeightRearAdjustment);
+    }
+
+    internal int ToRideHeightRaw(int rideHeight, Location location)
+    {
+      return rideHeight - (location == Location.Front
+                             ? this.RideHeightFrontAdjustment
+                             : this.RideHeightRearAdjustment);
+    }
+
+    internal int ToSplitter(int rawValue)
+    {
+      if(this.SplitterFixed >= 0)
+      {
+        return this.SplitterFixed;
+      }
+
+      return rawValue + this.SplitterAdjustment;
+    }
+
+    internal int ToSplitterRaw(int splitter)
+    {
+      if(this.SplitterFixed >= 0)
+      {
+        return this.SplitterFixed;
+      }
+
+      return splitter - this.SplitterAdjustment;
+    }
+
+    internal int ToSteerRatio(int rawValue)
+    {
+      return rawValue + this.SteerRatioAdjustment;
+    }
+
+    internal double ToToe(double rawValue, Location location)
+    {
+      return rawValue * this.ToeFactor + (location == Location.Front
+                                            ? this.ToeFrontAdjustment
+                                            : this.ToeRearAdjustment);
+    }
+
+    internal double ToToeRaw(double toe, Location location)
+    {
+      return (toe - (location == Location.Front? this.ToeFrontAdjustment: this.ToeRearAdjustment))
+             / this.ToeFactor;
     }
 
     internal double ToWheelRate(int rawValue, Location location)
@@ -165,7 +214,7 @@ namespace ACCSetupManager.Models
         return this.WheelRateFixed;
       }
 
-      if(wheelRateMode == Enums.WheelRateMode.List )
+      if(wheelRateMode == Enums.WheelRateMode.List)
       {
         if(location == Location.LeftFront || location == Location.RightFront)
         {
@@ -181,11 +230,6 @@ namespace ACCSetupManager.Models
       }
 
       return rawValue * this.WheelRateRearFactor + this.WheelRateRearAdjustment;
-    }
-
-    public int ToSteerRatio(int rawValue)
-    {
-      return rawValue + this.SteerRatioAdjustment;
     }
   }
 }
