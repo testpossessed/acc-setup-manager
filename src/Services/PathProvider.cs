@@ -13,6 +13,7 @@ namespace ACCSetupManager.Services
     private const string VersionsFolderName = "Versions";
     private const string SetupDataFolderName = "SetupData";
     private const string NotesFolderName = "Notes";
+    private const string UserSettingsFileName = "userSettings.json";
 
     static PathProvider()
     {
@@ -33,6 +34,7 @@ namespace ACCSetupManager.Services
       VersionsFolderPath = Path.Combine(AppDataFolderPath, VersionsFolderName);
       SetupDataFolderPath = Path.Combine(AppFolderPath, SetupDataFolderName);
       NotesFolderPath = Path.Combine(AppDataFolderPath, NotesFolderName);
+      UserSettingsFilePath = Path.Combine(AppDataFolderPath, UserSettingsFileName);
     }
 
     public static string AccSetupsFolderPath { get; }
@@ -43,6 +45,8 @@ namespace ACCSetupManager.Services
     public static string MasterSetupsFolderPath { get; }
     public static string NotesFolderPath { get; }
     public static string SetupDataFolderPath { get; }
+
+    public static string UserSettingsFilePath { get; }
     public static string VersionsFolderPath { get; set; }
 
     public static string GetLastFolderName(string path)

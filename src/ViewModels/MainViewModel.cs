@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
@@ -10,6 +11,7 @@ using ACCSetupManager.Services;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
+using Syncfusion.SfSkinManager;
 
 namespace ACCSetupManager.ViewModels
 {
@@ -20,6 +22,8 @@ namespace ACCSetupManager.ViewModels
     private FileSystemWatcher fileWatcher;
     private bool hasSetupFile;
     private bool isCompareEnabled;
+
+    private string selectedTheme;
     private VersionListItemViewModel selectedVersion;
     private string statusMessage = "Started";
 
@@ -35,6 +39,7 @@ namespace ACCSetupManager.ViewModels
       this.SyncMasterSetups();
       this.LoadTreeData();
       this.InitialiseFileWatcher();
+      this.SetInitialTheme();
     }
 
     public SetupFileComparisonViewerViewModel ComparisonSetup { get; }
@@ -42,6 +47,15 @@ namespace ACCSetupManager.ViewModels
     public SetupFileViewerViewModel Setup { get; }
 
     public ICommand ShowSetup { get; }
+
+    public List<string> Themes { get; } = new()
+                                          {
+                                            "Blend",
+                                            "Material Dark",
+                                            "Office 2019 Dark Gray",
+                                            "Office 365",
+                                            "Saffron"
+                                          };
 
     public ObservableCollection<VersionListItemViewModel> Versions { get; }
 
@@ -68,6 +82,17 @@ namespace ACCSetupManager.ViewModels
     }
 
     public ObservableCollection<VehicleViewModel> MasterTreeHierarchy { get; private set; }
+
+    public string SelectedTheme
+    {
+      get => this.selectedTheme;
+      set
+      {
+        this.SetProperty(ref this.selectedTheme, value);
+        this.HandleThemeChanged();
+      }
+    }
+
     public VersionListItemViewModel SelectedVersion
     {
       get => this.selectedVersion;
@@ -144,7 +169,8 @@ namespace ACCSetupManager.ViewModels
       this.Messenger.Send(new SelectedSetupChanged(setup));
 
       var setupVersions = SetupFileProvider.GetVersions(setup.VehicleIdentifier,
-        setup.CircuitIdentifier, setup.IsVersion);
+        setup.CircuitIdentifier,
+        setup.IsVersion);
       var setupMasters =
         SetupFileProvider.GetMasters(setup.VehicleIdentifier, setup.CircuitIdentifier);
       this.Versions.Clear();
@@ -155,7 +181,10 @@ namespace ACCSetupManager.ViewModels
       {
         this.Versions.Add(new VersionListItemViewModel
                           {
-                            FilePath = setupFileInfo.IsVersion ? setupFileInfo.VersionSetupFilePath: setupFileInfo.MasterSetupFilePath,
+                            FilePath =
+                              setupFileInfo.IsVersion
+                                ? setupFileInfo.VersionSetupFilePath
+                                : setupFileInfo.MasterSetupFilePath,
                             Name = setupFileInfo.FileName
                           });
       }
@@ -163,6 +192,25 @@ namespace ACCSetupManager.ViewModels
       this.SelectedVersion = this.Versions[0];
       this.HasSetupFile = true;
       this.IsCompareEnabled = false;
+    }
+
+    private void HandleThemeChanged()
+    {
+      var theme = this.SelectedTheme.Replace(" ", "");
+      SettingsProvider.SaveSettings(new UserSettings
+                                    {
+                                      Theme = this.SelectedTheme
+                                    });
+      var result =
+        MessageBox.Show(
+          $"The theme will be applied when the application next starts.{Environment.NewLine}{Environment.NewLine}Do you want to exit now?",
+          "Theme Change",
+          MessageBoxButton.YesNo);
+
+      if(result == MessageBoxResult.Yes)
+      {
+        Application.Current.Shutdown(0);
+      }
     }
 
     private void InitialiseFileWatcher()
@@ -201,6 +249,13 @@ namespace ACCSetupManager.ViewModels
         setupFileInfo.MasterSetupFilePath);
 
       return setupFileInfo;
+    }
+
+    private void SetInitialTheme()
+    {
+      var settings = SettingsProvider.GetSettings();
+      this.selectedTheme = settings.Theme;
+      SfSkinManager.SetTheme(Application.Current.MainWindow, new Theme(this.SelectedTheme.Replace(" ", "")));
     }
 
     private void SyncMasterSetups()

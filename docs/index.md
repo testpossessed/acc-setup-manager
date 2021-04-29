@@ -5,13 +5,13 @@ Assetto Corsa Competitzione (ACC) Setup Manager allows you to view existing setu
 + Automatic versioning of setups files
 + Side by side comparison of setup versions
 + Add and edit notes for setup files and versions
++ Select from multiple themes
 
 The following features are in the works and will be released as soon as they are available
 
 + Restore any version of a setup to ACC
 + Highlight differences in the comparison setup panel (the one on the right when Compare To is enabled)
 + Editing setup files (this may take some time as it is not a trivial task)
-+ Select from multiple themes
 
 The application is deployed using Microsoft ClickOnce technology, which means you only need to install it once.  Each time you start the application it checks for a newer version and prompts you to install the update.  You have the option to skip the new version for now, then you will be prompted again the next time the application starts.
 

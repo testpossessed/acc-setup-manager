@@ -125,12 +125,19 @@
           Compare To:
         </CheckBox>
         <syncfusion:ComboBoxAdv MinWidth="100"
-                                Margin="5"
+                                Margin="5 2 10 2"
                                 ItemsSource="{Binding Versions}"
                                 Text="Versions"
                                 DisplayMemberPath="Name"
                                 SelectedValue="{Binding SelectedVersion, Mode=TwoWay}"
                                 IsEnabled="{Binding IsCompareEnabled}"
+                                VerticalAlignment="Center" />
+        <TextBlock VerticalAlignment="Center">Theme:</TextBlock>
+        <syncfusion:ComboBoxAdv MinWidth="100"
+                                Margin="5 2"
+                                ItemsSource="{Binding Themes}"
+                                Text="Themes"
+                                SelectedValue="{Binding SelectedTheme, Mode=TwoWay}"
                                 VerticalAlignment="Center" />
       </syncfusion:ToolBarAdv>
       <GridSplitter Grid.Column="1"

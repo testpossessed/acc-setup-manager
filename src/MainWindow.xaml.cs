@@ -8,8 +8,6 @@ namespace ACCSetupManager
   {
     public MainWindow()
     {
-      SfSkinManager.SetTheme(this, new Theme("Blend"));
-
       this.InitializeComponent();
     }
   }
