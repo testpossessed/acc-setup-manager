@@ -66,7 +66,7 @@
                                 IsEditable="False"
                                 AllowMultiSelect="False"
                                 HorizontalAlignment="Stretch"
-                                FontSize="14"
+                                FontSize="12"
                                 DisplayMemberPath="Text"
                                 SelectedValuePath="Value"
                                 Margin="5" />
