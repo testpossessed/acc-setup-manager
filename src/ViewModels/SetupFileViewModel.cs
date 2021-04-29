@@ -1,5 +1,4 @@
 ﻿using System;
-using ACCSetupManager.Enums;
 using ACCSetupManager.Models;
 using ACCSetupManager.Services;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
@@ -15,15 +14,17 @@ namespace ACCSetupManager.ViewModels
     {
       this.setupFile = SetupFileProvider.GetSetupFile(setupFilePath);
       this.setupSpec = SetupSpecProvider.GetSetupSpec(this.setupFile.VehicleIdentifier);
+      this.Notes.Load(setupFilePath);
       this.MapSetupFile();
     }
 
+    public AeroViewModel Aero { get; } = new();
+    public DampersViewModel Dampers { get; } = new();
     public ElectronicsViewModel Electronics { get; } = new();
     public FuelAndStrategyViewModel FuelAndStrategy { get; } = new();
-    public TyresViewModel Tyres { get; } = new();
     public MechanicalBalanceViewModel MechanicalGrip { get; } = new();
-    public DampersViewModel Dampers { get; } = new();
-    public AeroViewModel Aero { get; } = new();
+    public SetupFileNotesViewModel Notes { get; } = new();
+    public TyresViewModel Tyres { get; } = new();
 
     private void MapSetupFile()
     {

@@ -49,12 +49,14 @@
     </Style>
   </UserControl.Resources>
   <Grid>
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="3*" />
-      <ColumnDefinition Width="*" />
-    </Grid.ColumnDefinitions>
 
-    <syncfusion:TabControlExt VerticalAlignment="Stretch"
+    <Grid.RowDefinitions>
+      <RowDefinition />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+  
+    <syncfusion:TabControlExt Grid.Row="0"
+                              VerticalAlignment="Stretch"
                               HorizontalAlignment="Stretch">
       <syncfusion:TabItemExt Header="Tyres">
         <local:TyresView HorizontalAlignment="Stretch"
@@ -90,24 +92,9 @@
       </syncfusion:TabItemExt>
     </syncfusion:TabControlExt>
 
-    <Grid Grid.Column="1"
-          HorizontalAlignment="Stretch"
-          VerticalAlignment="Stretch">
+    <local:SetupFileNotesView Grid.Row="1"
+                              IsEnabled="{Binding DataContext.HasSetupFile, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:SetupFileViewer}}}"
+                              DataContext="{Binding Notes}" />
 
-      <Grid.RowDefinitions>
-        <RowDefinition Height="30" />
-        <RowDefinition Height="*" />
-      </Grid.RowDefinitions>
-
-      <StackPanel Orientation="Horizontal">
-        <TextBlock Margin="5">Versions:</TextBlock>
-        <syncfusion:ComboBoxAdv MinWidth="100"
-                                Margin="5"
-                                ItemsSource="{Binding Versions}"
-                                Text="Versions"
-                                DisplayMemberPath="Name"
-                                SelectedValue="{Binding SelectedVersion, Mode=TwoWay}" />
-      </StackPanel>
-    </Grid>
   </Grid>
 </UserControl>

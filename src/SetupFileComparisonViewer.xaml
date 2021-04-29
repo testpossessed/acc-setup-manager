@@ -1,0 +1,98 @@
+﻿<UserControl x:Class="ACCSetupManager.SetupFileComparisonViewer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:ACCSetupManager"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+             xmlns:vm="clr-namespace:ACCSetupManager.ViewModels"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             d:DataContext="{d:DesignInstance vm:SetupFileViewerViewModel}">
+  <UserControl.Resources>
+    <Style TargetType="TextBlock">
+      <Setter Property="Margin"
+              Value="5" />
+      <Setter Property="FontSize"
+              Value="16" />
+    </Style>
+    <Style TargetType="syncfusion:UpDown">
+      <Setter Property="Margin"
+              Value="5" />
+      <Setter Property="NumberDecimalDigits"
+              Value="1" />
+      <Setter Property="Step"
+              Value="0.1" />
+      <Setter Property="HorizontalAlignment"
+              Value="Stretch" />
+      <Setter Property="EnableNegativeColors"
+              Value="False" />
+      <Setter Property="ApplyZeroColor"
+              Value="False" />
+      <Setter Property="TextAlignment"
+              Value="Right" />
+      <Setter Property="FontSize"
+              Value="16" />
+    </Style>
+    <Style TargetType="GroupBox">
+      <Setter Property="FontSize"
+              Value="16" />
+      <Setter Property="BorderThickness"
+              Value="1" />
+      <Setter Property="BorderBrush"
+              Value="White" />
+      <Setter Property="Padding"
+              Value="10" />
+      <Setter Property="Margin"
+              Value="10" />
+    </Style>
+  </UserControl.Resources>
+  <Grid>
+
+    <Grid.RowDefinitions>
+      <RowDefinition />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <syncfusion:TabControlExt Grid.Row="0" VerticalAlignment="Stretch"
+                              HorizontalAlignment="Stretch">
+      <syncfusion:TabItemExt Header="Tyres">
+        <local:TyresView HorizontalAlignment="Stretch"
+                         VerticalAlignment="Stretch"
+                         DataContext="{Binding SetupFile.Tyres}"
+                         IsEnabled="False" />
+      </syncfusion:TabItemExt>
+      <syncfusion:TabItemExt Header="Electronics">
+        <local:ElectronicsView HorizontalAlignment="Stretch"
+                               VerticalAlignment="Stretch"
+                               DataContext="{Binding SetupFile.Electronics}"
+                               IsEnabled="False" />
+      </syncfusion:TabItemExt>
+      <syncfusion:TabItemExt Header="Fuel &amp; Strategy">
+        <local:FuelAndStrategyView HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Stretch"
+                                   DataContext="{Binding SetupFile.FuelAndStrategy}" />
+      </syncfusion:TabItemExt>
+      <syncfusion:TabItemExt Header="Mechanical Grip">
+        <local:MechanicalBalanceView HorizontalAlignment="Stretch"
+                                     VerticalAlignment="Stretch"
+                                     DataContext="{Binding SetupFile.MechanicalGrip}" />
+      </syncfusion:TabItemExt>
+      <syncfusion:TabItemExt Header="Dampers">
+        <local:DampersView HorizontalAlignment="Stretch"
+                           VerticalAlignment="Stretch"
+                           DataContext="{Binding SetupFile.Dampers}" />
+      </syncfusion:TabItemExt>
+      <syncfusion:TabItemExt Header="Aero">
+        <local:AeroView HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        DataContext="{Binding SetupFile.Aero}" />
+      </syncfusion:TabItemExt>
+    </syncfusion:TabControlExt>
+
+    <local:SetupFileNotesView Grid.Row="1"
+                              IsEnabled="{Binding DataContext.HasSetupFile, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:SetupFileComparisonViewer}}}"
+                              DataContext="{Binding Notes}" />
+  </Grid>
+</UserControl>

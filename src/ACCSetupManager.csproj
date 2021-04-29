@@ -198,4 +198,17 @@
     <PackageReference Include="Syncfusion.Tools.WPF" Version="19.1.0.57" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="SetupFileComparisonViewer.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="SetupFileComparisonViewer.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
 </Project>

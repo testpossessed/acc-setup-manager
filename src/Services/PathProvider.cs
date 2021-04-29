@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using System.Reflection;
 
 namespace ACCSetupManager.Services
 {
@@ -13,6 +12,7 @@ namespace ACCSetupManager.Services
     private const string MasterSetupsFolderName = "MasterSetups";
     private const string VersionsFolderName = "Versions";
     private const string SetupDataFolderName = "SetupData";
+    private const string NotesFolderName = "Notes";
 
     static PathProvider()
     {
@@ -32,6 +32,7 @@ namespace ACCSetupManager.Services
           AccSetupsFolderName);
       VersionsFolderPath = Path.Combine(AppDataFolderPath, VersionsFolderName);
       SetupDataFolderPath = Path.Combine(AppFolderPath, SetupDataFolderName);
+      NotesFolderPath = Path.Combine(AppDataFolderPath, NotesFolderName);
     }
 
     public static string AccSetupsFolderPath { get; }
@@ -40,6 +41,7 @@ namespace ACCSetupManager.Services
     public static string AppSettingsFilePath { get; }
     public static string DefaultSettingsFilePath { get; }
     public static string MasterSetupsFolderPath { get; }
+    public static string NotesFolderPath { get; }
     public static string SetupDataFolderPath { get; }
     public static string VersionsFolderPath { get; set; }
 

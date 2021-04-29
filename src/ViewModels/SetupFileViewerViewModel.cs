@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
 using ACCSetupManager.Messages;
-using ACCSetupManager.Models;
-using ACCSetupManager.Services;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Messaging;
 
@@ -12,22 +7,22 @@ namespace ACCSetupManager.ViewModels
 {
   public class SetupFileViewerViewModel : ObservableRecipient, IRecipient<SelectedSetupChanged>
   {
-    private VersionListItemViewModel selectedVersion;
+    private bool hasSetupFile;
     private SetupViewModel setup;
-    private SetupFile setupFile;
     private SetupFileViewModel setupFileViewModel;
 
     public SetupFileViewerViewModel()
     {
-      this.Versions = new ObservableCollection<VersionListItemViewModel>();
+      this.IsActive = true;
+      this.HasSetupFile = false;
     }
 
-    public ObservableCollection<VersionListItemViewModel> Versions { get; }
+    public SetupFileNotesViewModel Notes { get; } = new();
 
-    public VersionListItemViewModel SelectedVersion
+    public bool HasSetupFile
     {
-      get => this.selectedVersion;
-      set => this.SetProperty(ref this.selectedVersion, value);
+      get => this.hasSetupFile;
+      set => this.SetProperty(ref this.hasSetupFile, value);
     }
 
     public SetupFileViewModel SetupFile
@@ -40,50 +35,13 @@ namespace ACCSetupManager.ViewModels
     {
       this.setup = message.Setup;
       this.LoadSetupFile();
-    }
-
-    private string GetPrefix()
-    {
-      var fileName = Path.GetFileNameWithoutExtension(this.setup.FilePath);
-      if(!this.setup.IsVersion)
-      {
-        return fileName;
-      }
-
-      var length = fileName!.Length - 20;
-      return $"{fileName.Substring(0, length)}-";
+      this.Notes.Load(this.setup.FilePath);
     }
 
     private void LoadSetupFile()
     {
       this.SetupFile = new SetupFileViewModel(this.setup.FilePath);
-
-      var prefix = this.GetPrefix();
-      var setupVersions = SetupFileProvider.GetVersions(this.setup.VehicleIdentifier,
-        this.setup.CircuitIdentifier,
-        prefix);
-      this.Versions.Clear();
-
-      if(this.setup.IsVersion)
-      {
-        this.Versions.Add(new VersionListItemViewModel
-                          {
-                            FilePath = setupVersions[0]
-                              .MasterSetupFilePath,
-                            Name = $"{prefix} (Master)"
-                          });
-      }
-
-      foreach(var setupFileInfo in setupVersions.Where(v => v.FileName != this.setup.Name))
-      {
-        this.Versions.Add(new VersionListItemViewModel
-                          {
-                            FilePath = setupFileInfo.VersionSetupFilePath,
-                            Name = setupFileInfo.FileName
-                          });
-      }
-
-      this.SelectedVersion = this.Versions[0];
+      this.HasSetupFile = true;
     }
   }
 }

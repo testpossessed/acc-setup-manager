@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="ACCSetupManager.LapTimePicker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+             xmlns:viewModels="clr-namespace:ACCSetupManager.ViewModels"
+             xmlns:accSetupManager="clr-namespace:ACCSetupManager"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="Auto" />
+    </Grid.ColumnDefinitions>
+
+    <syncfusion:UpDown Grid.Column="0"
+                       Grid.Row="0"
+                       Value="{Binding Minutes, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type accSetupManager:LapTimePicker}}}"
+                       MinValue="0"
+                       MaxValue="59"
+                       Step="1"
+                       NumberDecimalDigits="0"
+                       MinWidth="50" />
+    <TextBlock Grid.Column="1"
+               Grid.Row="0">
+      :
+    </TextBlock>
+    <syncfusion:UpDown Grid.Column="2"
+                       Grid.Row="0"
+                       Value="{Binding Seconds, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type accSetupManager:LapTimePicker}}}"
+                       MinValue="0"
+                       MaxValue="59.999"
+                       Step="0.1"
+                       NumberDecimalDigits="3" MinWidth="75" />
+    <TextBlock Grid.Column="3"
+               Grid.Row="0" />
+  </Grid>
+</UserControl>
