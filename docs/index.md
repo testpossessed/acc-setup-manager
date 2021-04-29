@@ -1,37 +1,45 @@
-## Welcome to GitHub Pages
+## ACC Setup Manager
 
-You can use the [editor on GitHub](https://github.com/testpossessed/acc-setup-manager/edit/master/docs/index.md) to maintain and preview the content for your website in Markdown files.
+Assetto Corsa Competitzione (ACC) Setup Manager allows you to view existing setups created with ACC in a desktop application.  It currently supports the following features
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
++ Automatic versioning of setups files
++ Side by side comparison of setup versions
++ Add and edit notes for setup files and versions
 
-### Markdown
+The following features are in the works and will be released as soon as they are available
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
++ Restore any version of a setup to ACC
++ Highlight differences in the comparison setup panel (the one on the right when Compare To is enabled)
++ Editing setup files (this may take some time as it is not a trivial task)
++ Select from multiple themes
 
-```markdown
-Syntax highlighted code block
+The application is deployed using Microsoft ClickOnce technology, which means you only need to install it once.  Each time you start the application it checks for a newer version and prompts you to install the update.  You have the option to skip the new version for now, then you will be prompted again the next time the application starts.
 
-# Header 1
-## Header 2
-### Header 3
+You can download and install ACC Setup Manager from [here](https://raw.githubusercontent.com/testpossessed/acc-setup-manager/master/docs/installer/setup.exe)
 
-- Bulleted
-- List
+### Automatic versioning
 
-1. Numbered
-2. List
+When it starts ACC Setup Manager scans the ACC Setups folder and copies each setup to it's own working folders as a Master.  It checks the timestamp on the original and if there is no matching version with the same timestamp assumes you have made changes and creates a new version.
 
-**Bold** and _Italic_ and `Code` text
+While running ACC Setup Manager watches the ACC Setups folder for new files, changes and deletions for existing files.  When any of these events occurs the ACC Setup Manager replicates the change in it's Masters working folder and creates a version for that change.  Version files are never deleted so if you can always restore an original from a version in the future.
 
-[Link](url) and ![Image](src)
-```
+Version files have the same name as the original with a timestamp suffix so you can match them to session files from your preferred telemetry application such as MoTec.
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+### Side by sid comparison
 
-### Jekyll Themes
+By default ACC Setup Manager shows a single tabbed view of a setup file selected in the tree panel.  In the toolbar above the setup panel a list will be populated with other versions of the selected setup.  To perform a side by side comparison of the selected setup with any of it's version check the box labelled **Compare To**.  This will load the first version in the list for comparison in a similar tabbed view of the selected version.  To compare a different version simply select it from the list in the toolbar.
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/testpossessed/acc-setup-manager/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### Add and edit notes
 
-### Support or Contact
+To help you track changes and their outcome each tabbed view provides a section at the bottom where you can capture up to four attributes.
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
++ A representative (probably fastest) lap time before the change was made
++ The reason for the change (understeer, oversteer etc.)
++ A representative lap time after the change was made
++ Any other comments about the change or setup.
+
+Don't forget to click the Save button in the notes panel.
+
+Notes are kept separate from the setup file so there is no chance they will affect the setup when applied in ACC.
+
+Enjoy ACC Setup Manager and if you have any questions, issues, feature requests or just want to provide feedback you can do so via the [GitHub Issues Page](https://github.com/testpossessed/acc-setup-manager/issues)
