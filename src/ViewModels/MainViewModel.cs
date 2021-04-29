@@ -143,27 +143,19 @@ namespace ACCSetupManager.ViewModels
       this.currentSetup = setup;
       this.Messenger.Send(new SelectedSetupChanged(setup));
 
-      var prefix = this.GetPrefix(setup);
       var setupVersions = SetupFileProvider.GetVersions(setup.VehicleIdentifier,
-        setup.CircuitIdentifier,
-        prefix);
+        setup.CircuitIdentifier, setup.IsVersion);
+      var setupMasters =
+        SetupFileProvider.GetMasters(setup.VehicleIdentifier, setup.CircuitIdentifier);
       this.Versions.Clear();
 
-      if(setup.IsVersion)
+      foreach(var setupFileInfo in setupVersions.Concat(setupMasters)
+                                                .OrderBy(f => f.FileName)
+                                                .Where(v => v.FileName != setup.Name))
       {
         this.Versions.Add(new VersionListItemViewModel
                           {
-                            FilePath = setupVersions[0]
-                              .MasterSetupFilePath,
-                            Name = $"{prefix} (Master)"
-                          });
-      }
-
-      foreach(var setupFileInfo in setupVersions.Where(v => v.FileName != setup.Name))
-      {
-        this.Versions.Add(new VersionListItemViewModel
-                          {
-                            FilePath = setupFileInfo.VersionSetupFilePath,
+                            FilePath = setupFileInfo.IsVersion ? setupFileInfo.VersionSetupFilePath: setupFileInfo.MasterSetupFilePath,
                             Name = setupFileInfo.FileName
                           });
       }

@@ -27,7 +27,7 @@ Version files have the same name as the original with a timestamp suffix so you 
 
 ### Side by side comparison
 
-By default ACC Setup Manager shows a single tabbed view of a setup file selected in the tree panel.  In the toolbar above the setup panel a list will be populated with other versions of the selected setup.  To perform a side by side comparison of the selected setup with any of it's version check the box labelled **Compare To**.  This will load the first version in the list for comparison in a similar tabbed view of the selected version.  To compare a different version simply select it from the list in the toolbar.
+By default ACC Setup Manager shows a single tabbed view of a setup file selected in the tree panel.  In the toolbar above the setup panel a list will be populated with all versions of all setups for the same vehicle and track.  To perform a side by side comparison of the selected setup with any of it's matches check the box labelled **Compare To**.  This will load the first version in the list for comparison in a similar tabbed view to the right of the main setup.  To compare a different version simply select it from the list in the toolbar.
 
 ### Add and edit notes
 

@@ -19,10 +19,7 @@
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto" />
         <RowDefinition Height="Auto" />
-        <RowDefinition />
         <RowDefinition Height="Auto" />
-        <RowDefinition Height="Auto" />
-        <RowDefinition />
         <RowDefinition Height="Auto" />
       </Grid.RowDefinitions>
 
@@ -44,9 +41,8 @@
                  Grid.Row="1">
         Reason For Change
       </TextBlock>
-      <TextBox Grid.Column="0"
-               Grid.ColumnSpan="2"
-               Grid.Row="2"
+      <TextBox Grid.Column="1"
+               Grid.Row="1"
                VerticalAlignment="Stretch"
                HorizontalAlignment="Stretch"
                Text="{Binding ReasonForChange}"
@@ -56,31 +52,30 @@
                Margin="5" />
 
       <TextBlock Grid.Column="0"
-                 Grid.Row="3">
+                 Grid.Row="2">
         Lap Time After
       </TextBlock>
       <local:LapTimePicker Grid.Column="1"
-                           Grid.Row="3"
+                           Grid.Row="2"
                            Minutes="{Binding LapTimeAfter.Minutes, Mode=TwoWay}"
                            Seconds="{Binding LapTimeAfter.Seconds, Mode=TwoWay}"/>
 
       <TextBlock Grid.Column="0"
-                 Grid.Row="4">
+                 Grid.Row="3">
         Comments
       </TextBlock>
-      <TextBox Grid.Column="0"
-               Grid.ColumnSpan="2"
-               Grid.Row="5"
+      <TextBox Grid.Column="1"
+               Grid.Row="3"
                VerticalAlignment="Stretch"
                HorizontalAlignment="Stretch"
                Text="{Binding Comments}"
                AcceptsReturn="True"
                TextWrapping="Wrap" Margin="5" MinHeight="50" />
 
-      <Button Grid.Row="6"
+      <Button Grid.Row="0"
               Grid.Column="1"
               HorizontalAlignment="Right"
-              Command="{Binding Save}" Margin="5" Padding="5">
+              Command="{Binding Save}" Margin="2">
         Save
       </Button>
     </Grid>

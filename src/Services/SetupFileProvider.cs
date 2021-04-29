@@ -38,14 +38,13 @@ namespace ACCSetupManager.Services
         SearchOption.AllDirectories);
     }
 
-    internal static IList<SetupFileInfo> GetVersions(string vehicleIdentifier,
-      string circuitIdentifier,
-      string prefix)
+    internal static IList<SetupFileInfo> GetMasters(string vehicleIdentifier,
+      string circuitIdentifier)
     {
-      var versionsFolderPath = Path.Combine(PathProvider.VersionsFolderPath,
+      var mastersFolderPath = Path.Combine(PathProvider.MasterSetupsFolderPath,
         vehicleIdentifier,
         circuitIdentifier);
-      var filePaths = Directory.GetFiles(versionsFolderPath, $"{prefix}-*.json");
+      var filePaths = Directory.GetFiles(mastersFolderPath, "*.json");
 
       return filePaths.Select(fp => new SetupFileInfo
                                     {
@@ -56,10 +55,42 @@ namespace ACCSetupManager.Services
                                         Path.Combine(PathProvider.MasterSetupsFolderPath,
                                           vehicleIdentifier,
                                           circuitIdentifier,
-                                          $"{prefix}.json"),
-                                      VersionSetupFilePath = fp
+                                          Path.GetFileName(fp)),
+                                      IsVersion = false
                                     })
                       .ToList();
+    }
+
+    internal static IList<SetupFileInfo> GetVersions(string vehicleIdentifier,
+      string circuitIdentifier,
+      bool setupIsVersion)
+    {
+      var versionsFolderPath = Path.Combine(PathProvider.VersionsFolderPath,
+        vehicleIdentifier,
+        circuitIdentifier);
+      var filePaths = Directory.GetFiles(versionsFolderPath, "*.json");
+
+      return filePaths.Select(fp => new SetupFileInfo
+                                    {
+                                      CircuitIdentifier = circuitIdentifier,
+                                      VehicleIdentifier = vehicleIdentifier,
+                                      FileName = Path.GetFileNameWithoutExtension(fp),
+                                      MasterSetupFilePath =
+                                        Path.Combine(PathProvider.MasterSetupsFolderPath,
+                                          vehicleIdentifier,
+                                          circuitIdentifier,
+                                          (setupIsVersion? $"{GetPrefix(fp)}.json": Path.GetFileName(fp))),
+                                      VersionSetupFilePath = fp,
+                                      IsVersion = true
+                                    })
+                      .ToList();
+    }
+
+    internal static string GetPrefix(string filePath)
+    {
+      var fileName = Path.GetFileNameWithoutExtension(filePath);
+      var length = fileName!.Length - 20;
+      return $"{fileName.Substring(0, length)}-";
     }
 
     internal static SetupFile LatestVersion(string carIdentifier,
