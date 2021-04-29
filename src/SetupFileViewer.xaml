@@ -13,13 +13,11 @@
   <UserControl.Resources>
     <Style TargetType="TextBlock">
       <Setter Property="Margin"
-              Value="5" />
-      <Setter Property="FontSize"
-              Value="12" />
+              Value="2" />
     </Style>
     <Style TargetType="syncfusion:UpDown">
       <Setter Property="Margin"
-              Value="5" />
+              Value="2" />
       <Setter Property="NumberDecimalDigits"
               Value="1" />
       <Setter Property="Step"
@@ -32,20 +30,16 @@
               Value="False" />
       <Setter Property="TextAlignment"
               Value="Right" />
-      <Setter Property="FontSize"
-              Value="12" />
     </Style>
     <Style TargetType="GroupBox">
-      <Setter Property="FontSize"
-              Value="12" />
       <Setter Property="BorderThickness"
               Value="1" />
       <Setter Property="BorderBrush"
               Value="White" />
       <Setter Property="Padding"
-              Value="10" />
+              Value="5" />
       <Setter Property="Margin"
-              Value="10" />
+              Value="5" />
     </Style>
   </UserControl.Resources>
   <Grid>

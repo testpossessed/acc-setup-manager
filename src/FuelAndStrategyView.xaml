@@ -27,7 +27,7 @@
     <Grid.Resources>
       <Style TargetType="syncfusion:UpDown">
         <Setter Property="Margin"
-                Value="5" />
+                Value="2" />
         <Setter Property="NumberDecimalDigits"
                 Value="0" />
         <Setter Property="Step"
@@ -40,8 +40,6 @@
                 Value="False" />
         <Setter Property="TextAlignment"
                 Value="Right" />
-        <Setter Property="FontSize"
-                Value="12" />
       </Style>
     </Grid.Resources>
 

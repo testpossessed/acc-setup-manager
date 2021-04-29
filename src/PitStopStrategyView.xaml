@@ -66,10 +66,9 @@
                                 IsEditable="False"
                                 AllowMultiSelect="False"
                                 HorizontalAlignment="Stretch"
-                                FontSize="12"
                                 DisplayMemberPath="Text"
                                 SelectedValuePath="Value"
-                                Margin="5" />
+                                Margin="2" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="2">
