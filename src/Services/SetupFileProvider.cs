@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Windows;
 using ACCSetupManager.Models;
 using Newtonsoft.Json;
 
@@ -13,7 +14,8 @@ namespace ACCSetupManager.Services
       string trackFolderName,
       string masterSetupFilePath)
     {
-      var timestamp = DateTime.Now.ToString("yyyy-MM-dd-hh-mm-ss");
+      var masterSetupFileInfo = new FileInfo(masterSetupFilePath);
+      var timestamp = masterSetupFileInfo.LastWriteTime.ToString("yyyy-MM-dd-hh-mm-ss");
       var versionedSetupFilePrefix = Path.GetFileNameWithoutExtension(masterSetupFilePath);
       var versionedFileName = $"{versionedSetupFilePrefix}-{timestamp}.json";
       var versionedFilePath = Path.Combine(PathProvider.VersionsFolderPath,
@@ -21,14 +23,28 @@ namespace ACCSetupManager.Services
         trackFolderName,
         versionedFileName);
 
-      File.Copy(masterSetupFilePath, versionedFilePath);
+      if(!File.Exists(versionedFilePath))
+      {
+        File.Copy(masterSetupFilePath, versionedFilePath);
+      }
+
       return versionedFilePath;
     }
 
     internal static SetupFile GetSetupFile(string filePath)
     {
-      var json = File.ReadAllText(filePath);
-      return JsonConvert.DeserializeObject<SetupFile>(json);
+      try
+      {
+        var json = File.ReadAllText(filePath);
+        return JsonConvert.DeserializeObject<SetupFile>(json);
+      }
+      catch(Exception)
+      {
+        var message =
+          $"The setup file was not in the expected format, it may have been created before some changes made to ACC.  Please attach the file at {filePath} to an email and send it to mike@mikehanson.com.";
+        MessageBox.Show(message, "Unexpected Format", MessageBoxButton.OK);
+        return null;
+      }
     }
 
     internal static string[] GetSourceSetupFilePaths()
@@ -88,9 +104,14 @@ namespace ACCSetupManager.Services
 
     internal static string GetPrefix(string filePath)
     {
+      return $"{GetOriginalFileName(filePath)}-";
+    }
+
+    internal static string GetOriginalFileName(string filePath)
+    {
       var fileName = Path.GetFileNameWithoutExtension(filePath);
       var length = fileName!.Length - 20;
-      return $"{fileName.Substring(0, length)}-";
+      return fileName.Substring(0, length);
     }
 
     internal static SetupFile LatestVersion(string carIdentifier,
@@ -109,7 +130,7 @@ namespace ACCSetupManager.Services
       }
 
       var latestFileInfo = filePaths.Select(fp => new FileInfo(fp))
-                                    .OrderByDescending(fp => fp.CreationTimeUtc)
+                                    .OrderByDescending(fp => fp.LastWriteTime)
                                     .Last();
 
       return GetSetupFile(latestFileInfo.FullName);
@@ -132,6 +153,18 @@ namespace ACCSetupManager.Services
         result.FileName);
 
       return result;
+    }
+
+    internal static void RestoreSetup(string vehicleIdentifier,
+      string circuitIdentifier,
+      string sourceFilePath,
+      bool currentVersion)
+    {
+      var sourceFileName = Path.GetFileNameWithoutExtension(sourceFilePath);
+      var targetFileName = currentVersion? GetOriginalFileName(sourceFilePath): sourceFileName;
+
+      var targetPath = Path.Combine(PathProvider.AccSetupsFolderPath, vehicleIdentifier, circuitIdentifier, $"{targetFileName}.json");
+      File.Copy(sourceFilePath, targetPath, true);
     }
   }
 }

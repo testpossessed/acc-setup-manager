@@ -11,11 +11,15 @@
     <RepositoryUrl>https://github.com/testpossessed/acc-setup-manager</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <PackageTags>Assetto Corsa Competizione, Setup Manager</PackageTags>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="ACCSetupManager.sln.DotSettings" />
     <None Remove="appsettings.json" />
+    <None Remove="Delete.ico" />
+    <None Remove="Icon.ico" />
+    <None Remove="Restore.ico" />
     <None Remove="SetupData\alpine_a110_gt4.json" />
     <None Remove="SetupData\amr_v12_vantage_gt3.json" />
     <None Remove="SetupData\amr_v8_vantage_gt3.json" />
@@ -54,6 +58,7 @@
     <None Remove="SetupData\porsche_991ii_gt3_r.json" />
     <None Remove="SetupData\porsche_991_gt3_r.json" />
     <None Remove="SetupData\_default.json" />
+    <None Remove="Splash.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -199,16 +204,30 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="SetupFileComparisonViewer.xaml.cs">
+    <Resource Include="Delete.ico" />
+    <Resource Include="Icon.ico" />
+    <Resource Include="Restore.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <SplashScreen Include="Splash.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="SetupFileComparisonViewer\SetupFileComparisonViewer.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="SetupFileComparisonViewer.xaml">
+    <Page Update="SetupFileComparisonViewer\SetupFileComparisonViewer.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModels\SetupFileViewer\" />
   </ItemGroup>
 
 </Project>

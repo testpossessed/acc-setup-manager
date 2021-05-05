@@ -1,0 +1,181 @@
+﻿<UserControl x:Class="ACCSetupManager.SetupFileComparisonViewer.AeroComparisonView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vm="clr-namespace:ACCSetupManager.ViewModels.SetupFileComparisonViewer"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance vm:AeroComparisonViewModel}">
+  <Grid HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch">
+
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition />
+      <ColumnDefinition />
+    </Grid.ColumnDefinitions>
+
+    <GroupBox HorizontalAlignment="Stretch"
+              VerticalAlignment="Top"
+              Header="Rear">
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+          <RowDefinition />
+          <RowDefinition />
+          <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Column="0"
+                   Grid.Row="0">
+          Ride Height
+        </TextBlock>
+        <TextBlock Grid.Column="1"
+                   Grid.Row="0"
+                   Text="{Binding RearRideHeight, StringFormat={}{0:f0}}">
+          <TextBlock.Style>
+            <Style TargetType="{x:Type TextBlock}"
+                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding RearRideHeightDiffers}"
+                             Value="true">
+                  <Setter Property="Foreground"
+                          Value="Red" />
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </TextBlock.Style>
+        </TextBlock>
+
+        <TextBlock Grid.Column="0"
+                   Grid.Row="1">
+          Wing
+        </TextBlock>
+        <TextBlock Grid.Column="1"
+                   Grid.Row="1"
+                   Text="{Binding RearWing}">
+          <TextBlock.Style>
+            <Style TargetType="{x:Type TextBlock}"
+                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding RearWingDiffers}"
+                             Value="true">
+                  <Setter Property="Foreground"
+                          Value="Red" />
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </TextBlock.Style>
+        </TextBlock>
+
+        <TextBlock Grid.Column="0"
+                   Grid.Row="2">
+          Brake Ducts
+        </TextBlock>
+        <TextBlock Grid.Column="1"
+                   Grid.Row="2"
+                   Text="{Binding RearBrakeDucts}">
+          <TextBlock.Style>
+            <Style TargetType="{x:Type TextBlock}"
+                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding RearBrakeDuctsDiffers}"
+                             Value="true">
+                  <Setter Property="Foreground"
+                          Value="Red" />
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </TextBlock.Style>
+        </TextBlock>
+
+      </Grid>
+    </GroupBox>
+
+    <GroupBox Grid.Column="1"
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Top"
+              Header="Front">
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+          <RowDefinition />
+          <RowDefinition />
+          <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Column="0"
+                   Grid.Row="0">
+          Ride Height
+        </TextBlock>
+        <TextBlock Grid.Column="1"
+                   Grid.Row="0"
+                   Text="{Binding FrontRideHeight, StringFormat={}{0:f0}}">
+          <TextBlock.Style>
+            <Style TargetType="{x:Type TextBlock}"
+                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding FrontRideHeightDiffers}"
+                             Value="true">
+                  <Setter Property="Foreground"
+                          Value="Red" />
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </TextBlock.Style>
+        </TextBlock>
+
+        <TextBlock Grid.Column="0"
+                   Grid.Row="1">
+          Splitter
+        </TextBlock>
+        <TextBlock Grid.Column="1"
+                   Grid.Row="1"
+                   Text="{Binding Splitter}">
+          <TextBlock.Style>
+            <Style TargetType="{x:Type TextBlock}"
+                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding SplitterDiffers}"
+                             Value="true">
+                  <Setter Property="Foreground"
+                          Value="Red" />
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </TextBlock.Style>
+        </TextBlock>
+
+        <TextBlock Grid.Column="0"
+                   Grid.Row="2">
+          Brake Ducts
+        </TextBlock>
+        <TextBlock Grid.Column="1"
+                   Grid.Row="2"
+                   Text="{Binding FrontBrakeDucts}">
+          <TextBlock.Style>
+            <Style TargetType="{x:Type TextBlock}"
+                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding FrontBrakeDuctsDiffers}"
+                             Value="true">
+                  <Setter Property="Foreground"
+                          Value="Red" />
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </TextBlock.Style>
+        </TextBlock>
+
+      </Grid>
+    </GroupBox>
+
+  </Grid>
+</UserControl>

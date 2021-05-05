@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="ACCSetupManager.SetupFileComparisonViewer.RearTyreComparisonView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:ACCSetupManager.SetupFileComparisonViewer"
+             xmlns:vm="clr-namespace:ACCSetupManager.ViewModels.SetupFileComparisonViewer"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance vm:TyreComparisonViewModel}">
+
+  <GroupBox Header="{Binding Title}"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Stretch"
+            Padding="5">
+
+    <Grid VerticalAlignment="Stretch"
+          HorizontalAlignment="Stretch">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="Auto" />
+      </Grid.ColumnDefinitions>
+
+      <Grid.RowDefinitions>
+        <RowDefinition />
+        <RowDefinition />
+        <RowDefinition />
+        <RowDefinition />
+      </Grid.RowDefinitions>
+
+      <TextBlock Grid.Column="0"
+                 Grid.Row="0">
+        PSI
+      </TextBlock>
+      <TextBlock IsEnabled="false"
+                 Grid.Column="1"
+                 Grid.Row="0"
+                 Text="{Binding PressurePsi, StringFormat={}{0:f1}}">
+        <TextBlock.Style>
+          <Style TargetType="{x:Type TextBlock}"
+                 BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+            <Style.Triggers>
+              <DataTrigger Binding="{Binding PressurePsiDiffers}"
+                           Value="true">
+                <Setter Property="Foreground"
+                        Value="Red" />
+              </DataTrigger>
+            </Style.Triggers>
+          </Style>
+        </TextBlock.Style>
+      </TextBlock>
+
+      <TextBlock Grid.Column="0"
+                 Grid.Row="1">
+        Toe
+      </TextBlock>
+      <TextBlock IsEnabled="false"
+                 Grid.Column="1"
+                 Grid.Row="1"
+                 Text="{Binding Toe, StringFormat={}{0:f1}}">
+        <TextBlock.Style>
+          <Style TargetType="{x:Type TextBlock}"
+                 BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+            <Style.Triggers>
+              <DataTrigger Binding="{Binding ToeDiffers}"
+                           Value="true">
+                <Setter Property="Foreground"
+                        Value="Red" />
+              </DataTrigger>
+            </Style.Triggers>
+          </Style>
+        </TextBlock.Style>
+      </TextBlock>
+
+      <TextBlock Grid.Column="0"
+                 Grid.Row="2">
+        Camber
+      </TextBlock>
+      <TextBlock IsEnabled="false"
+                 Grid.Column="1"
+                 Grid.Row="2"
+                 Text="{Binding Camber, StringFormat={}{0:f1}}">
+        <TextBlock.Style>
+          <Style TargetType="{x:Type TextBlock}"
+                 BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+            <Style.Triggers>
+              <DataTrigger Binding="{Binding CamberDiffers}"
+                           Value="true">
+                <Setter Property="Foreground"
+                        Value="Red" />
+              </DataTrigger>
+            </Style.Triggers>
+          </Style>
+        </TextBlock.Style>
+      </TextBlock>
+    </Grid>
+  </GroupBox>
+</UserControl>

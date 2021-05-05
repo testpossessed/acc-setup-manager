@@ -1,0 +1,174 @@
+﻿<UserControl x:Class="ACCSetupManager.SetupFileComparisonViewer.ElectronicsComparisonView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:ACCSetupManager.SetupFileComparisonViewer"
+             xmlns:vm="clr-namespace:ACCSetupManager.ViewModels.SetupFileComparisonViewer"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance vm:ElectronicsComparisonViewModel}">
+  <Grid HorizontalAlignment="Stretch"
+        VerticalAlignment="Top">
+
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition />
+      <ColumnDefinition Width="2*" />
+      <ColumnDefinition />
+    </Grid.ColumnDefinitions>
+
+    <GroupBox Grid.Column="1"
+              Grid.Row="0"
+              Header="Electronic Elements"
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Stretch">
+
+      <Grid VerticalAlignment="Top"
+            HorizontalAlignment="Stretch">
+
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+          <RowDefinition />
+          <RowDefinition />
+          <RowDefinition />
+          <RowDefinition />
+          <RowDefinition />
+          <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Column="0"
+               Grid.Row="0">
+          TC
+        </TextBlock>
+        <TextBlock Grid.Column="1"
+                   Grid.Row="0"
+                   Text="{Binding Tc1}">
+          <TextBlock.Style>
+            <Style TargetType="{x:Type TextBlock}"
+                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding Tc1Differs}"
+                             Value="true">
+                  <Setter Property="Foreground"
+                          Value="Red" />
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </TextBlock.Style>
+        </TextBlock>
+
+        <TextBlock Grid.Column="0"
+               Grid.Row="1">
+          TC2
+        </TextBlock>
+        <TextBlock Grid.Column="1"
+                   Grid.Row="1"
+                   Text="{Binding Tc2}">
+          <TextBlock.Style>
+            <Style TargetType="{x:Type TextBlock}"
+                   BasedOn="{StaticResource  ComparisonValueTextBlockStyle}">
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding Tc2Differs}"
+                             Value="true">
+                  <Setter Property="Foreground"
+                          Value="Red" />
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </TextBlock.Style>
+        </TextBlock>
+
+        <TextBlock Grid.Column="0"
+               Grid.Row="2">
+          ABS
+        </TextBlock>
+        <TextBlock Grid.Column="1"
+                   Grid.Row="2"
+                   Text="{Binding Abs}">
+          <TextBlock.Style>
+            <Style TargetType="{x:Type TextBlock}"
+                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding AbsDiffers}"
+                             Value="true">
+                  <Setter Property="Foreground"
+                          Value="Red" />
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </TextBlock.Style>
+        </TextBlock>
+
+        <TextBlock Grid.Column="0"
+               Grid.Row="3">
+          ECU Map
+        </TextBlock>
+        <TextBlock Grid.Column="1"
+                   Grid.Row="3"
+                   Text="{Binding EcuMap}">
+          <TextBlock.Style>
+            <Style TargetType="{x:Type TextBlock}"
+                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding EcuDiffers}"
+                             Value="true">
+                  <Setter Property="Foreground"
+                          Value="Red" />
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </TextBlock.Style>
+        </TextBlock>
+
+        <TextBlock Grid.Column="0"
+               Grid.Row="4">
+          Fuel Mix
+        </TextBlock>
+        <TextBlock Grid.Column="1"
+                   Grid.Row="4"
+                   Text="{Binding FuelMix}">
+          <TextBlock.Style>
+            <Style TargetType="{x:Type TextBlock}"
+                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+            
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding FuelMixDiffers}"
+                             Value="true">
+                  <Setter Property="Foreground"
+                          Value="Red" />
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </TextBlock.Style>
+        </TextBlock>
+
+        <TextBlock Grid.Column="0"
+               Grid.Row="5">
+          Telemetry Laps
+        </TextBlock>
+        <TextBlock Grid.Column="1"
+                   Grid.Row="5"
+                   Text="{Binding TelemetryLaps}">
+          <TextBlock.Style>
+            <Style TargetType="{x:Type TextBlock}"
+                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+            
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding TelemetryLapsDiffers}"
+                             Value="true">
+                  <Setter Property="Foreground"
+                          Value="Red" />
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </TextBlock.Style>
+        </TextBlock>
+      </Grid>
+
+    </GroupBox>
+
+  </Grid>
+</UserControl>

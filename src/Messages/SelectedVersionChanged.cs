@@ -1,5 +1,6 @@
 ﻿using System;
 using ACCSetupManager.ViewModels;
+using ACCSetupManager.ViewModels.SetupFileViewer;
 
 namespace ACCSetupManager.Messages
 {

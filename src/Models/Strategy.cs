@@ -9,7 +9,7 @@ namespace ACCSetupManager.Models
         public int NPitStops { get; set; }
         public int TyreSet { get; set; }
         public int FrontBrakePadCompound { get; set; }
-        public int RearBreakPadCompound { get; set; }
+        public int RearBrakePadCompound { get; set; }
         [JsonProperty("pitStrategy")]
         public PitStrategy[] PitStrategies { get; set; }
         public double FuelPerLap { get; set; }

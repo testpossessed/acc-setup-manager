@@ -8,6 +8,8 @@ using System.Windows.Input;
 using ACCSetupManager.Messages;
 using ACCSetupManager.Models;
 using ACCSetupManager.Services;
+using ACCSetupManager.ViewModels.SetupFileComparisonViewer;
+using ACCSetupManager.ViewModels.SetupFileViewer;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
@@ -29,8 +31,10 @@ namespace ACCSetupManager.ViewModels
 
     public MainViewModel()
     {
+      this.DeleteVersion = new RelayCommand<SetupViewModel>(this.HandleDeleteVersion);
       this.Versions = new ObservableCollection<VersionListItemViewModel>();
       this.ShowSetup = new RelayCommand<SetupViewModel>(this.HandleShowSetup);
+      this.RestoreSetup = new RelayCommand(this.HandleRestoreSetup, this.CanExecuteRestoreSetup);
       this.Setup = new SetupFileViewerViewModel();
       this.ComparisonSetup = new SetupFileComparisonViewerViewModel();
       this.ComparisonSetupVisibility = Visibility.Hidden;
@@ -43,6 +47,10 @@ namespace ACCSetupManager.ViewModels
     }
 
     public SetupFileComparisonViewerViewModel ComparisonSetup { get; }
+
+    public ICommand DeleteVersion { get; }
+
+    public ICommand RestoreSetup { get; }
 
     public SetupFileViewerViewModel Setup { get; }
 
@@ -117,21 +125,51 @@ namespace ACCSetupManager.ViewModels
       HierarchyProvider.AddVersionedSetupFileToHierarchy(setupFileInfo, this.VersionTreeHierarchy);
     }
 
-    private string GetPrefix(SetupViewModel setup)
+    private bool CanExecuteRestoreSetup()
     {
-      var fileName = Path.GetFileNameWithoutExtension(setup.FilePath);
-      if(!setup.IsVersion)
+      return this.HasSetupFile && this.currentSetup.IsVersion;
+    }
+
+    private void HandleDeleteVersion(SetupViewModel setup)
+    {
+      var filePath = setup.FilePath;
+      File.Delete(filePath);
+
+      var vehicleNode =
+        this.VersionTreeHierarchy.FirstOrDefault(v => v.Identifier == setup.VehicleIdentifier);
+      var circuitNode =
+        vehicleNode?.Circuits.FirstOrDefault(c => c.Identifier == setup.CircuitIdentifier);
+      circuitNode?.Setups.Remove(setup);
+    }
+
+    private void HandleRestoreSetup()
+    {
+      if(!this.HasSetupFile)
       {
-        return fileName;
+        return;
       }
 
-      var length = fileName!.Length - 20;
-      return $"{fileName.Substring(0, length)}-";
+      var result = MessageBox.Show(Application.Current.MainWindow,
+        $"This will overwrite the the original setup in ACC.{Environment.NewLine}{Environment.NewLine}Do you want to continue?",
+        "Confirm Restore Setup",
+        MessageBoxButton.YesNo);
+      if(result == MessageBoxResult.No)
+      {
+        return;
+      }
+
+      SetupFileProvider.RestoreSetup(this.currentSetup.VehicleIdentifier,
+        this.currentSetup.CircuitIdentifier,
+        this.currentSetup.FilePath,
+        this.currentSetup.IsVersion);
     }
 
     private void HandleSelectedVersionChanged()
     {
-      this.Messenger.Send(new SelectedVersionChanged(this.Setup.SetupFile, this.SelectedVersion));
+      if(this.SelectedVersion != null)
+      {
+        this.Messenger.Send(new SelectedVersionChanged(this.Setup.SetupFile, this.SelectedVersion));
+      }
     }
 
     private void HandleSetupFileChanged(object sender, FileSystemEventArgs eventArgs)
@@ -255,7 +293,8 @@ namespace ACCSetupManager.ViewModels
     {
       var settings = SettingsProvider.GetSettings();
       this.selectedTheme = settings.Theme;
-      SfSkinManager.SetTheme(Application.Current.MainWindow, new Theme(this.SelectedTheme.Replace(" ", "")));
+      SfSkinManager.SetTheme(Application.Current.MainWindow,
+        new Theme(this.SelectedTheme.Replace(" ", "")));
     }
 
     private void SyncMasterSetups()

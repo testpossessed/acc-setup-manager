@@ -6,10 +6,10 @@ Assetto Corsa Competitzione (ACC) Setup Manager allows you to view existing setu
 + Side by side comparison of setup versions
 + Add and edit notes for setup files and versions
 + Select from multiple themes
++ Restore any version of a setup to ACC
 
 The following features are in the works and will be released as soon as they are available
 
-+ Restore any version of a setup to ACC
 + Highlight differences in the comparison setup panel (the one on the right when Compare To is enabled)
 + Editing setup files (this may take some time as it is not a trivial task)
 

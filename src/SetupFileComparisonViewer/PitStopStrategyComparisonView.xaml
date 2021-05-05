@@ -1,0 +1,236 @@
+﻿<UserControl x:Class="ACCSetupManager.SetupFileComparisonViewer.PitStopStrategyComparisonView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vm="clr-namespace:ACCSetupManager.ViewModels.SetupFileComparisonViewer"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance vm:PitStrategyComparisonViewModel}">
+  <Grid HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch">
+
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition />
+      <ColumnDefinition Width="2*" />
+      <ColumnDefinition />
+    </Grid.ColumnDefinitions>
+
+    <GroupBox Grid.Column="1"
+              Grid.Row="0"
+              Header="Strategy"
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Stretch">
+
+      <Grid HorizontalAlignment="Stretch"
+            VerticalAlignment="Top">
+
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+          <RowDefinition />
+          <RowDefinition />
+          <RowDefinition />
+          <RowDefinition />
+          <RowDefinition />
+          <RowDefinition />
+          <RowDefinition />
+          <RowDefinition />
+          <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Column="0"
+                   Grid.Row="0">
+          Fuel To Add (L)
+        </TextBlock>
+        <TextBlock Grid.Column="1"
+                   Grid.Row="0"
+                   Text="{Binding FuelToAdd}">
+          <TextBlock.Style>
+            <Style TargetType="{x:Type TextBlock}"
+                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding FuelToAddDiffers}"
+                             Value="true">
+                  <Setter Property="Foreground"
+                          Value="Red" />
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </TextBlock.Style>
+        </TextBlock>
+
+        <TextBlock Grid.Column="0"
+                   Grid.Row="1">
+          Tyre Compound
+        </TextBlock>
+        <TextBlock Grid.Column="1"
+                   Grid.Row="1"
+                   Text="{Binding TyreCompound}">
+          <TextBlock.Style>
+            <Style TargetType="{x:Type TextBlock}"
+                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding TyreCompoundDiffers}"
+                             Value="true">
+                  <Setter Property="Foreground"
+                          Value="Red" />
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </TextBlock.Style>
+        </TextBlock>
+
+        <TextBlock Grid.Column="0"
+                   Grid.Row="2">
+          Tyre Set
+        </TextBlock>
+        <TextBlock Grid.Column="1"
+                   Grid.Row="2"
+                   Text="{Binding TyreSet}">
+          <TextBlock.Style>
+            <Style TargetType="{x:Type TextBlock}"
+                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding TyreSetDiffers}"
+                             Value="true">
+                  <Setter Property="Foreground"
+                          Value="Red" />
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </TextBlock.Style>
+        </TextBlock>
+
+        <TextBlock Grid.Column="0"
+                   Grid.Row="3">
+          Left Front PSI
+        </TextBlock>
+        <TextBlock Grid.Column="1"
+                   Grid.Row="3"
+                   Text="{Binding LeftFrontPsi, StringFormat={}{0:f1}}">
+          <TextBlock.Style>
+            <Style TargetType="{x:Type TextBlock}"
+                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding LeftFrontPsiDiffers}"
+                             Value="true">
+                  <Setter Property="Foreground"
+                          Value="Red" />
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </TextBlock.Style>
+        </TextBlock>
+
+        <TextBlock Grid.Column="0"
+                   Grid.Row="4">
+          Right Front PSI
+        </TextBlock>
+        <TextBlock Grid.Column="1"
+                   Grid.Row="4"
+                   Text="{Binding RightFrontPsi, StringFormat={}{0:f1}}">
+          <TextBlock.Style>
+            <Style TargetType="{x:Type TextBlock}"
+                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding RightFrontPsiDiffers}"
+                             Value="true">
+                  <Setter Property="Foreground"
+                          Value="Red" />
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </TextBlock.Style>
+        </TextBlock>
+
+        <TextBlock Grid.Column="0"
+                   Grid.Row="5">
+          Left Rear PSI
+        </TextBlock>
+        <TextBlock Grid.Column="1"
+                   Grid.Row="5"
+                   Text="{Binding LeftRearPsi, StringFormat={}{0:f1}}">
+          <TextBlock.Style>
+            <Style TargetType="{x:Type TextBlock}"
+                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding LeftRearPsiDiffers}"
+                             Value="true">
+                  <Setter Property="Foreground"
+                          Value="Red" />
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </TextBlock.Style>
+        </TextBlock>
+
+        <TextBlock Grid.Column="0"
+                   Grid.Row="6">
+          Right Rear PSI
+        </TextBlock>
+        <TextBlock Grid.Column="1"
+                   Grid.Row="6"
+                   Text="{Binding RightRearPsi, StringFormat={}{0:f1}}">
+          <TextBlock.Style>
+            <Style TargetType="{x:Type TextBlock}"
+                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding RightRearPsiDiffers}"
+                             Value="true">
+                  <Setter Property="Foreground"
+                          Value="Red" />
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </TextBlock.Style>
+        </TextBlock>
+
+        <TextBlock Grid.Column="0"
+                   Grid.Row="7">
+          From Brake Compound
+        </TextBlock>
+        <TextBlock Grid.Column="1"
+                   Grid.Row="7"
+                   Text="{Binding FrontBrakeCompound}">
+          <TextBlock.Style>
+            <Style TargetType="{x:Type TextBlock}"
+                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding FrontBrakeCompoundDiffers}"
+                             Value="true">
+                  <Setter Property="Foreground"
+                          Value="Red" />
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </TextBlock.Style>
+        </TextBlock>
+
+        <TextBlock Grid.Column="0"
+                   Grid.Row="8">
+          Rear Brake Compound
+        </TextBlock>
+        <TextBlock Grid.Column="1"
+                   Grid.Row="8"
+                   Text="{Binding RearBrakeCompound}">
+          <TextBlock.Style>
+            <Style TargetType="{x:Type TextBlock}"
+                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding RearBrakeCompoundDiffers}"
+                             Value="true">
+                  <Setter Property="Foreground"
+                          Value="Red" />
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </TextBlock.Style>
+        </TextBlock>
+
+      </Grid>
+    </GroupBox>
+  </Grid>
+</UserControl>

@@ -23,7 +23,7 @@ namespace ACCSetupManager
                         };
       this.MainWindow.Show();
 
-      LogWriter.Log(LogLevel.Info, "ACC SetupViewModel Manager started");
+      LogWriter.Log(LogLevel.Info, "ACC Setup Manager started");
     }
 
     private void EnsureAppDataFolderExists()
