@@ -1,0 +1,750 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="ACCSetupManager.exe" version="1.0.0.14" publicKeyToken="cb1ab25c07dc3f87" language="neutral" processorArchitecture="msil" type="win32" />
+  <description asmv2:iconFile="Icon.ico" xmlns="urn:schemas-microsoft-com:asm.v1">When running automatically monitors Assetto Corsa Competizione setup files and maintains different versions for each change.</description>
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="Launcher" version="5.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="Launcher.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Launcher.exe" size="15320">
+      <assemblyIdentity name="Launcher" version="5.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>FEbdWtxgexDoqeJPpwTITO/nnJJ7o4Kw0oH1zr5uaTI=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="ACCSetupManager.deps.json" size="26013">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>JDJHm5P1h/6xISpEPAiN+9uktNKW4m8gEFgEgRseRDI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="ACCSetupManager.dll" size="1819608">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>nZJ5AFk+/46EAYJH6Hnq0yf3jxNmvu67N7woMonKbAw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="ACCSetupManager.exe" size="373208">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>/I1YaLOkygHvsL/7j3TqlHeUGSqzaJgYNh3Raaqjamk=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="ACCSetupManager.runtimeconfig.json" size="154">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>NiDVPch7SqLL1QtcqAuqPjoBfZ04y3L2kORCla/DP3c=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="appsettings.json" size="4499">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>PT0KzRuubBdPAMpgMpmvUIS0hx0gNOT3WPPXjnqebrQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Icon.ico" size="228834">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>DoUw6nOArdtvQGhvfn+m9clUzTr3VRwuJPxPNFYq7ME=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Microsoft.Extensions.Configuration.Abstractions.dll" size="20360">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>NYecKM0ZpUvzj4spvgi6xUu80rkx8PX7fiRok/BNaHw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Microsoft.Extensions.Configuration.dll" size="30600">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>x9zYR1t1is/fStNpBiQnXyPdMpLLcQcra3w4RXGSg4o=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Microsoft.Extensions.Configuration.EnvironmentVariables.dll" size="19848">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>y4YtY4ilEkIHKRiYtIqOEkC6opciT/87NIq0Y3zP398=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Microsoft.Extensions.Configuration.FileExtensions.dll" size="25480">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>5tCmu87qBh0Xgsp/dG/x9WHctz/J8YBmCHjt+PA6dn0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Microsoft.Extensions.Configuration.Json.dll" size="24960">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>OM0kYGXmRhgJOUP2Vf86pt4Ss7QB2/fLPtfL4+p0Xz8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Microsoft.Extensions.DependencyInjection.Abstractions.dll" size="44416">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>D9y5RXbA/sEzwk6cnGbGMKQv87bvOEEVycrLUTe0lGU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Microsoft.Extensions.DependencyInjection.dll" size="74120">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>u+gNHZeUqbnws+gIn1IfNiYF+mh0Ijeke856hVI3eiM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Microsoft.Extensions.FileProviders.Abstractions.dll" size="16776">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>aUKLFqSgB/hwZc41dLVKoRSKRghShpfQPVMhoRzpz5M=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Microsoft.Extensions.FileProviders.Physical.dll" size="35720">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>Cvhy7j568oPzBQKhakMhNkDr5tQBxE0LaY1wukd0Ll0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Microsoft.Extensions.FileSystemGlobbing.dll" size="39304">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>xrpMDo35bgwz/m/kwUvL9SAOxyEgSSwO57RiuhILHgI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Microsoft.Extensions.Logging.Abstractions.dll" size="52616">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>9UNtwDMFW86VtnTtJFk9xcc1hCnXFGXccFv3SkbgYy0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Microsoft.Extensions.Logging.dll" size="42376">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>VlsKv5zXgdK0MrYHXr9XlUCXwuwNI7AUI/C1PEFXcz4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Microsoft.Extensions.Options.dll" size="54664">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>YfK6Zl0RmlJUqBJD7Khy7u4HEW2DRne0VSiqA6Yqs0U=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Microsoft.Extensions.Primitives.dll" size="39296">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>f2PgoftqEkKRuuiAk6S1MHygOuqZBHzB0HOB3vR93TU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Microsoft.Toolkit.Mvvm.dll" size="74392">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>bXHvPC7B35/DC2UI/ipojOUqUMSD6KbnouRzNYbWTik=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Microsoft.Xaml.Behaviors.dll" size="145792">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>BJMEn+u0vnS99mmtf6dUlBwnVP4zQh4jCo8UyP0GyMQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Newtonsoft.Json.dll" size="695336">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>cs8pHUurDt0IqbB8YXPh560au3q3J/1wRL9jBddRVmE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="NLog.dll" size="820736">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>xj38LZCuGqOTQw48ywrgTZQNBl96bB12jPJBCXrwe6A=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="NLog.Extensions.Logging.dll" size="53248">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>JKANAhBWTkMl1tHynmRjvd5ZnIPZFvX9bFYHA4lLymk=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\_default.json" size="1006">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>MZnic9xnj2z20tsdUugz6AnBwNiRUu9FdOBEmzyxTQQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\alpine_a110_gt4.json" size="1057">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>GSBRVDeniPHxtvQlvhE20dVOZ1ONEqrnNlSjnJP/nB0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\amr_v12_vantage_gt3.json" size="1052">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>qrHoTkrGApex+zvh9uicfmRQwAiEGZKo83FHvxBR85g=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\amr_v8_vantage_gt3.json" size="1054">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>vdRLMxJpNY7LzZUhJSiMxnQ2eyp6cuMDsnIriLzx1wo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\amr_v8_vantage_gt4.json" size="1051">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>zOpAwMcmTbssDZQ1CftzoTTVWgG7Cig3JHG0KJ7RQZw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\audi_r8_gt4.json" size="1069">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>hyNdAFehl9p9BLQnFnNFVD/ROlYjDmXVf3+sIEGchy8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\audi_r8_lms.json" size="1119">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>WfAtIFidgWphRw8LXeQc+nbV5waGFQAsSg0RZtMq/+8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\audi_r8_lms_evo.json" size="1119">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>KKlaNADSN5ymOTKByZ+qZigEAHyo608y0nw12+JcfCM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\bentley_continental_gt3_2016.json" size="1054">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>GXNwdo1GiKsH38yf5TEapLr9fz3a1xoUNKjV6EUsN14=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\bentley_continental_gt3_2018.json" size="1054">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>0PsHm87MbDwIhs/1bqH2Gb4ttpJCvRLDZ2iFIQVUPsY=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\bmw_m4_gt4.json" size="1077">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>QIbHprx3blX7WxtfJCbi93uljYT9784oEOccAgojXn0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\bmw_m6_gt3.json" size="1124">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>EquI/rpDUfiHCQ49lTz6AmSMbiZDdDq40v1+Y7g+WYE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\chevrolet_camaro_gt4r.json" size="1075">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>EGEFt6TXTcLq1vhptJI+8OSAHGu6cr3RJXKRGbmyIuE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\ferrari_488_gt3.json" size="1287">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>WbCUglenq2/f0D7Kl7WwqWhNM9BN5XfYrrgiqJFkbQ8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\ferrari_488_gt3_evo.json" size="1287">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>XC9H4FlzNs71M18ozTwVMeZ7F01HhIrRGd2pfVf1voE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\ginetta_g55_gt4.json" size="1051">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>c1AM8LEfMA32LBIesJnQP+AhHcRlf/MG4JEtve6Ao/w=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\honda_nsx_gt3.json" size="1053">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>KV4fAMcKiJGEOXBNm48AvZ0Uieh+B2QK29FKcn9sLAM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\honda_nsx_gt3_evo.json" size="1053">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>UbY14SMrq09PtQj1SEJPwRc2lxhngczJ6w7ZOclnwBk=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\jaguar_g3.json" size="1052">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>A/8p+/qkwUpMiTtbcpBElsrj0VFnkqDmetrwftC6bnM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\ktm_xbow_gt4.json" size="1057">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>9qCYXzhIGqNPFBPa+GVsKv8PxJL/nYQQJJCBdkVwurU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\lamborghini_gallardo_rex.json" size="1053">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>OzOX1HD/IYiLLHkSB9/2zl+lYVlVR7GBhG84rY5oYiA=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\lamborghini_huracan_gt3.json" size="1120">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>Ca6kJlAx9kxbBpkTFhUO2Txesz0GGIk4vzKPH8/veoU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\lamborghini_huracan_gt3_evo.json" size="1120">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>GmyyEC4g31mDcZ98uyhRJ38pXto/fyeTWCcJOBbo8fE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\lamborghini_huracan_st.json" size="1119">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>m84TjvpFmzMJTpEFoJZFk5Pv7KJkzZDDzJ6DH7JOjGw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\lexus_rc_f_gt3.json" size="1120">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>8OCBmPltWrcllXWzi5snDbv/FBU8rOplcD0/8g1V79E=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\mazerati_mc_gt4.json" size="1082">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>7p5ZA/rViTe8vyE94s0MrVAalQ5B6JTEUK3ZPeMfe80=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\mclaren_570s_gt4.json" size="1061">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>AACPEXdZvO4Q5fz1OZUAmAIFSdCkYT1v3dgITwytips=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\mclaren_650s_gt3.json" size="1053">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>0gLuvJnCsVRq1VhZIFbuPpolVEH9ohrVzPmg7btQ2wE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\mclaren_720s_gt3.json" size="1056">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>XtpIbILQcanXO++uQlxI7iqd1BjycFl3owXz1MoILIU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\mercedes_amg_gt3.json" size="1116">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>qcL2KJJCUfA99ae+Wv4ozbczhEl9F1KRjWvcqB8mSsM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\mercedes_amg_gt3_evo.json" size="1116">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>ycgzwTA3X17dC9W63Wj6V50ZHBzVFvVFzA65qsY9IrQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\mercedes_amg_gt4.json" size="1062">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>ay7hpwWiUZRsoHOz7HY49lu8gP3s7D/B8Cc7B6P9UPk=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\nissan_gt_r_gt3_2017.json" size="1054">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>kTiowfuqkxlSxJ/QgTiR9H7UCzj6RH6g6wm0ammwDm8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\nissan_gt_r_gt3_2018.json" size="1056">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>lpxaoQCYglnkRy6/QTyBuXh00XBbQT5jU8k/1HB5d+g=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\porsche_718_cayman_gt4_mr.json" size="1096">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>ygMq+7tB6uY5hpF6GuvtgUgGp4rs6OctlOF0E5Svb+o=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\porsche_991_gt3_r.json" size="1118">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>2vN0ZbxwCwMuT+JaUQFhesQVCBuUMs2Rzjg9qDpR2BQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\porsche_991ii_gt3_cup.json" size="1037">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>6wz+3kaxHJ9GmoX1WbQprjdF2/iLRNyZAmsr9+uxin4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SetupData\porsche_991ii_gt3_r.json" size="1272">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>u90wS4XrG2PPCYrjkx0YE+Z1P9TgW9Ia8XaIfyXVMJM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Syncfusion.Data.WPF.dll" size="274432">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>KU0pwyGgSR8TELSIq8LtR5c8GxjX+KiJnWxnvJIU5sM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Syncfusion.Licensing.dll" size="48128">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>ICEvJXU7FKaSgx7/luKV5aSwkZI4BCBPrJBP7v0Ldvc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Syncfusion.SfBusyIndicator.WPF.dll" size="135168">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>00l7LUUj1xa+5RNTc25tt2hby/n+d4Hl7nrYH4H8C8U=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Syncfusion.SfGrid.WPF.dll" size="2434560">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>Y8xS3v/i830Jvdwm3OoyCoA4l3RDlYk0bPP16EJlJIw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Syncfusion.SfGridCommon.WPF.dll" size="154112">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>zLDZtxc1bs1sPciJ8hzkpbrp7WalMxrETq2PanlR2jE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Syncfusion.SfSkinManager.WPF.dll" size="46592">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>KBJeSakQFVqRtVab8oivs8EaYYngvOZQZF/m/waCQuU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Syncfusion.SfTreeView.WPF.dll" size="176128">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>FC7ctLc67QruEpm8u19jhTQn8XUpHetf8V4P48yHR9E=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Syncfusion.Shared.WPF.dll" size="2931712">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>JbiislBVMGm0lvjlVcFBdyLYw5rKBSPN6HKo6jQwm+A=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Syncfusion.Themes.Blend.WPF.dll" size="2844160">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>QCVF5rhcGdkNJvFDOLqzyic8z9QnKx/VCEm/lpgBy0c=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Syncfusion.Themes.MaterialDark.WPF.dll" size="3283456">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>C92BDe9ImNViyvC90lShgWcdrsI39fF4vPT441h1h7k=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Syncfusion.Themes.Office2019DarkGray.WPF.dll" size="3321856">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>8q62Pr2U1nwZ4c94wLFsUARLd9y+Wq62HlbSCVU+gtI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Syncfusion.Themes.Office365.WPF.dll" size="2826752">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>yuh91C5PdvcPFd/GfdeJXuqAxtOu6PIwOrk8xlNR0zQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Syncfusion.Themes.Saffron.WPF.dll" size="2826240">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>s3xusVRFcjS4T1Lx/GBhBgs1PSu9uBUoYChQEJKbdWU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Syncfusion.Tools.WPF.dll" size="5532672">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>KNrs7EbOwErUSoS3ZsWb0D7orPPg3a1sfVJQICltM7s=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=MIKEHANSON3080\mike" issuerKeyHash="28cd6244b22d6353e587aafb90904369397373e7" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>RrGG8ChtN7oR3j2KyD7kbmECBT6QQgSYoFtNGf8tLiA=</DigestValue></Reference></SignedInfo><SignatureValue>lBKp4sBkQrjctUFKuIH51tx+9zFaRIJ2p1PAc9ryAEHWWjRl0qHyVmLJXB+eLGY5OzWg927btqnFPsDvpX7bGOQ62qD2Njpvw0rLnHWbHGhFyUy+4vWP8bivHHv5+vD5UqoDuVi5vgUzP2+wkJR1C7lPzXsBfDQDAHu1m8X1VnA=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>0YiTqgl8xhVx+TWpW3TTKj7O4rx/P6A+BBlRe/QXcGGWnWsVpG0XMfGCeA++oml4H66xFHzf/dK4t5yspd95W4id/xiB4W2VTUKGxgq4/Z7bkSicI3DVvTJ9lZdZEkFdMa6gHmbfsrPriHKyjOuZSUrbiIbviKU1G6OW06ilJH0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="202e2dff194d5ba0980442903e0502616ee43ec88a3dde11ba376d28f086b146" Description="" Url=""><as:assemblyIdentity name="ACCSetupManager.exe" version="1.0.0.14" publicKeyToken="cb1ab25c07dc3f87" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=MIKEHANSON3080\mike</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>39cl3dsNMN3WxSkZVBu1O6syg/EsbQIWro7fSaeiRbM=</DigestValue></Reference></SignedInfo><SignatureValue>KzTBshuuMIoBD9ZhGdW9D6O9BR1Ljh7HmbraJkYHatIbIdX1AK4XOMRllJADlDAQ2Um7JtsPdFz/W0gZE08qJx9rZmrPKzr1vYRiQorgjC9equ9/FtgYdXFSMwGPt248ILjV5oVsdQAI0kGTVzCWwUelZi8Xcm8nWllBvONXAEU=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>0YiTqgl8xhVx+TWpW3TTKj7O4rx/P6A+BBlRe/QXcGGWnWsVpG0XMfGCeA++oml4H66xFHzf/dK4t5yspd95W4id/xiB4W2VTUKGxgq4/Z7bkSicI3DVvTJ9lZdZEkFdMa6gHmbfsrPriHKyjOuZSUrbiIbviKU1G6OW06ilJH0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB5TCCAU6gAwIBAgIQWHKiXbiMVb9FOX+5Bs6JjjANBgkqhkiG9w0BAQsFADAxMS8wLQYDVQQDHiYATQBJAEsARQBIAEEATgBTAE8ATgAzADAAOAAwAFwAbQBpAGsAZTAeFw0yMTA0MjQxMDAwMTlaFw0yMjA0MjQxNjAwMTlaMDExLzAtBgNVBAMeJgBNAEkASwBFAEgAQQBOAFMATwBOADMAMAA4ADAAXABtAGkAawBlMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDRiJOqCXzGFXH5NalbdNMqPs7ivH8/oD4EGVF79BdwYZadaxWkbRcx8YJ4D76iaXgfrrEUfN/90ri3nKyl33lbiJ3/GIHhbZVNQobGCrj9ntuRKJwjcNW9Mn2Vl1kSQV0xrqAeZt+ys+uIcrKM65lJStuIhu+IpTUbo5bTqKUkfQIDAQABMA0GCSqGSIb3DQEBCwUAA4GBAMtkW1Co5ADj+IEjNzcvVIs1lAQp3xU0CVhLPhpbkTZAkl5bLHM0kLuLSLtTGnRCirbLji+q2lHir+L3cBw3NkkfJZiDNUumtXpq+i5Y5F4jQMi7ro25lFjZAN+O1FccqPLeONpUGWOI3h26QI0vGLfUdecSrFJm/RG0lrE9K+u4</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

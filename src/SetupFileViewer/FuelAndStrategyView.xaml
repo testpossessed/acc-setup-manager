@@ -23,25 +23,6 @@
       <RowDefinition />
     </Grid.RowDefinitions>
 
-    <Grid.Resources>
-      <Style TargetType="sf:UpDown">
-        <Setter Property="Margin"
-                Value="2" />
-        <Setter Property="NumberDecimalDigits"
-                Value="0" />
-        <Setter Property="Step"
-                Value="0.1" />
-        <Setter Property="HorizontalAlignment"
-                Value="Stretch" />
-        <Setter Property="EnableNegativeColors"
-                Value="False" />
-        <Setter Property="ApplyZeroColor"
-                Value="False" />
-        <Setter Property="TextAlignment"
-                Value="Right" />
-      </Style>
-    </Grid.Resources>
-
     <sfv:FuelAndTyreStrategyView Grid.Column="1"
                                    Grid.Row="0" />
 

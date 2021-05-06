@@ -8,22 +8,14 @@ namespace ACCSetupManager.ViewModels.SetupFileComparisonViewer
   public class ElectronicsComparisonViewModel : ObservableObject
   {
     private int abs;
-
     private bool absDiffers;
-
     private bool ecuDiffers;
     private int ecuMap;
-    private int fuelMix;
-
-    private bool fuelMixDiffers;
     private int tc1;
-
     private bool tc1Differs;
     private int tc2;
-
     private bool tc2Differs;
     private int telemetryLaps;
-
     private bool telemetryLapsDiffers;
 
     public int Abs
@@ -48,18 +40,6 @@ namespace ACCSetupManager.ViewModels.SetupFileComparisonViewer
     {
       get => this.ecuMap;
       set => this.SetProperty(ref this.ecuMap, value);
-    }
-
-    public int FuelMix
-    {
-      get => this.fuelMix;
-      set => this.SetProperty(ref this.fuelMix, value);
-    }
-
-    public bool FuelMixDiffers
-    {
-      get => this.fuelMixDiffers;
-      set => this.SetProperty(ref this.fuelMixDiffers, value);
     }
 
     public int Tc1
@@ -98,16 +78,16 @@ namespace ACCSetupManager.ViewModels.SetupFileComparisonViewer
       set => this.SetProperty(ref this.telemetryLapsDiffers, value);
     }
 
-    internal void Apply(SetupFile setupFile, SetupFileViewModel compareToSetupFileViewModel)
+    internal void Apply(SetupFile setupFile,
+      SetupSpec setupSpec,
+      SetupFileViewModel compareToSetupFileViewModel)
     {
       var electronics = setupFile.BasicSetup.Electronics;
       var electronicsComparison = compareToSetupFileViewModel.Electronics;
       this.Abs = electronics.Abs;
       this.AbsDiffers = this.Abs != electronicsComparison.Abs;
-      this.EcuMap = electronics.ECUMap;
+      this.EcuMap = setupSpec.ToEcu(electronics.ECUMap);
       this.EcuDiffers = this.EcuMap != electronicsComparison.EcuMap;
-      this.FuelMix = electronics.FuelMix;
-      this.FuelMixDiffers = this.FuelMix != electronicsComparison.FuelMix;
       this.Tc1 = electronics.TC1;
       this.Tc1Differs = this.Tc1 != electronicsComparison.Tc1;
       this.Tc2 = electronics.TC2;
@@ -118,7 +98,7 @@ namespace ACCSetupManager.ViewModels.SetupFileComparisonViewer
 
     internal bool HasDifferences()
     {
-      return this.AbsDiffers || this.EcuDiffers || this.FuelMixDiffers || this.Tc1Differs
+      return this.AbsDiffers || this.EcuDiffers || this.Tc1Differs
              || this.Tc2Differs || this.TelemetryLapsDiffers;
     }
   }

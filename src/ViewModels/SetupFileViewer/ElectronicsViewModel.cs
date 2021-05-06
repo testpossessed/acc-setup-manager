@@ -8,7 +8,6 @@ namespace ACCSetupManager.ViewModels.SetupFileViewer
   {
     private int abs;
     private int ecuMap;
-    private int fuelMix;
     private int tc1;
     private int tc2;
     private int telemetryLaps;
@@ -25,11 +24,7 @@ namespace ACCSetupManager.ViewModels.SetupFileViewer
       set => this.SetProperty(ref this.ecuMap, value);
     }
 
-    public int FuelMix
-    {
-      get => this.fuelMix;
-      set => this.SetProperty(ref this.fuelMix, value);
-    }
+    public int FuelMix { get; set; }
 
     public int Tc1
     {

@@ -33,7 +33,7 @@ namespace ACCSetupManager.ViewModels.SetupFileComparisonViewer
     private void MapSetupFile()
     {
       this.Tyres.Apply(this.setupFile, this.setupSpec, this.compareToSetupFileViewModel);
-      this.Electronics.Apply(this.setupFile, this.compareToSetupFileViewModel);
+      this.Electronics.Apply(this.setupFile, this.setupSpec, this.compareToSetupFileViewModel);
       this.FuelAndStrategy.Apply(this.setupFile, this.setupSpec, this.compareToSetupFileViewModel);
       this.MechanicalGrip.Apply(this.setupFile, this.setupSpec, this.compareToSetupFileViewModel);
       this.Dampers.Apply(this.setupFile, this.compareToSetupFileViewModel);

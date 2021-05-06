@@ -121,14 +121,14 @@ namespace ACCSetupManager.ViewModels.SetupFileComparisonViewer
       this.FuelDiffers = this.Fuel != comparisonStrategy.Fuel;
       this.PitStops = strategy.NPitStops;
       this.PitStopsDiffers = this.PitStops != comparisonStrategy.PitStops;
-      this.FrontBrakeCompound = strategy.FrontBrakePadCompound;
+      this.FrontBrakeCompound = setupSpec.ToBrakeCompound(strategy.FrontBrakePadCompound);
       this.FrontBrakeCompoundDiffers =
-        this.FrontBrakeCompound != comparisonStrategy.FrontBrakeCompound;
+        this.FrontBrakeCompound != setupSpec.ToBrakeCompound(comparisonStrategy.FrontBrakeCompound);
       this.RearBrakeCompound = strategy.RearBrakePadCompound;
       this.RearBakeCompoundDiffers = this.RearBrakeCompound != comparisonStrategy.RearBrakeCompound;
       this.FuelPerLap = Math.Round(strategy.FuelPerLap, 1);
       this.FuelPerLapDiffers = !this.FuelPerLap.IsEqualTo(comparisonStrategy.FuelPerLap);
-      this.TyreSet = setupFile.BasicSetup.Strategy.TyreSet;
+      this.TyreSet = setupSpec.ToTyreSet(setupFile.BasicSetup.Strategy.TyreSet);
       this.TyreSetDiffers = this.TyreSet != comparisonStrategy.TyreSet;
 
       this.PitStrategies.Clear();
@@ -163,16 +163,16 @@ namespace ACCSetupManager.ViewModels.SetupFileComparisonViewer
       var result = new PitStrategyComparisonViewModel
                    {
                      PitStopNumber = index + 1,
-                     FrontBrakeCompound = pitStrategy.FrontBrakePadCompound,
+                     FrontBrakeCompound = setupSpec.ToBrakeCompound(pitStrategy.FrontBrakePadCompound),
                      FrontBrakeCompoundDiffers =
                        pitStrategy.FrontBrakePadCompound
                        != comparisonPitStrategy.FrontBrakeCompound,
                      FuelToAdd = pitStrategy.FuelToAdd,
                      FuelToAddDiffers = pitStrategy.FuelToAdd != comparisonPitStrategy.FuelToAdd,
-                     RearBrakeCompound = pitStrategy.RearBreakPadCompound,
+                     RearBrakeCompound = setupSpec.ToBrakeCompound(pitStrategy.RearBreakPadCompound),
                      RearBrakeCompoundDiffers =
                        pitStrategy.RearBreakPadCompound != comparisonPitStrategy.RearBrakeCompound,
-                     TyreSet = pitStrategy.TyreSet,
+                     TyreSet = setupSpec.ToTyreSet(pitStrategy.TyreSet),
                      TyreSetDiffers = pitStrategy.TyreSet != comparisonPitStrategy.TyreSet,
                      TyreCompound = this.GetTyreCompoundName(tyreCompoundValue),
                      TyreCompoundDiffers = tyreCompoundValue != comparisonPitStrategy.TyreCompound,

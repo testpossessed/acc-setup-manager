@@ -36,7 +36,6 @@
           <RowDefinition />
           <RowDefinition />
           <RowDefinition />
-          <RowDefinition />
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Column="0"
@@ -125,32 +124,10 @@
 
         <TextBlock Grid.Column="0"
                Grid.Row="4">
-          Fuel Mix
-        </TextBlock>
-        <TextBlock Grid.Column="1"
-                   Grid.Row="4"
-                   Text="{Binding FuelMix}">
-          <TextBlock.Style>
-            <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
-            
-              <Style.Triggers>
-                <DataTrigger Binding="{Binding FuelMixDiffers}"
-                             Value="true">
-                  <Setter Property="Foreground"
-                          Value="Red" />
-                </DataTrigger>
-              </Style.Triggers>
-            </Style>
-          </TextBlock.Style>
-        </TextBlock>
-
-        <TextBlock Grid.Column="0"
-               Grid.Row="5">
           Telemetry Laps
         </TextBlock>
         <TextBlock Grid.Column="1"
-                   Grid.Row="5"
+                   Grid.Row="4"
                    Text="{Binding TelemetryLaps}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
