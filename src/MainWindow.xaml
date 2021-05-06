@@ -85,7 +85,7 @@
           <HierarchicalDataTemplate DataType="{x:Type vm:SetupViewModel}">
             <TreeViewItem IsSelected="{Binding IsSelected}">
               <TreeViewItem.Header>
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" Margin="0">
                   <TextBlock Text="{Binding Name}"
                              VerticalAlignment="Center" />
                   <sf:ButtonAdv SizeMode="Small"

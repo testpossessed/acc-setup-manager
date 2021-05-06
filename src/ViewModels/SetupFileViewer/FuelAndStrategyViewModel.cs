@@ -77,12 +77,12 @@ namespace ACCSetupManager.ViewModels.SetupFileViewer
     {
       var strategy = setupFile.BasicSetup.Strategy;
       this.TyreCompound = setupFile.BasicSetup.Tyres.TyreCompound;
-      this.Fuel = strategy.Fuel;
+      this.Fuel = setupSpec.ToFuel(strategy.Fuel);
       this.PitStops = strategy.NPitStops;
-      this.FrontBrakeCompound = strategy.FrontBrakePadCompound;
-      this.RearBrakeCompound = strategy.RearBrakePadCompound;
+      this.FrontBrakeCompound = setupSpec.ToBrakeCompound(strategy.FrontBrakePadCompound);
+      this.RearBrakeCompound = setupSpec.ToBrakeCompound(strategy.RearBrakePadCompound);
       this.FuelPerLap = Math.Round(strategy.FuelPerLap, 1);
-      this.TyreSet = strategy.TyreSet;
+      this.TyreSet = setupSpec.ToTyreSet(strategy.TyreSet);
 
       this.PitStrategies.Clear();
       for(var i = 0; i < strategy.PitStrategies.Length; i++)
@@ -99,10 +99,10 @@ namespace ACCSetupManager.ViewModels.SetupFileViewer
       return new()
              {
                PitStopNumber = index + 1,
-               FrontBrakeCompound = pitStrategy.FrontBrakePadCompound,
+               FrontBrakeCompound = setupSpec.ToBrakeCompound(pitStrategy.FrontBrakePadCompound),
                FuelToAdd = pitStrategy.FuelToAdd,
-               RearBrakeCompound = pitStrategy.RearBreakPadCompound,
-               TyreSet = pitStrategy.TyreSet,
+               RearBrakeCompound = setupSpec.ToBrakeCompound(pitStrategy.RearBreakPadCompound),
+               TyreSet = setupSpec.ToTyreSet(pitStrategy.TyreSet),
                TyreCompound = pitStrategy.Tyres.TyreCompound,
                LeftFrontPsi = setupSpec.ToPressurePsi(pitStrategy.Tyres.TyrePressure[0]),
                RightFrontPsi = setupSpec.ToPressurePsi(pitStrategy.Tyres.TyrePressure[1]),

@@ -66,6 +66,16 @@ namespace ACCSetupManager.Models
       return (brakeBias - this.BrakeBiasAdjustment) / this.BrakeBiasFactor;
     }
 
+    internal int ToBrakeCompound(int rawValue)
+    {
+      return this.ToOrdinal(rawValue);
+    }
+
+    internal int ToBrakeCompoundRaw(int brakeCompoundValue)
+    {
+      return this.ToIndex(brakeCompoundValue);
+    }
+
     internal double ToBrakePower(double rawValue)
     {
       return rawValue + this.BrakePowerAdjustment;
@@ -130,6 +140,36 @@ namespace ACCSetupManager.Models
       }
 
       return (differentialPreload - this.PreloadAdjustment) / this.PreloadFactor;
+    }
+
+    internal int ToEcu(int rawValue)
+    {
+      if(this.EcuFixed >= 0)
+      {
+        return this.EcuFixed;
+      }
+
+      return rawValue + this.EcuAdjustment;
+    }
+
+    internal int ToEcuRaw(int ecuValue)
+    {
+      if(this.EcuFixed >= 0)
+      {
+        return this.EcuFixed;
+      }
+
+      return ecuValue - this.EcuAdjustment;
+    }
+
+    internal int ToFuel(int rawValue)
+    {
+      return rawValue + 2;
+    }
+
+    internal int ToFuelRaw(int fuelValue)
+    {
+      return fuelValue - 2;
     }
 
     internal double ToPressurePsi(double rawValue)
@@ -206,6 +246,16 @@ namespace ACCSetupManager.Models
              / this.ToeFactor;
     }
 
+    internal int ToTyreSet(int rawValue)
+    {
+      return this.ToOrdinal(rawValue);
+    }
+
+    internal int ToTyreSetRaw(int tyreSetValue)
+    {
+      return this.ToIndex(tyreSetValue);
+    }
+
     internal double ToWheelRate(int rawValue, Location location)
     {
       var wheelRateMode = (WheelRateMode)this.WheelRateMode;
@@ -216,7 +266,7 @@ namespace ACCSetupManager.Models
 
       if(wheelRateMode == Enums.WheelRateMode.List)
       {
-        if(location == Location.LeftFront || location == Location.RightFront)
+        if(location is Location.LeftFront or Location.RightFront)
         {
           return this.WheelRatesFront[rawValue];
         }
@@ -224,12 +274,22 @@ namespace ACCSetupManager.Models
         return this.WheelRatesRear[rawValue];
       }
 
-      if(location == Location.LeftFront || location == Location.RightFront)
+      if(location is Location.LeftFront or Location.RightFront)
       {
         return rawValue * this.WheelRateFrontFactor + this.WheelRateFrontAdjustment;
       }
 
       return rawValue * this.WheelRateRearFactor + this.WheelRateRearAdjustment;
+    }
+
+    private int ToIndex(int ordinal)
+    {
+      return ordinal - 1;
+    }
+
+    private int ToOrdinal(int index)
+    {
+      return index + 1;
     }
   }
 }

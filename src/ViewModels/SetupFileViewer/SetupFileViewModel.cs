@@ -29,7 +29,7 @@ namespace ACCSetupManager.ViewModels.SetupFileViewer
     private void MapSetupFile()
     {
       this.Tyres.Apply(this.setupFile, this.setupSpec);
-      this.Electronics.Apply(this.setupFile);
+      this.Electronics.Apply(this.setupFile, this.setupSpec);
       this.FuelAndStrategy.Apply(this.setupFile, this.setupSpec);
       this.MechanicalGrip.Apply(this.setupFile, this.setupSpec);
       this.Dampers.Apply(this.setupFile);
