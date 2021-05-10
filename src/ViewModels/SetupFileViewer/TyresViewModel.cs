@@ -12,12 +12,34 @@ namespace ACCSetupManager.ViewModels.SetupFileViewer
     public FrontTyreViewModel RightFront { get; } = new();
     public RearTyreViewModel RightRear { get; } = new();
 
-    public void Apply(SetupFile setupFile, SetupSpec setupSpec)
+    internal void Apply(SetupFile setupFile, SetupSpec setupSpec)
     {
       this.MapTyrePressures(setupFile, setupSpec);
       this.MapToe(setupFile, setupSpec);
       this.MapCamber(setupFile, setupSpec);
       this.MapCaster(setupFile, setupSpec);
+    }
+
+    internal Alignment ToAlignment(SetupSpec setupSpec)
+    {
+      var result = new Alignment
+                   {
+                     Camber = this.MapRawCamber(setupSpec)
+                   };
+
+
+      return result;
+    }
+
+    private double[] MapRawCamber(SetupSpec setupSpec)
+    {
+      return new[]
+             {
+               setupSpec.ToCamberRaw(this.LeftFront.Camber, Location.Front),
+               setupSpec.ToCamberRaw(this.RightFront.Camber, Location.RightFront),
+               setupSpec.ToCamberRaw(this.LeftRear.Camber, Location.LeftRear),
+               setupSpec.ToCamberRaw(this.RightRear.Camber, Location.RightRear)
+             };
     }
 
     private void MapCamber(SetupFile setupFile, SetupSpec setupSpec)

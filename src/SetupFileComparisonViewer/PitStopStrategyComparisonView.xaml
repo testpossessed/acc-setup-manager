@@ -50,7 +50,7 @@
                    Text="{Binding FuelToAdd}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource ValueTextBlockStyle}">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding FuelToAddDiffers}"
                              Value="true">
@@ -71,7 +71,7 @@
                    Text="{Binding TyreCompound}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource ValueTextBlockStyle}">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding TyreCompoundDiffers}"
                              Value="true">
@@ -92,7 +92,7 @@
                    Text="{Binding TyreSet}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource ValueTextBlockStyle}">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding TyreSetDiffers}"
                              Value="true">
@@ -113,7 +113,7 @@
                    Text="{Binding LeftFrontPsi, StringFormat={}{0:f1}}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource ValueTextBlockStyle}">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding LeftFrontPsiDiffers}"
                              Value="true">
@@ -134,7 +134,7 @@
                    Text="{Binding RightFrontPsi, StringFormat={}{0:f1}}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource ValueTextBlockStyle}">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding RightFrontPsiDiffers}"
                              Value="true">
@@ -155,7 +155,7 @@
                    Text="{Binding LeftRearPsi, StringFormat={}{0:f1}}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource ValueTextBlockStyle}">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding LeftRearPsiDiffers}"
                              Value="true">
@@ -176,7 +176,7 @@
                    Text="{Binding RightRearPsi, StringFormat={}{0:f1}}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource ValueTextBlockStyle}">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding RightRearPsiDiffers}"
                              Value="true">
@@ -197,7 +197,7 @@
                    Text="{Binding FrontBrakeCompound}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource ValueTextBlockStyle}">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding FrontBrakeCompoundDiffers}"
                              Value="true">
@@ -218,7 +218,7 @@
                    Text="{Binding RearBrakeCompound}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource ValueTextBlockStyle}">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding RearBrakeCompoundDiffers}"
                              Value="true">

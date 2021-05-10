@@ -35,6 +35,7 @@ namespace ACCSetupManager.ViewModels
       this.Versions = new ObservableCollection<VersionListItemViewModel>();
       this.ShowSetup = new RelayCommand<SetupViewModel>(this.HandleShowSetup);
       this.RestoreSetup = new RelayCommand(this.HandleRestoreSetup, this.CanExecuteRestoreSetup);
+      this.SaveSetup = new RelayCommand(this.HandleSaveSetup, this.CanExecuteSaveSetup);
       this.Setup = new SetupFileViewerViewModel();
       this.ComparisonSetup = new SetupFileComparisonViewerViewModel();
       this.ComparisonSetupVisibility = Visibility.Hidden;
@@ -51,6 +52,8 @@ namespace ACCSetupManager.ViewModels
     public ICommand DeleteVersion { get; }
 
     public ICommand RestoreSetup { get; }
+
+    public ICommand SaveSetup { get; }
 
     public SetupFileViewerViewModel Setup { get; }
 
@@ -130,6 +133,11 @@ namespace ACCSetupManager.ViewModels
       return this.HasSetupFile && this.currentSetup.IsVersion;
     }
 
+    private bool CanExecuteSaveSetup()
+    {
+      return this.HasSetupFile && this.Setup.IsDirty;
+    }
+
     private void HandleDeleteVersion(SetupViewModel setup)
     {
       var filePath = setup.FilePath;
@@ -150,7 +158,7 @@ namespace ACCSetupManager.ViewModels
       }
 
       var result = MessageBox.Show(Application.Current.MainWindow,
-        $"This will overwrite the the original setup in ACC.{Environment.NewLine}{Environment.NewLine}Do you want to continue?",
+        $"This will overwrite the original setup in ACC.{Environment.NewLine}{Environment.NewLine}Do you want to continue?",
         "Confirm Restore Setup",
         MessageBoxButton.YesNo);
       if(result == MessageBoxResult.No)
@@ -162,6 +170,28 @@ namespace ACCSetupManager.ViewModels
         this.currentSetup.CircuitIdentifier,
         this.currentSetup.FilePath,
         this.currentSetup.IsVersion);
+    }
+
+    private void HandleSaveSetup()
+    {
+      if(!this.HasSetupFile)
+      {
+        return;
+      }
+
+      var result = MessageBox.Show(Application.Current.MainWindow,
+        $"This will create a new version of this setup and overwrite the original setup in ACC.{Environment.NewLine}{Environment.NewLine}Do you want to continue?",
+        "Confirm Save Setup",
+        MessageBoxButton.YesNo);
+      if(result == MessageBoxResult.No)
+      {
+        return;
+      }
+
+      // SetupFileProvider.SaveSetup(this.currentSetup.VehicleIdentifier,
+      //   this.currentSetup.CircuitIdentifier,
+      //   this.currentSetup.FilePath,
+      //   this.currentSetup.IsVersion);
     }
 
     private void HandleSelectedVersionChanged()

@@ -38,7 +38,7 @@
                    Text="{Binding RearRideHeight, StringFormat={}{0:f0}}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource ValueTextBlockStyle}">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding RearRideHeightDiffers}"
                              Value="true">
@@ -59,7 +59,7 @@
                    Text="{Binding RearWing}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource ValueTextBlockStyle}">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding RearWingDiffers}"
                              Value="true">
@@ -80,7 +80,7 @@
                    Text="{Binding RearBrakeDucts}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource ValueTextBlockStyle}">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding RearBrakeDuctsDiffers}"
                              Value="true">
@@ -120,7 +120,7 @@
                    Text="{Binding FrontRideHeight, StringFormat={}{0:f0}}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource ValueTextBlockStyle}">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding FrontRideHeightDiffers}"
                              Value="true">
@@ -141,7 +141,7 @@
                    Text="{Binding Splitter}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource ValueTextBlockStyle}">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding SplitterDiffers}"
                              Value="true">
@@ -162,7 +162,7 @@
                    Text="{Binding FrontBrakeDucts}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource ValueTextBlockStyle}">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding FrontBrakeDuctsDiffers}"
                              Value="true">

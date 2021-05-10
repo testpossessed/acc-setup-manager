@@ -3,11 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:sf="http://schemas.syncfusion.com/wpf"
              xmlns:vm="clr-namespace:ACCSetupManager.ViewModels.SetupFileViewer"
              mc:Ignorable="d"
-             d:DataContext="{d:DesignInstance vm:DamperCornerViewModel}"
-             IsEnabled="False">
+             d:DataContext="{d:DesignInstance vm:DamperCornerViewModel}">
   <Grid HorizontalAlignment="Stretch"
         VerticalAlignment="Stretch">
     <GroupBox Header="{Binding Title}">
@@ -31,52 +29,40 @@
                    Margin="5">
           Bump
         </TextBlock>
-        <sf:UpDown Grid.Column="1"
+        <TextBlock Grid.Column="1"
                            Grid.Row="0"
-                           Value="{Binding Bump}"
-                           MinValue="0"
-                           MaxValue="40"
-                           Step="1"
-                           NumberDecimalDigits="0" />
+                           Style="{StaticResource ValueTextBlockStyle}"
+                           Text="{Binding Bump, StringFormat={}{0:f0}}" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="1"
                    Margin="5">
           Fast Bump
         </TextBlock>
-        <sf:UpDown Grid.Column="1"
+        <TextBlock Grid.Column="1"
                            Grid.Row="1"
-                           Value="{Binding FastBump}"
-                           MinValue="0"
-                           MaxValue="49"
-                           Step="1"
-                           NumberDecimalDigits="0" />
+                           Style="{StaticResource ValueTextBlockStyle}"
+                           Text="{Binding FastBump, StringFormat={}{0:f0}}" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="2"
                    Margin="5">
           Rebound
         </TextBlock>
-        <sf:UpDown Grid.Column="1"
+        <TextBlock Grid.Column="1"
                            Grid.Row="2"
-                           Value="{Binding Rebound}"
-                           MinValue="0"
-                           MaxValue="40"
-                           Step="1"
-                           NumberDecimalDigits="0" />
+                           Style="{StaticResource ValueTextBlockStyle}"
+                           Text="{Binding Rebound, StringFormat={}{0:f0}}" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="3"
                    Margin="5">
           Fast Rebound
         </TextBlock>
-        <sf:UpDown Grid.Column="1"
+        <TextBlock Grid.Column="1"
                            Grid.Row="3"
-                           Value="{Binding FastRebound}"
-                           MinValue="0"
-                           MaxValue="49"
-                           Step="1"
-                           NumberDecimalDigits="0" />
+                           Style="{StaticResource ValueTextBlockStyle}"
+                           Text="{Binding FastRebound, StringFormat={}{0:f0}}" />
       </Grid>
     </GroupBox>
   </Grid>

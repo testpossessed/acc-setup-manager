@@ -3,12 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:sf="http://schemas.syncfusion.com/wpf"
              xmlns:vm="clr-namespace:ACCSetupManager.ViewModels.SetupFileViewer"
              xmlns:sfv="clr-namespace:ACCSetupManager.SetupFileViewer"
              mc:Ignorable="d"
-             d:DataContext="{d:DesignInstance vm:MechanicalBalanceViewModel}"
-             IsEnabled="False">
+             d:DataContext="{d:DesignInstance vm:MechanicalBalanceViewModel}">
   <Grid HorizontalAlignment="Stretch"
         VerticalAlignment="Top">
 
@@ -53,74 +51,62 @@
                    Margin="5">
           Anti Roll Bar
         </TextBlock>
-        <sf:UpDown Grid.Column="1"
-                           Grid.Row="0"
-                           Value="{Binding ArbFront}"
-                           MinValue="0"
-                           MaxValue="8"
-                           Step="1"
-                           NumberDecimalDigits="0" />
+        <TextBlock Grid.Column="1"
+                   Grid.Row="0"
+                   Style="{StaticResource ValueTextBlockStyle}"
+                   Text="{Binding ArbFront, StringFormat={}{0:f0}}" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="1"
                    Margin="5">
           Brake Power %
         </TextBlock>
-        <sf:UpDown Grid.Column="1"
-                           Grid.Row="1"
-                           Value="{Binding BrakePower}"
-                           MinValue="80"
-                           MaxValue="100"
-                           Step="1"
-                           NumberDecimalDigits="0" />
+        <TextBlock Grid.Column="1"
+                   Grid.Row="1"
+                   Style="{StaticResource ValueTextBlockStyle}"
+                   Text="{Binding BrakePower, StringFormat={}{0:f0}}" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="2"
                    Margin="5">
           Brake Bias %
         </TextBlock>
-        <sf:UpDown Grid.Column="1"
-                           Grid.Row="2"
-                           Value="{Binding BrakeBias}"
-                           MinValue="57"
-                           MaxValue="78"
-                           Step="0.1"
-                           NumberDecimalDigits="1" />
+        <TextBlock Grid.Column="1"
+                   Grid.Row="2"
+                   Style="{StaticResource ValueTextBlockStyle}"
+                   Text="{Binding BrakeBias, StringFormat={}{0:f1}}" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="3"
                    Margin="5">
           Steering Ratio
         </TextBlock>
-        <sf:UpDown Grid.Column="1"
-                           Grid.Row="3"
-                           Value="{Binding SteerRatio}"
-                           MinValue="14"
-                           MaxValue="18"
-                           Step="1"
-                           NumberDecimalDigits="0" />
+        <TextBlock Grid.Column="1"
+                   Grid.Row="3"
+                   Style="{StaticResource ValueTextBlockStyle}"
+                   Text="{Binding SteerRatio, StringFormat={}{0:f0}}" />
       </Grid>
     </GroupBox>
 
     <sfv:MechanicalGripCornerView Grid.Column="0"
-                              Grid.ColumnSpan="2"
-                              Grid.Row="1"
-                              DataContext="{Binding LeftFrontMechanicalGroup}" />
+                                  Grid.ColumnSpan="2"
+                                  Grid.Row="1"
+                                  DataContext="{Binding LeftFrontMechanicalGroup}" />
 
     <sfv:MechanicalGripCornerView Grid.Column="2"
-                              Grid.ColumnSpan="2"
-                              Grid.Row="1"
-                              DataContext="{Binding RightFrontMechanicalGroup}" />
+                                  Grid.ColumnSpan="2"
+                                  Grid.Row="1"
+                                  DataContext="{Binding RightFrontMechanicalGroup}" />
 
     <sfv:MechanicalGripCornerView Grid.Column="0"
-                              Grid.ColumnSpan="2"
-                              Grid.Row="2"
-                              DataContext="{Binding LeftRearMechanicalGroup}" />
+                                  Grid.ColumnSpan="2"
+                                  Grid.Row="2"
+                                  DataContext="{Binding LeftRearMechanicalGroup}" />
 
     <sfv:MechanicalGripCornerView Grid.Column="2"
-                              Grid.ColumnSpan="2"
-                              Grid.Row="2"
-                              DataContext="{Binding RightRearMechanicalGroup}" />
+                                  Grid.ColumnSpan="2"
+                                  Grid.Row="2"
+                                  DataContext="{Binding RightRearMechanicalGroup}" />
     <GroupBox Grid.Column="1"
               Grid.Row="3"
               Grid.ColumnSpan="2"
@@ -146,26 +132,20 @@
                    Margin="5">
           Anti Roll Bar
         </TextBlock>
-        <sf:UpDown Grid.Column="1"
-                           Grid.Row="0"
-                           Value="{Binding ArbRear}"
-                           MinValue="0"
-                           MaxValue="8"
-                           Step="1"
-                           NumberDecimalDigits="0" />
+        <TextBlock Grid.Column="1"
+                   Grid.Row="0"
+                   Style="{StaticResource ValueTextBlockStyle}"
+                   Text="{Binding ArbRear, StringFormat={}{0:f0}}" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="1"
                    Margin="5">
           Preload Differential Nm
         </TextBlock>
-        <sf:UpDown Grid.Column="1"
-                           Grid.Row="1"
-                           Value="{Binding DifferentialPreload}"
-                           MinValue="20"
-                           MaxValue="300"
-                           Step="10"
-                           NumberDecimalDigits="0" />
+        <TextBlock Grid.Column="1"
+                   Grid.Row="1"
+                   Style="{StaticResource ValueTextBlockStyle}"
+                   Text="{Binding DifferentialPreload, StringFormat={}{0:f0}}" />
       </Grid>
     </GroupBox>
 

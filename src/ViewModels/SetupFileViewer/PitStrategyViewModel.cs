@@ -10,27 +10,12 @@ namespace ACCSetupManager.ViewModels.SetupFileViewer
     private int fuelToAdd;
     private double leftFrontPsi;
     private double leftRearPsi;
-
     private int pitStopNumber;
     private int rearBrakeCompound;
     private double rightFrontPsi;
     private double rightRearPsi;
-    private int tyreCompound;
+    private string tyreCompound;
     private int tyreSet;
-
-    public ObservableCollection<TyreCompoundListItem> TyreCompounds { get; } = new()
-      {
-        new TyreCompoundListItem
-        {
-          Text = "Dry",
-          Value = 0
-        },
-        new TyreCompoundListItem
-        {
-          Text = "Wet",
-          Value = 1
-        }
-      };
 
     public int FrontBrakeCompound
     {
@@ -80,7 +65,7 @@ namespace ACCSetupManager.ViewModels.SetupFileViewer
       set => this.SetProperty(ref this.rightRearPsi, value);
     }
 
-    public int TyreCompound
+    public string TyreCompound
     {
       get => this.tyreCompound;
       set => this.SetProperty(ref this.tyreCompound, value);

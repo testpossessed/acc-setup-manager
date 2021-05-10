@@ -8,6 +8,8 @@ namespace ACCSetupManager.ViewModels.SetupFileViewer
   public class SetupFileViewerViewModel : ObservableRecipient, IRecipient<SelectedSetupChanged>
   {
     private bool hasSetupFile;
+
+    private bool isDirty;
     private SetupViewModel setup;
     private SetupFileViewModel setupFileViewModel;
 
@@ -25,6 +27,12 @@ namespace ACCSetupManager.ViewModels.SetupFileViewer
       set => this.SetProperty(ref this.hasSetupFile, value);
     }
 
+    public bool IsDirty
+    {
+      get => this.isDirty;
+      set => this.SetProperty(ref this.isDirty, value);
+    }
+
     public SetupFileViewModel SetupFile
     {
       get => this.setupFileViewModel;
@@ -36,6 +44,7 @@ namespace ACCSetupManager.ViewModels.SetupFileViewer
       this.setup = message.Setup;
       this.LoadSetupFile();
       this.Notes.Load(this.setup.FilePath);
+      this.IsDirty = false;
     }
 
     private void LoadSetupFile()

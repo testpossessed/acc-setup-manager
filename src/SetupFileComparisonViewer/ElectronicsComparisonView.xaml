@@ -47,7 +47,7 @@
                    Text="{Binding Tc1}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource ValueTextBlockStyle}">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding Tc1Differs}"
                              Value="true">
@@ -68,7 +68,7 @@
                    Text="{Binding Tc2}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource  ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource  ValueTextBlockStyle}">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding Tc2Differs}"
                              Value="true">
@@ -89,7 +89,7 @@
                    Text="{Binding Abs}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource ValueTextBlockStyle}">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding AbsDiffers}"
                              Value="true">
@@ -110,7 +110,7 @@
                    Text="{Binding EcuMap}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource ValueTextBlockStyle}">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding EcuDiffers}"
                              Value="true">
@@ -131,7 +131,7 @@
                    Text="{Binding TelemetryLaps}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource ValueTextBlockStyle}">
             
               <Style.Triggers>
                 <DataTrigger Binding="{Binding TelemetryLapsDiffers}"

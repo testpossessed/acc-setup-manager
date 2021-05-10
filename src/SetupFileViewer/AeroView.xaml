@@ -36,39 +36,30 @@
                    Margin="5">
           Ride Height
         </TextBlock>
-        <sf:UpDown Grid.Column="1"
-                           Grid.Row="0"
-                           Value="{Binding RearRideHeight}"
-                           MinValue="55"
-                           MaxValue="90"
-                           Step="1"
-                           NumberDecimalDigits="0" />
+        <TextBlock Style="{StaticResource ValueTextBlockStyle}"
+                   Grid.Column="1"
+                   Grid.Row="0"
+                   Text="{Binding RearRideHeight, StringFormat={}{0:f0}}" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="1"
                    Margin="5">
           Wing
         </TextBlock>
-        <sf:UpDown Grid.Column="1"
-                           Grid.Row="1"
-                           Value="{Binding RearWing}"
-                           MinValue="0"
-                           MaxValue="10"
-                           Step="1"
-                           NumberDecimalDigits="0" />
+        <TextBlock Style="{StaticResource ValueTextBlockStyle}"
+                   Grid.Column="1"
+                   Grid.Row="1"
+                   Text="{Binding RearWing, StringFormat={}{0:f0}}" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="2"
                    Margin="5">
           Brake Ducts
         </TextBlock>
-        <sf:UpDown Grid.Column="1"
-                           Grid.Row="2"
-                           Value="{Binding RearBrakeDucts}"
-                           MinValue="0"
-                           MaxValue="6"
-                           Step="1"
-                           NumberDecimalDigits="0" />
+        <TextBlock Style="{StaticResource ValueTextBlockStyle}"
+                   Grid.Column="1"
+                   Grid.Row="2"
+                   Text="{Binding RearBrakeDucts, StringFormat={}{0:f0}}" />
       </Grid>
     </GroupBox>
 
@@ -93,39 +84,30 @@
                    Margin="5">
           Ride Height
         </TextBlock>
-        <sf:UpDown Grid.Column="1"
-                           Grid.Row="0"
-                           Value="{Binding FrontRideHeight}"
-                           MinValue="55"
-                           MaxValue="80"
-                           Step="1"
-                           NumberDecimalDigits="0" />
+        <TextBlock Grid.Column="1"
+                   Grid.Row="0"
+                   Style="{StaticResource ValueTextBlockStyle}"
+                   Text="{Binding FrontRideHeight, StringFormat={}{0:f0}}" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="1"
                    Margin="5">
           Splitter
         </TextBlock>
-        <sf:UpDown Grid.Column="1"
-                           Grid.Row="1"
-                           Value="{Binding Splitter}"
-                           MinValue="0"
-                           MaxValue="10"
-                           Step="1"
-                           NumberDecimalDigits="0" />
+        <TextBlock Grid.Column="1"
+                   Grid.Row="1"
+                   Style="{StaticResource ValueTextBlockStyle}"
+                   Text="{Binding Splitter, StringFormat={}{0:f0}}" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="2"
                    Margin="5">
           Brake Ducts
         </TextBlock>
-        <sf:UpDown Grid.Column="1"
-                           Grid.Row="2"
-                           Value="{Binding FrontBrakeDucts}"
-                           MinValue="0"
-                           MaxValue="6"
-                           Step="1"
-                           NumberDecimalDigits="0" />
+        <TextBlock Grid.Column="1"
+                   Grid.Row="2"
+                   Style="{StaticResource ValueTextBlockStyle}"
+                   Text="{Binding FrontBrakeDucts, StringFormat={}{0:f0}}" />
       </Grid>
 
     </GroupBox>

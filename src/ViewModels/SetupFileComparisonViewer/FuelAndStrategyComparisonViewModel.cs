@@ -116,15 +116,15 @@ namespace ACCSetupManager.ViewModels.SetupFileComparisonViewer
       var comparisonStrategy = compareToSetupFileViewModel.FuelAndStrategy;
       var tyreCompoundValue = setupFile.BasicSetup.Tyres.TyreCompound;
       this.TyreCompound = this.GetTyreCompoundName(tyreCompoundValue);
-      this.TyreCompoundDiffers = tyreCompoundValue != comparisonStrategy.TyreCompound;
-      this.Fuel = strategy.Fuel;
+      this.TyreCompoundDiffers = this.tyreCompound != comparisonStrategy.TyreCompound;
+      this.Fuel = setupSpec.ToFuel(strategy.Fuel);
       this.FuelDiffers = this.Fuel != comparisonStrategy.Fuel;
       this.PitStops = strategy.NPitStops;
       this.PitStopsDiffers = this.PitStops != comparisonStrategy.PitStops;
       this.FrontBrakeCompound = setupSpec.ToBrakeCompound(strategy.FrontBrakePadCompound);
       this.FrontBrakeCompoundDiffers =
-        this.FrontBrakeCompound != setupSpec.ToBrakeCompound(comparisonStrategy.FrontBrakeCompound);
-      this.RearBrakeCompound = strategy.RearBrakePadCompound;
+        this.FrontBrakeCompound != comparisonStrategy.FrontBrakeCompound;
+      this.RearBrakeCompound = setupSpec.ToBrakeCompound(strategy.RearBrakePadCompound);
       this.RearBakeCompoundDiffers = this.RearBrakeCompound != comparisonStrategy.RearBrakeCompound;
       this.FuelPerLap = Math.Round(strategy.FuelPerLap, 1);
       this.FuelPerLapDiffers = !this.FuelPerLap.IsEqualTo(comparisonStrategy.FuelPerLap);
@@ -160,6 +160,7 @@ namespace ACCSetupManager.ViewModels.SetupFileComparisonViewer
       PitStrategyViewModel comparisonPitStrategy)
     {
       var tyreCompoundValue = pitStrategy.Tyres.TyreCompound;
+      var tyreCompoundName = this.GetTyreCompoundName(tyreCompoundValue);
       var result = new PitStrategyComparisonViewModel
                    {
                      PitStopNumber = index + 1,
@@ -175,7 +176,7 @@ namespace ACCSetupManager.ViewModels.SetupFileComparisonViewer
                      TyreSet = setupSpec.ToTyreSet(pitStrategy.TyreSet),
                      TyreSetDiffers = pitStrategy.TyreSet != comparisonPitStrategy.TyreSet,
                      TyreCompound = this.GetTyreCompoundName(tyreCompoundValue),
-                     TyreCompoundDiffers = tyreCompoundValue != comparisonPitStrategy.TyreCompound,
+                     TyreCompoundDiffers = tyreCompoundName != comparisonPitStrategy.TyreCompound,
                      LeftFrontPsi = setupSpec.ToPressurePsi(pitStrategy.Tyres.TyrePressure[0]),
                      RightFrontPsi = setupSpec.ToPressurePsi(pitStrategy.Tyres.TyrePressure[1]),
                      LeftRearPsi = setupSpec.ToPressurePsi(pitStrategy.Tyres.TyrePressure[2]),

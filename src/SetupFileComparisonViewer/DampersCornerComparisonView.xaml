@@ -33,7 +33,7 @@
                    Text="{Binding Bump, StringFormat={}{0:f0}}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource ValueTextBlockStyle}">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding BumpDiffers}"
                              Value="true">
@@ -54,7 +54,7 @@
                    Text="{Binding FastBump, StringFormat={}{0:f0}}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource ValueTextBlockStyle}">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding FastBumpDiffers}"
                              Value="true">
@@ -75,7 +75,7 @@
                    Text="{Binding Rebound, StringFormat={}{0:f0}}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource ValueTextBlockStyle}">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding ReboundDiffers}"
                              Value="true">
@@ -96,7 +96,7 @@
                    Text="{Binding FastRebound, StringFormat={}{0:f0}}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource ValueTextBlockStyle}">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding FastReboundDiffers}"
                              Value="true">

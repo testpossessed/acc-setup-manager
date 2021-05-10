@@ -12,24 +12,10 @@ namespace ACCSetupManager.ViewModels.SetupFileViewer
     private double fuelPerLap;
     private int pitStops;
     private int rearBrakeCompound;
-    private int tyreCompound;
+    private string tyreCompound;
     private int tyreSet;
 
     public ObservableCollection<PitStrategyViewModel> PitStrategies { get; } = new();
-
-    public ObservableCollection<TyreCompoundListItem> TyreCompounds { get; } = new()
-      {
-        new TyreCompoundListItem
-        {
-          Text = "Dry",
-          Value = 0
-        },
-        new TyreCompoundListItem
-        {
-          Text = "Wet",
-          Value = 1
-        }
-      };
 
     public int FrontBrakeCompound
     {
@@ -61,7 +47,7 @@ namespace ACCSetupManager.ViewModels.SetupFileViewer
       set => this.SetProperty(ref this.rearBrakeCompound, value);
     }
 
-    public int TyreCompound
+    public string TyreCompound
     {
       get => this.tyreCompound;
       set => this.SetProperty(ref this.tyreCompound, value);
@@ -76,7 +62,7 @@ namespace ACCSetupManager.ViewModels.SetupFileViewer
     public void Apply(SetupFile setupFile, SetupSpec setupSpec)
     {
       var strategy = setupFile.BasicSetup.Strategy;
-      this.TyreCompound = setupFile.BasicSetup.Tyres.TyreCompound;
+      this.TyreCompound = this.ToTyreCompoundName(setupFile.BasicSetup.Tyres.TyreCompound);
       this.Fuel = setupSpec.ToFuel(strategy.Fuel);
       this.PitStops = strategy.NPitStops;
       this.FrontBrakeCompound = setupSpec.ToBrakeCompound(strategy.FrontBrakePadCompound);
@@ -103,12 +89,17 @@ namespace ACCSetupManager.ViewModels.SetupFileViewer
                FuelToAdd = pitStrategy.FuelToAdd,
                RearBrakeCompound = setupSpec.ToBrakeCompound(pitStrategy.RearBreakPadCompound),
                TyreSet = setupSpec.ToTyreSet(pitStrategy.TyreSet),
-               TyreCompound = pitStrategy.Tyres.TyreCompound,
+               TyreCompound = this.ToTyreCompoundName(pitStrategy.Tyres.TyreCompound),
                LeftFrontPsi = setupSpec.ToPressurePsi(pitStrategy.Tyres.TyrePressure[0]),
                RightFrontPsi = setupSpec.ToPressurePsi(pitStrategy.Tyres.TyrePressure[1]),
                LeftRearPsi = setupSpec.ToPressurePsi(pitStrategy.Tyres.TyrePressure[2]),
                RightRearPsi = setupSpec.ToPressurePsi(pitStrategy.Tyres.TyrePressure[03])
              };
+    }
+
+    private string ToTyreCompoundName(int tyreCompound)
+    {
+      return tyreCompound == 0? "Dry": "Wet";
     }
   }
 }

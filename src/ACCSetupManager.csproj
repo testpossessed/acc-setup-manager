@@ -18,8 +18,11 @@
     <None Remove="ACCSetupManager.sln.DotSettings" />
     <None Remove="appsettings.json" />
     <None Remove="Delete.ico" />
+    <None Remove="folder.ico" />
+    <None Remove="gear.ico" />
     <None Remove="Icon.ico" />
     <None Remove="Restore.ico" />
+    <None Remove="save.ico" />
     <None Remove="SetupData\alpine_a110_gt4.json" />
     <None Remove="SetupData\amr_v12_vantage_gt3.json" />
     <None Remove="SetupData\amr_v8_vantage_gt3.json" />
@@ -205,8 +208,11 @@
 
   <ItemGroup>
     <Resource Include="Delete.ico" />
+    <Resource Include="folder.ico" />
+    <Resource Include="gear.ico" />
     <Resource Include="Icon.ico" />
     <Resource Include="Restore.ico" />
+    <Resource Include="save.ico" />
   </ItemGroup>
 
   <ItemGroup>

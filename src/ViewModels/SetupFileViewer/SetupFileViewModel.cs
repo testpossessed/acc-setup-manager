@@ -1,4 +1,5 @@
 ﻿using System;
+using ACCSetupManager.Enums;
 using ACCSetupManager.Models;
 using ACCSetupManager.Services;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
@@ -34,6 +35,28 @@ namespace ACCSetupManager.ViewModels.SetupFileViewer
       this.MechanicalGrip.Apply(this.setupFile, this.setupSpec);
       this.Dampers.Apply(this.setupFile);
       this.Aero.Apply(this.setupFile, this.setupSpec);
+    }
+
+    internal SetupFile ToSetupFile()
+    {
+      var result = new SetupFile();
+      this.setupFile.TrackBopType = this.setupFile.TrackBopType;
+      this.setupFile.VehicleIdentifier = this.setupFile.VehicleIdentifier;
+      this.setupFile.FriendlyName = this.setupFile.FriendlyName;
+
+      this.setupFile.BasicSetup = this.MapBasicSetup();
+      
+
+      return result;
+    }
+
+    private BasicSetup MapBasicSetup()
+    {
+      var result = new BasicSetup
+                   {
+                     Alignment = this.Tyres.ToAlignment(this.setupSpec)
+                   };
+      return result;
     }
   }
 }

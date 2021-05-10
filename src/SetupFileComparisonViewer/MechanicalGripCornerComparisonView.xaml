@@ -33,7 +33,7 @@
                    Text="{Binding WheelRate, StringFormat={}{0:f0}}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource ValueTextBlockStyle}">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding WheelRateDiffers}"
                              Value="true">
@@ -54,7 +54,7 @@
                    Text="{Binding BumpStopRateDown, StringFormat={}{0:f0}}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource ValueTextBlockStyle}">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding BumpStopRateDownDiffers}"
                              Value="true">
@@ -75,7 +75,7 @@
                    Text="{Binding BumpStopRateUp, StringFormat={}{0:f0}}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource ValueTextBlockStyle}">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding BumpStopRateUpDiffers}"
                              Value="true">
@@ -96,7 +96,7 @@
                    Text="{Binding BumpStopRange, StringFormat={}{0:f0}}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource ValueTextBlockStyle}">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding BumpStopRangeDiffers}"
                              Value="true">

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows;
 using ACCSetupManager.Models;
 using Newtonsoft.Json;
@@ -158,13 +159,31 @@ namespace ACCSetupManager.Services
     internal static void RestoreSetup(string vehicleIdentifier,
       string circuitIdentifier,
       string sourceFilePath,
-      bool currentVersion)
+      bool isVersion)
     {
       var sourceFileName = Path.GetFileNameWithoutExtension(sourceFilePath);
-      var targetFileName = currentVersion? GetOriginalFileName(sourceFilePath): sourceFileName;
+      var targetFileName = isVersion? GetOriginalFileName(sourceFilePath): sourceFileName;
 
       var targetPath = Path.Combine(PathProvider.AccSetupsFolderPath, vehicleIdentifier, circuitIdentifier, $"{targetFileName}.json");
       File.Copy(sourceFilePath, targetPath, true);
+    }
+
+    internal static void SaveSetup(string vehicleIdentifier,
+      string circuitIdentifier,
+      string sourceFilePath,
+      bool isVersion,
+      SetupFile setupFile)
+    {
+      var sourceFileName = Path.GetFileNameWithoutExtension(sourceFilePath);
+      var targetFileName = isVersion? GetOriginalFileName(sourceFilePath): sourceFileName;
+
+      var targetPath = Path.Combine(PathProvider.AccSetupsFolderPath,
+        vehicleIdentifier,
+        circuitIdentifier,
+        $"{targetFileName}.json");
+
+      var json = JsonConvert.SerializeObject(setupFile);
+      File.WriteAllText(targetPath, json, Encoding.UTF8);
     }
   }
 }

@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
              xmlns:vm="clr-namespace:ACCSetupManager.ViewModels.SetupFileViewer"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance vm:MechanicalGripCornerViewModel}">
@@ -30,52 +29,40 @@
                    Margin="5">
           Wheel Rate Nm
         </TextBlock>
-        <syncfusion:UpDown Grid.Column="1"
-                           Grid.Row="0"
-                           Value="{Binding WheelRate}"
-                           MinValue="115000"
-                           MaxValue="185000"
-                           Step="10000"
-                           NumberDecimalDigits="0" />
+        <TextBlock Grid.Column="1"
+                   Grid.Row="0"
+                   Style="{StaticResource ValueTextBlockStyle}"
+                   Text="{Binding WheelRate, StringFormat={}{0:f0}}" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="1"
                    Margin="5">
           Bump Stop Rate Down N
         </TextBlock>
-        <syncfusion:UpDown Grid.Column="1"
-                           Grid.Row="1"
-                           Value="{Binding BumpStopRateDown}"
-                           MinValue="300"
-                           MaxValue="2500"
-                           Step="100"
-                           NumberDecimalDigits="0" />
+        <TextBlock Grid.Column="1"
+                   Grid.Row="1"
+                   Style="{StaticResource ValueTextBlockStyle}"
+                   Text="{Binding BumpStopRateDown, StringFormat={}{0:f0}}" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="2"
                    Margin="5">
           Bump Stop Rate Up N
         </TextBlock>
-        <syncfusion:UpDown Grid.Column="1"
-                           Grid.Row="2"
-                           Value="{Binding BumpStopRateUp}"
-                           MinValue="300"
-                           MaxValue="2500"
-                           Step="100"
-                           NumberDecimalDigits="0" />
+        <TextBlock Grid.Column="1"
+                   Grid.Row="2"
+                   Style="{StaticResource ValueTextBlockStyle}"
+                   Text="{Binding BumpStopRateUp, StringFormat={}{0:f0}}" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="3"
                    Margin="5">
           Bump Stop Range
         </TextBlock>
-        <syncfusion:UpDown Grid.Column="1"
-                           Grid.Row="3"
-                           Value="{Binding BumpStopRange}"
-                           MinValue="300"
-                           MaxValue="0"
-                           Step="68"
-                           NumberDecimalDigits="0" />
+        <TextBlock Grid.Column="1"
+                   Grid.Row="3"
+                   Style="{StaticResource ValueTextBlockStyle}"
+                   Text="{Binding BumpStopRange, StringFormat={}{0:f0}}" />
       </Grid>
     </GroupBox>
   </Grid>

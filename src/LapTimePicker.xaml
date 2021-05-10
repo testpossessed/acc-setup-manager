@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+             xmlns:sf="http://schemas.syncfusion.com/wpf"
              xmlns:viewModels="clr-namespace:ACCSetupManager.ViewModels"
              xmlns:accSetupManager="clr-namespace:ACCSetupManager"
              mc:Ignorable="d"
@@ -17,7 +17,7 @@
       <ColumnDefinition Width="Auto" />
     </Grid.ColumnDefinitions>
 
-    <syncfusion:UpDown Grid.Column="0"
+    <sf:UpDown Grid.Column="0"
                        Grid.Row="0"
                        Value="{Binding Minutes, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type accSetupManager:LapTimePicker}}}"
                        MinValue="0"
@@ -29,7 +29,7 @@
                Grid.Row="0">
       :
     </TextBlock>
-    <syncfusion:UpDown Grid.Column="2"
+    <sf:UpDown Grid.Column="2"
                        Grid.Row="0"
                        Value="{Binding Seconds, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type accSetupManager:LapTimePicker}}}"
                        MinValue="0"

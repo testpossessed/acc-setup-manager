@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
-             mc:Ignorable="d">
+             xmlns:vm="clr-namespace:ACCSetupManager.ViewModels.SetupFileViewer"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance vm:ElectronicsViewModel}">
   <Grid HorizontalAlignment="Stretch"
         VerticalAlignment="Top">
 
@@ -41,51 +42,46 @@
                    Margin="5">
           TC
         </TextBlock>
-        <syncfusion:UpDown Grid.Column="1"
-                           Grid.Row="0"
-                           Value="{Binding Tc1}"
-                           MinValue="0"
-                           MaxValue="8" />
+        <TextBlock Grid.Column="1"
+                   Grid.Row="0"
+                   Style="{StaticResource ValueTextBlockStyle}"
+                   Text="{Binding Tc1, StringFormat={}{0:f0}}" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="1">
           TC2
         </TextBlock>
-        <syncfusion:UpDown Grid.Column="1"
-                           Grid.Row="1"
-                           Value="{Binding Tc2}"
-                           MinValue="0"
-                           MaxValue="8" />
+        <TextBlock Grid.Column="1"
+                   Grid.Row="1"
+                   Style="{StaticResource ValueTextBlockStyle}"
+                   Text="{Binding Tc2, StringFormat={}{0:f0}}" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="2">
           ABS
         </TextBlock>
-        <syncfusion:UpDown Grid.Column="1"
-                           Grid.Row="2"
-                           Value="{Binding Abs}"
-                           MinValue="0"
-                           MaxValue="11" />
+        <TextBlock Grid.Column="1"
+                   Grid.Row="2"
+                   Style="{StaticResource ValueTextBlockStyle}"
+                   Text="{Binding Abs, StringFormat={}{0:f0}}" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="3">
           ECU Map
         </TextBlock>
-        <syncfusion:UpDown Grid.Column="1"
-                           Grid.Row="3"
-                           Value="{Binding EcuMap}"
-                           MinValue="1"
-                           MaxValue="8" />
+        <TextBlock Grid.Column="1"
+                   Grid.Row="3"
+                   Style="{StaticResource ValueTextBlockStyle}"
+                   Text="{Binding EcuMap, StringFormat={}{0:f0}}" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="4">
           Telemetry Laps
         </TextBlock>
-        <syncfusion:UpDown Grid.Column="1"
-                           Grid.Row="4"
-                           Value="{Binding TelemetryLaps}"
-                           MinValue="0"
-                           MaxValue="99" />
+        <TextBlock Grid.Column="1"
+                   Grid.Row="4"
+                   Style="{StaticResource ValueTextBlockStyle}"
+                   Text="{Binding TelemetryLaps, StringFormat={}{0:f0}}" />
       </Grid>
 
     </GroupBox>

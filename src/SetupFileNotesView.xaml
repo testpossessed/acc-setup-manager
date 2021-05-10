@@ -46,7 +46,7 @@
                  AcceptsReturn="True"
                  TextWrapping="Wrap"
                  MinHeight="50"
-                 Margin="5" />
+                 Margin="5" VerticalContentAlignment="Top" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="2">
@@ -69,7 +69,7 @@
                  AcceptsReturn="True"
                  TextWrapping="Wrap"
                  Margin="5"
-                 MinHeight="50" />
+                 MinHeight="50" VerticalContentAlignment="Top" />
 
         <Button Grid.Row="0"
                 Grid.Column="1"

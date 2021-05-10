@@ -57,7 +57,7 @@
                    Text="{Binding ArbFront}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource ValueTextBlockStyle}">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding ArbFrontDiffers}"
                              Value="true">
@@ -78,7 +78,7 @@
                    Text="{Binding BrakePower}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource ValueTextBlockStyle}">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding BrakePowerDiffers}"
                              Value="true">
@@ -99,7 +99,7 @@
                    Text="{Binding BrakeBias, StringFormat={}{0:f1}}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource ValueTextBlockStyle}">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding BrakeBiasDiffers}"
                              Value="true">
@@ -120,7 +120,7 @@
                    Text="{Binding SteerRatio}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource ValueTextBlockStyle}">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding SteerRatioDiffers}"
                              Value="true">
@@ -184,7 +184,7 @@
                    Text="{Binding ArbRear}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource ValueTextBlockStyle}">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding ArbRearDiffers}"
                              Value="true">
@@ -205,7 +205,7 @@
                    Text="{Binding DifferentialPreload}">
           <TextBlock.Style>
             <Style TargetType="{x:Type TextBlock}"
-                   BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                   BasedOn="{StaticResource ValueTextBlockStyle}">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding DifferentialPreloadDiffers}"
                              Value="true">

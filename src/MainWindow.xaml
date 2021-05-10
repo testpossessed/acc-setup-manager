@@ -1,19 +1,19 @@
 ﻿<sf:ChromelessWindow x:Class="ACCSetupManager.MainWindow"
-                             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-                             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                             xmlns:local="clr-namespace:ACCSetupManager"
-                             xmlns:vm="clr-namespace:ACCSetupManager.ViewModels"
-                             xmlns:sf="http://schemas.syncfusion.com/wpf"
-                             xmlns:sfv="clr-namespace:ACCSetupManager.SetupFileViewer"
-                             xmlns:sfcv="clr-namespace:ACCSetupManager.SetupFileComparisonViewer"
-                             Icon="Icon.ico"
-                             mc:Ignorable="d"
-                             Title="ACC Setup Manager"
-                             WindowStartupLocation="CenterScreen"
-                             WindowState="Maximized"
-                             d:DataContext="{d:DesignInstance vm:MainViewModel}">
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:local="clr-namespace:ACCSetupManager"
+                     xmlns:vm="clr-namespace:ACCSetupManager.ViewModels"
+                     xmlns:sf="http://schemas.syncfusion.com/wpf"
+                     xmlns:sfv="clr-namespace:ACCSetupManager.SetupFileViewer"
+                     xmlns:sfcv="clr-namespace:ACCSetupManager.SetupFileComparisonViewer"
+                     Icon="Icon.ico"
+                     mc:Ignorable="d"
+                     Title="ACC Setup Manager"
+                     WindowStartupLocation="CenterScreen"
+                     WindowState="Maximized"
+                     d:DataContext="{d:DesignInstance vm:MainViewModel}">
   <DockPanel>
     <sf:MenuAdv DockPanel.Dock="Top">
       <sf:MenuItemAdv Header="_File">
@@ -32,9 +32,9 @@
 
     <Grid>
       <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="300" />
         <ColumnDefinition Width="Auto" />
-        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="*" />
         <ColumnDefinition>
           <ColumnDefinition.Style>
             <Style TargetType="ColumnDefinition">
@@ -76,59 +76,89 @@
         <TreeView.Resources>
           <HierarchicalDataTemplate DataType="{x:Type vm:VehicleViewModel}"
                                     ItemsSource="{Binding Circuits}">
-            <TreeViewItem Header="{Binding Name}" />
+            <StackPanel Orientation="Horizontal">
+              <Image Source="folder.ico"
+                     Height="16"
+                     Width="16" />
+              <TextBlock Text="{Binding Name}" />
+            </StackPanel>
           </HierarchicalDataTemplate>
           <HierarchicalDataTemplate DataType="{x:Type vm:CircuitViewModel}"
                                     ItemsSource="{Binding Setups}">
-            <TreeViewItem Header="{Binding Name}" />
+            <StackPanel Orientation="Horizontal">
+              <Image Source="folder.ico"
+                     Height="16"
+                     Width="16" />
+              <TextBlock Text="{Binding Name}" />
+            </StackPanel>
           </HierarchicalDataTemplate>
           <HierarchicalDataTemplate DataType="{x:Type vm:SetupViewModel}">
-            <TreeViewItem IsSelected="{Binding IsSelected}">
-              <TreeViewItem.Header>
-                <StackPanel Orientation="Horizontal" Margin="0">
-                  <TextBlock Text="{Binding Name}"
-                             VerticalAlignment="Center" />
-                  <sf:ButtonAdv SizeMode="Small"
-                                        SmallIcon="Delete.ico"
-                                        Command="{Binding DataContext.DeleteVersion, RelativeSource={RelativeSource Mode=FindAncestor,  AncestorType={x:Type local:MainWindow}}}"
-                                        CommandParameter="{Binding}"
-                                        VerticalAlignment="Center"
-                                        BorderThickness="0"
-                                        Padding="0"
-                                        Margin="0"
-                                        ToolTip="Delete this setup version"
-                                        Visibility="{Binding DeleteButtonVisibility}" Background="Transparent" />
-                </StackPanel>
-              </TreeViewItem.Header>
-              <TreeViewItem.InputBindings>
-                <MouseBinding MouseAction="LeftClick"
-                              Command="{Binding DataContext.ShowSetup, RelativeSource={RelativeSource Mode=FindAncestor,  AncestorType={x:Type local:MainWindow}}}"
-                              CommandParameter="{Binding}" />
-              </TreeViewItem.InputBindings>
-            </TreeViewItem>
+            <StackPanel Orientation="Horizontal"
+                        Margin="0"
+                        HorizontalAlignment="Left">
+              <Image Source="gear.ico"
+                     Height="16"
+                     Width="16" />
+              <TextBlock Text="{Binding Name}"
+                         VerticalAlignment="Center">
+                <TextBlock.InputBindings>
+                  <MouseBinding MouseAction="LeftClick"
+                                Command="{Binding DataContext.ShowSetup, RelativeSource={RelativeSource Mode=FindAncestor,  AncestorType={x:Type local:MainWindow}}}"
+                                CommandParameter="{Binding}" />
+                </TextBlock.InputBindings>
+              </TextBlock>
+              <sf:ButtonAdv SizeMode="Small"
+                            SmallIcon="Delete.ico"
+                            Command="{Binding DataContext.DeleteVersion, RelativeSource={RelativeSource Mode=FindAncestor,  AncestorType={x:Type local:MainWindow}}}"
+                            CommandParameter="{Binding}"
+                            VerticalAlignment="Center"
+                            BorderThickness="0"
+                            Padding="0"
+                            Margin="0"
+                            ToolTip="Delete this setup version"
+                            Visibility="{Binding DeleteButtonVisibility}"
+                            Background="Transparent" />
+            </StackPanel>
           </HierarchicalDataTemplate>
 
         </TreeView.Resources>
-        <TreeViewItem Header="Master Setups (ACC)"
-                      ItemsSource="{Binding MasterTreeHierarchy}"
-                      IsExpanded="True" />
-        <TreeViewItem Header="Versions"
-                      ItemsSource="{Binding VersionTreeHierarchy}"
-                      IsExpanded="True" />
+        <TreeViewItem ItemsSource="{Binding MasterTreeHierarchy}"
+                      IsExpanded="True">
+          <TreeViewItem.Header>
+            <StackPanel Orientation="Horizontal">
+              <Image Source="folder.ico"
+                     Height="16"
+                     Width="16" />
+              <TextBlock Text="Master Setups (ACC)" />
+            </StackPanel>
+          </TreeViewItem.Header>
+        </TreeViewItem>
+        <TreeViewItem ItemsSource="{Binding VersionTreeHierarchy}"
+                      IsExpanded="True">
+          <TreeViewItem.Header>
+            <StackPanel Orientation="Horizontal">
+              <Image Source="folder.ico"
+                     Height="16"
+                     Width="16" />
+              <TextBlock Text="Versions" />
+            </StackPanel>
+          </TreeViewItem.Header>
+        </TreeViewItem>
       </TreeView>
 
       <sf:ToolBarAdv Grid.Row="0"
-                             Grid.Column="2"
-                             Grid.ColumnSpan="3"
-                             EnableAddRemoveButton="False"
-                             GripperVisibility="Hidden"
-                             OverflowButtonVisibility="Hidden">
+                     Grid.Column="2"
+                     Grid.ColumnSpan="3"
+                     EnableAddRemoveButton="False"
+                     GripperVisibility="Hidden"
+                     OverflowButtonVisibility="Hidden">
 
         <sf:ButtonAdv SizeMode="Normal"
-                              SmallIcon="Restore.ico"
-                              Label="Restore"
-                              ToolTip="Restore the current setup to ACC"
-                              Command="{Binding RestoreSetup}" />
+                      SmallIcon="Restore.ico"
+                      Label="Restore"
+                      ToolTip="Restore the current setup to ACC"
+                      Command="{Binding RestoreSetup}"
+                      Width="100" />
         <CheckBox IsChecked="{Binding IsCompareEnabled}"
                   VerticalAlignment="Center"
                   Margin="10 5 5 5"
@@ -137,22 +167,25 @@
           Compare To:
         </CheckBox>
         <sf:ComboBoxAdv MinWidth="100"
-                                Margin="5 2 10 2"
-                                ItemsSource="{Binding Versions}"
-                                Text="Versions"
-                                DisplayMemberPath="Name"
-                                SelectedValue="{Binding SelectedVersion, Mode=TwoWay}"
-                                IsEnabled="{Binding IsCompareEnabled}"
-                                VerticalAlignment="Center"
-                                ToolTip="Select a setup to compare side by side with the current one" />
-        <Label VerticalAlignment="Center" Margin="10 0 0 0 ">Theme:</Label>
+                        Margin="5 2 10 2"
+                        ItemsSource="{Binding Versions}"
+                        Text="Versions"
+                        DisplayMemberPath="Name"
+                        SelectedValue="{Binding SelectedVersion, Mode=TwoWay}"
+                        IsEnabled="{Binding IsCompareEnabled}"
+                        VerticalAlignment="Center"
+                        ToolTip="Select a setup to compare side by side with the current one" />
+        <Label VerticalAlignment="Center"
+               Margin="10 0 0 0 ">
+          Theme:
+        </Label>
         <sf:ComboBoxAdv MinWidth="100"
-                                Margin="5 2"
-                                ItemsSource="{Binding Themes}"
-                                Text="Themes"
-                                SelectedValue="{Binding SelectedTheme, Mode=TwoWay}"
-                                VerticalAlignment="Center"
-                                ToolTip="Select a different theme to be applied next time you start ACC Setup Manager" />
+                        Margin="5 2"
+                        ItemsSource="{Binding Themes}"
+                        Text="Themes"
+                        SelectedValue="{Binding SelectedTheme, Mode=TwoWay}"
+                        VerticalAlignment="Center"
+                        ToolTip="Select a different theme to be applied next time you start ACC Setup Manager" />
       </sf:ToolBarAdv>
       <GridSplitter Grid.Column="1"
                     Grid.Row="0"
@@ -163,10 +196,10 @@
                     ShowsPreview="True" />
 
       <sfv:SetupFileViewer Grid.Column="2"
-                                       Grid.Row="1"
-                                       HorizontalAlignment="Stretch"
-                                       VerticalAlignment="Stretch"
-                                       DataContext="{Binding Setup}" />
+                           Grid.Row="1"
+                           HorizontalAlignment="Stretch"
+                           VerticalAlignment="Stretch"
+                           DataContext="{Binding Setup}" />
 
       <GridSplitter Grid.Column="3"
                     Grid.Row="1"
@@ -176,11 +209,11 @@
                     ShowsPreview="True" />
 
       <sfcv:SetupFileComparisonViewer Grid.Column="4"
-                                                           Grid.Row="1"
-                                                           HorizontalAlignment="Stretch"
-                                                           VerticalAlignment="Stretch"
-                                                           DataContext="{Binding ComparisonSetup}"
-                                                           Visibility="{Binding DataContext.ComparisonSetupVisibility, RelativeSource={RelativeSource Mode=FindAncestor,  AncestorType={x:Type local:MainWindow}}}" />
+                                      Grid.Row="1"
+                                      HorizontalAlignment="Stretch"
+                                      VerticalAlignment="Stretch"
+                                      DataContext="{Binding ComparisonSetup}"
+                                      Visibility="{Binding DataContext.ComparisonSetupVisibility, RelativeSource={RelativeSource Mode=FindAncestor,  AncestorType={x:Type local:MainWindow}}}" />
     </Grid>
   </DockPanel>
 </sf:ChromelessWindow>

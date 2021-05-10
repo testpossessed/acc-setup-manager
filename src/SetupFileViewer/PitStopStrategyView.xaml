@@ -6,8 +6,7 @@
              xmlns:sf="http://schemas.syncfusion.com/wpf"
              xmlns:vm="clr-namespace:ACCSetupManager.ViewModels.SetupFileViewer"
              mc:Ignorable="d"
-             d:DataContext="{d:DesignInstance vm:PitStrategyViewModel}"
-             IsEnabled="False">
+             d:DataContext="{d:DesignInstance vm:PitStrategyViewModel}">
   <Grid HorizontalAlignment="Stretch"
         VerticalAlignment="Stretch">
 
@@ -48,100 +47,82 @@
                    Margin="5">
           Fuel To Add (L)
         </TextBlock>
-        <sf:UpDown Grid.Column="1"
+        <TextBlock Grid.Column="1"
                    Grid.Row="0"
-                   Value="{Binding FuelToAdd}"
-                   MinValue="2"
-                   MaxValue="120" />
+                   Style="{StaticResource ValueTextBlockStyle}"
+                   Text="{Binding FuelToAdd, StringFormat={}{0:f0}}" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="1">
           Tyre Compound
         </TextBlock>
-        <sf:ComboBoxAdv Grid.Column="1"
+        <TextBlock Grid.Column="1"
                         Grid.Row="1"
-                        ItemsSource="{Binding TyreCompounds }"
-                        SelectedValue="{Binding TyreCompound}"
-                        IsEditable="False"
-                        AllowMultiSelect="False"
-                        HorizontalAlignment="Stretch"
-                        DisplayMemberPath="Text"
-                        SelectedValuePath="Value"
-                        Margin="2" />
+                        Style="{StaticResource ValueTextBlockStyle}"
+                        Text="{Binding TyreCompound}" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="2">
           Tyre Set
         </TextBlock>
-        <sf:UpDown Grid.Column="1"
+        <TextBlock Grid.Column="1"
                    Grid.Row="2"
-                   Value="{Binding TyreSet}"
-                   MinValue="1"
-                   MaxValue="50" />
+                   Style="{StaticResource ValueTextBlockStyle}"
+                   Text="{Binding TyreSet, StringFormat={}{0:f0}}" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="3">
           Left Front PSI
         </TextBlock>
-        <sf:UpDown Grid.Column="1"
+        <TextBlock Grid.Column="1"
                    Grid.Row="3"
-                   Value="{Binding LeftFrontPsi}"
-                   MinValue="20.3"
-                   MaxValue="35"
-                   NumberDecimalDigits="1" />
+                   Style="{StaticResource ValueTextBlockStyle}"
+                   Text="{Binding LeftFrontPsi, StringFormat={}{0:f1}}" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="4">
           Right Front PSI
         </TextBlock>
-        <sf:UpDown Grid.Column="1"
+        <TextBlock Grid.Column="1"
                    Grid.Row="4"
-                   Value="{Binding RightFrontPsi}"
-                   MinValue="20.3"
-                   MaxValue="35"
-                   NumberDecimalDigits="1" />
+                   Style="{StaticResource ValueTextBlockStyle}"
+                   Text="{Binding RightFrontPsi, StringFormat={}{0:f1}}" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="5">
           Left Rear PSI
         </TextBlock>
-        <sf:UpDown Grid.Column="1"
+        <TextBlock Grid.Column="1"
                    Grid.Row="5"
-                   Value="{Binding LeftFrontPsi}"
-                   MinValue="20.3"
-                   MaxValue="35"
-                   NumberDecimalDigits="1" />
+                   Style="{StaticResource ValueTextBlockStyle}"
+                   Text="{Binding LeftFrontPsi, StringFormat={}{0:f1}}" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="6">
           Right Rear PSI
         </TextBlock>
-        <sf:UpDown Grid.Column="1"
+        <TextBlock Grid.Column="1"
                    Grid.Row="6"
-                   Value="{Binding RightRearPsi}"
-                   MinValue="20.3"
-                   MaxValue="35"
-                   NumberDecimalDigits="1" />
+                   Style="{StaticResource ValueTextBlockStyle}"
+                   Text="{Binding RightRearPsi, StringFormat={}{0:f1}}" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="7">
           Front Brake Compound
         </TextBlock>
-        <sf:UpDown Grid.Column="1"
+        <TextBlock Grid.Column="1"
                    Grid.Row="7"
-                   Value="{Binding FrontBrakeCompound}"
-                   MinValue="1"
-                   MaxValue="4" />
+                   Style="{StaticResource ValueTextBlockStyle}"
+                   Text="{Binding FrontBrakeCompound, StringFormat={}{0:f0}}" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="8">
           Rear Brake Compound
         </TextBlock>
-        <sf:UpDown Grid.Column="1"
+        <TextBlock Grid.Column="1"
                    Grid.Row="8"
-                   Value="{Binding RearBrakeCompound}"
-                   MinValue="1"
-                   MaxValue="4" />
+                   Style="{StaticResource ValueTextBlockStyle}"
+                   Text="{Binding RearBrakeCompound, StringFormat={}{0:f0}}" />
 
       </Grid>
 

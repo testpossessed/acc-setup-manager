@@ -37,7 +37,7 @@
                Text="{Binding PressurePsi, StringFormat={}{0:f1}}">
         <TextBlock.Style>
           <Style TargetType="{x:Type TextBlock}"
-                 BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                 BasedOn="{StaticResource ValueTextBlockStyle}">
             <Style.Triggers>
               <DataTrigger Binding="{Binding PressurePsiDiffers}"
                            Value="true">
@@ -56,10 +56,10 @@
       <TextBlock IsEnabled="false"
                Grid.Column="1"
                Grid.Row="1"
-               Text="{Binding Toe, StringFormat={}{0:f1}}">
+               Text="{Binding Toe, StringFormat={}{0:f2}}">
         <TextBlock.Style>
           <Style TargetType="{x:Type TextBlock}"
-                 BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                 BasedOn="{StaticResource ValueTextBlockStyle}">
             <Style.Triggers>
               <DataTrigger Binding="{Binding ToeDiffers}"
                            Value="true">
@@ -81,7 +81,7 @@
                Text="{Binding Camber, StringFormat={}{0:f1}}">
         <TextBlock.Style>
           <Style TargetType="{x:Type TextBlock}"
-                 BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                 BasedOn="{StaticResource ValueTextBlockStyle}">
             <Style.Triggers>
               <DataTrigger Binding="{Binding CamberDiffers}"
                            Value="true">
@@ -103,7 +103,7 @@
                Text="{Binding Caster, StringFormat={}{0:f1}}">
         <TextBlock.Style>
           <Style TargetType="{x:Type TextBlock}"
-                 BasedOn="{StaticResource ComparisonValueTextBlockStyle}">
+                 BasedOn="{StaticResource ValueTextBlockStyle}">
             <Style.Triggers>
               <DataTrigger Binding="{Binding CasterDiffers}"
                            Value="true">
