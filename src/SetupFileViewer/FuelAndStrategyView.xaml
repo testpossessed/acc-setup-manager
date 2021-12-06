@@ -8,50 +8,51 @@
              xmlns:sfv="clr-namespace:ACCSetupManager.SetupFileViewer"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance vm:FuelAndStrategyViewModel}">
-  <Grid HorizontalAlignment="Stretch"
-        VerticalAlignment="Top">
+    <Grid HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch">
 
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition />
-      <ColumnDefinition Width="2*" />
-      <ColumnDefinition />
-    </Grid.ColumnDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
 
-    <Grid.RowDefinitions>
-      <RowDefinition />
-      <RowDefinition />
-    </Grid.RowDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
 
-    <sfv:FuelAndTyreStrategyView Grid.Column="1"
+        <sfv:FuelAndTyreStrategyView Grid.Column="1"
                                    Grid.Row="0" />
 
-    <sf:TabControlExt Grid.Column="0"
+        <sf:TabControlExt Grid.Column="0"
                               Grid.Row="1"
                               Grid.ColumnSpan="3"
                               HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch"
                               ItemsSource="{Binding PitStrategies}"
                               Margin="5">
 
-      <sf:TabControlExt.ItemContainerStyle>
-        <Style TargetType="sf:TabItemExt">
-          <Setter Property="HeaderTemplate">
-            <Setter.Value>
-              <DataTemplate>
-                <TextBlock>
+            <sf:TabControlExt.ItemContainerStyle>
+                <Style TargetType="sf:TabItemExt">
+                    <Setter Property="HeaderTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <TextBlock>
                   <Run>Pit Stop </Run>
                   <Run Text="{Binding PitStopNumber}" />
-                </TextBlock>
-              </DataTemplate>
-            </Setter.Value>
-          </Setter>
-        </Style>
-      </sf:TabControlExt.ItemContainerStyle>
-      <sf:TabControlExt.ContentTemplate>
-        <DataTemplate>
-          <sfv:PitStopsStrategyView />
-        </DataTemplate>
-      </sf:TabControlExt.ContentTemplate>
-    </sf:TabControlExt>
+                                </TextBlock>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </sf:TabControlExt.ItemContainerStyle>
+            <sf:TabControlExt.ContentTemplate>
+                <DataTemplate>
+                    <sfv:PitStopsStrategyView />
+                </DataTemplate>
+            </sf:TabControlExt.ContentTemplate>
+        </sf:TabControlExt>
 
-  </Grid>
+    </Grid>
 </UserControl>

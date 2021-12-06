@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="ACCSetupManager.exe" version="1.0.0.13" publicKeyToken="cb1ab25c07dc3f87" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="ACCSetupManager.exe" version="1.0.0.13" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <description asmv2:iconFile="Icon.ico" xmlns="urn:schemas-microsoft-com:asm.v1">When running automatically monitors Assetto Corsa Competizione setup files and maintains different versions for each change.</description>
   <application />
   <entryPoint>
@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Launcher.exe" size="15320">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Launcher.exe" size="14336">
       <assemblyIdentity name="Launcher" version="5.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>FEbdWtxgexDoqeJPpwTITO/nnJJ7o4Kw0oH1zr5uaTI=</dsig:DigestValue>
+        <dsig:DigestValue>sZOG+09e/OHJ2zZBZTKxNUag5MBOAUmWgGrUEkOhvZE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -63,31 +63,31 @@
       <dsig:DigestValue>JDJHm5P1h/6xISpEPAiN+9uktNKW4m8gEFgEgRseRDI=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="ACCSetupManager.dll" size="1821144">
+  <file name="ACCSetupManager.dll" size="1513984">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>NmOVgedUSCZWhJje2mezTmd9UhkkeWtCg/g6gfLdH/g=</dsig:DigestValue>
+      <dsig:DigestValue>D3hZvABJG6rRuElADyEjsfqMBuW9EKbxyIcevfWG2wY=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="ACCSetupManager.exe" size="373208">
+  <file name="ACCSetupManager.exe" size="355840">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>/I1YaLOkygHvsL/7j3TqlHeUGSqzaJgYNh3Raaqjamk=</dsig:DigestValue>
+      <dsig:DigestValue>ulfRug+Mjt9juSj+bknLU2XNyUXTTKW79CcB64/3S9g=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="ACCSetupManager.runtimeconfig.json" size="154">
+  <file name="ACCSetupManager.runtimeconfig.json" size="260">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>NiDVPch7SqLL1QtcqAuqPjoBfZ04y3L2kORCla/DP3c=</dsig:DigestValue>
+      <dsig:DigestValue>TAy4UQmrQZe65gulPZpwP3mxUVQNvVse7HGqvBQf5Mo=</dsig:DigestValue>
     </hash>
   </file>
   <file name="appsettings.json" size="4499">
@@ -279,346 +279,346 @@
       <dsig:DigestValue>JKANAhBWTkMl1tHynmRjvd5ZnIPZFvX9bFYHA4lLymk=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\_default.json" size="1006">
+  <file name="SetupData\_default.json" size="1046">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>MZnic9xnj2z20tsdUugz6AnBwNiRUu9FdOBEmzyxTQQ=</dsig:DigestValue>
+      <dsig:DigestValue>Ssu0SJcNUZ8tgBeBADxkAjaSzCMncUUmqgSuZ7mG/sA=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\alpine_a110_gt4.json" size="1057">
+  <file name="SetupData\alpine_a110_gt4.json" size="1097">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>GSBRVDeniPHxtvQlvhE20dVOZ1ONEqrnNlSjnJP/nB0=</dsig:DigestValue>
+      <dsig:DigestValue>d84abiPKudzfuMO1x4FH0QtxyChE7xqp7xKBP49ul2E=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\amr_v12_vantage_gt3.json" size="1052">
+  <file name="SetupData\amr_v12_vantage_gt3.json" size="1092">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>qrHoTkrGApex+zvh9uicfmRQwAiEGZKo83FHvxBR85g=</dsig:DigestValue>
+      <dsig:DigestValue>nfsiGZhHabxBdkevU+tI14dbUv+kTq/Oafierjp2+R0=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\amr_v8_vantage_gt3.json" size="1054">
+  <file name="SetupData\amr_v8_vantage_gt3.json" size="1094">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>vdRLMxJpNY7LzZUhJSiMxnQ2eyp6cuMDsnIriLzx1wo=</dsig:DigestValue>
+      <dsig:DigestValue>tpFD7ygy9Itj7C9cxLqpLUu0t0V6zdeyTgoTl5Q1iUI=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\amr_v8_vantage_gt4.json" size="1051">
+  <file name="SetupData\amr_v8_vantage_gt4.json" size="1091">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>zOpAwMcmTbssDZQ1CftzoTTVWgG7Cig3JHG0KJ7RQZw=</dsig:DigestValue>
+      <dsig:DigestValue>5IJsREy2ezs+s9x0940lBSLXWsTtAKNO5t26x5qdJ2o=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\audi_r8_gt4.json" size="1069">
+  <file name="SetupData\audi_r8_gt4.json" size="1109">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>hyNdAFehl9p9BLQnFnNFVD/ROlYjDmXVf3+sIEGchy8=</dsig:DigestValue>
+      <dsig:DigestValue>Q7pq21Eh/hkUtNmiCpLI3nCosZi5Q40Gyh7pMf8ViPU=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\audi_r8_lms.json" size="1119">
+  <file name="SetupData\audi_r8_lms.json" size="1159">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>WfAtIFidgWphRw8LXeQc+nbV5waGFQAsSg0RZtMq/+8=</dsig:DigestValue>
+      <dsig:DigestValue>m4Hbp815NVG1dJQ1R5YsK1ZtlVcqIIF0nrZPE/3v5ro=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\audi_r8_lms_evo.json" size="1119">
+  <file name="SetupData\audi_r8_lms_evo.json" size="1159">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>KKlaNADSN5ymOTKByZ+qZigEAHyo608y0nw12+JcfCM=</dsig:DigestValue>
+      <dsig:DigestValue>FQnf8MVvxvNMP80VR/BslTrA2ojki8lT8H5QVZ4EI3o=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\bentley_continental_gt3_2016.json" size="1054">
+  <file name="SetupData\bentley_continental_gt3_2016.json" size="1094">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>GXNwdo1GiKsH38yf5TEapLr9fz3a1xoUNKjV6EUsN14=</dsig:DigestValue>
+      <dsig:DigestValue>BFB6b9T4XCJl6dJTt8zMjHuVKLfhoTA8cBRhpMjSKTk=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\bentley_continental_gt3_2018.json" size="1054">
+  <file name="SetupData\bentley_continental_gt3_2018.json" size="1094">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>0PsHm87MbDwIhs/1bqH2Gb4ttpJCvRLDZ2iFIQVUPsY=</dsig:DigestValue>
+      <dsig:DigestValue>rQHGU5A6BhHMB1R9WXTqPbzhHtizH/TyqMA9zJUSBIw=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\bmw_m4_gt4.json" size="1077">
+  <file name="SetupData\bmw_m4_gt4.json" size="1117">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>QIbHprx3blX7WxtfJCbi93uljYT9784oEOccAgojXn0=</dsig:DigestValue>
+      <dsig:DigestValue>JK5/ZII++Be6WXsANN1SuCw6+y2QlKsp6FQK/hvhFhw=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\bmw_m6_gt3.json" size="1124">
+  <file name="SetupData\bmw_m6_gt3.json" size="1164">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>EquI/rpDUfiHCQ49lTz6AmSMbiZDdDq40v1+Y7g+WYE=</dsig:DigestValue>
+      <dsig:DigestValue>VW7VnqTQ/F72z/Pn0guJXGS/6+jRczo645DdDFM+008=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\chevrolet_camaro_gt4r.json" size="1075">
+  <file name="SetupData\chevrolet_camaro_gt4r.json" size="1115">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>EGEFt6TXTcLq1vhptJI+8OSAHGu6cr3RJXKRGbmyIuE=</dsig:DigestValue>
+      <dsig:DigestValue>edmjgN9HSHQ0plNg7/bNw5m9csGMqKR8OXGiHiLQLj4=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\ferrari_488_gt3.json" size="1287">
+  <file name="SetupData\ferrari_488_gt3.json" size="1351">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>WbCUglenq2/f0D7Kl7WwqWhNM9BN5XfYrrgiqJFkbQ8=</dsig:DigestValue>
+      <dsig:DigestValue>rPLJcGYlwOGmS/lf5CfVf46cC0mSFdQEVAYXHLHcWnU=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\ferrari_488_gt3_evo.json" size="1287">
+  <file name="SetupData\ferrari_488_gt3_evo.json" size="1351">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>XC9H4FlzNs71M18ozTwVMeZ7F01HhIrRGd2pfVf1voE=</dsig:DigestValue>
+      <dsig:DigestValue>0oXLH39Vb6E7PJz3WJwl3Uuj7TQG2ZzZhvqvRacQDbY=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\ginetta_g55_gt4.json" size="1051">
+  <file name="SetupData\ginetta_g55_gt4.json" size="1091">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>c1AM8LEfMA32LBIesJnQP+AhHcRlf/MG4JEtve6Ao/w=</dsig:DigestValue>
+      <dsig:DigestValue>mfn19Qz5s3JFY2v1mGiAMGpzFF0k9T49IW9lHASixBE=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\honda_nsx_gt3.json" size="1053">
+  <file name="SetupData\honda_nsx_gt3.json" size="1093">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>KV4fAMcKiJGEOXBNm48AvZ0Uieh+B2QK29FKcn9sLAM=</dsig:DigestValue>
+      <dsig:DigestValue>KD0iwdPo1TaifYvKXN9pHzeReg4Jq+7aY4tWaiKEvBM=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\honda_nsx_gt3_evo.json" size="1053">
+  <file name="SetupData\honda_nsx_gt3_evo.json" size="1093">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>UbY14SMrq09PtQj1SEJPwRc2lxhngczJ6w7ZOclnwBk=</dsig:DigestValue>
+      <dsig:DigestValue>PGPhL9Clb0b0Tpxb9ipTDLq3ob+IiX7ocfA+LHnOMOo=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\jaguar_g3.json" size="1052">
+  <file name="SetupData\jaguar_g3.json" size="1092">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>A/8p+/qkwUpMiTtbcpBElsrj0VFnkqDmetrwftC6bnM=</dsig:DigestValue>
+      <dsig:DigestValue>49i1zUos2QY4rD66GuiikFvuCH/A+H37wUFNHtwjO90=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\ktm_xbow_gt4.json" size="1057">
+  <file name="SetupData\ktm_xbow_gt4.json" size="1097">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>9qCYXzhIGqNPFBPa+GVsKv8PxJL/nYQQJJCBdkVwurU=</dsig:DigestValue>
+      <dsig:DigestValue>HksZqtYcxorpL3MFZREbjf0gF+PhEPVjU7Vjhv6EEEE=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\lamborghini_gallardo_rex.json" size="1053">
+  <file name="SetupData\lamborghini_gallardo_rex.json" size="1093">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>OzOX1HD/IYiLLHkSB9/2zl+lYVlVR7GBhG84rY5oYiA=</dsig:DigestValue>
+      <dsig:DigestValue>ECRxk29nMm9MGGmx+2h8JdZywLCOrGncgWxaXj3/14A=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\lamborghini_huracan_gt3.json" size="1120">
+  <file name="SetupData\lamborghini_huracan_gt3.json" size="1160">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>Ca6kJlAx9kxbBpkTFhUO2Txesz0GGIk4vzKPH8/veoU=</dsig:DigestValue>
+      <dsig:DigestValue>Xo/cdzPjJLh+GGSsVRVqyg1qZWpYW4GqoTW3K+M9gDE=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\lamborghini_huracan_gt3_evo.json" size="1120">
+  <file name="SetupData\lamborghini_huracan_gt3_evo.json" size="1160">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>GmyyEC4g31mDcZ98uyhRJ38pXto/fyeTWCcJOBbo8fE=</dsig:DigestValue>
+      <dsig:DigestValue>WKYfA7h0GsTqpz/ZYBZNlrot8hPd1Kg/mXpJTpo1PNs=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\lamborghini_huracan_st.json" size="1119">
+  <file name="SetupData\lamborghini_huracan_st.json" size="1159">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>m84TjvpFmzMJTpEFoJZFk5Pv7KJkzZDDzJ6DH7JOjGw=</dsig:DigestValue>
+      <dsig:DigestValue>HtZkYhxnRUVdQr9pN44iZh+OY4q4qmm6xdTOekgYZL0=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\lexus_rc_f_gt3.json" size="1120">
+  <file name="SetupData\lexus_rc_f_gt3.json" size="1160">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>8OCBmPltWrcllXWzi5snDbv/FBU8rOplcD0/8g1V79E=</dsig:DigestValue>
+      <dsig:DigestValue>+MwtwC+ibH+nsA3zDaMsDEEzCSAMejcWApuRxNElFhA=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\mazerati_mc_gt4.json" size="1082">
+  <file name="SetupData\mazerati_mc_gt4.json" size="1122">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>7p5ZA/rViTe8vyE94s0MrVAalQ5B6JTEUK3ZPeMfe80=</dsig:DigestValue>
+      <dsig:DigestValue>IuLB/Rja+PftZ+qiCgAkG4orU3stDoPTKsTerTdv/vo=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\mclaren_570s_gt4.json" size="1061">
+  <file name="SetupData\mclaren_570s_gt4.json" size="1101">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>AACPEXdZvO4Q5fz1OZUAmAIFSdCkYT1v3dgITwytips=</dsig:DigestValue>
+      <dsig:DigestValue>hv6ZF9QH057roEZ6QZ+XdgkEOIyPkTet8WRk5aN60aM=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\mclaren_650s_gt3.json" size="1053">
+  <file name="SetupData\mclaren_650s_gt3.json" size="1093">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>0gLuvJnCsVRq1VhZIFbuPpolVEH9ohrVzPmg7btQ2wE=</dsig:DigestValue>
+      <dsig:DigestValue>xxXalFLEPBx4FAN53AHohlxCXkCMg8nTriEHqpOaiRs=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\mclaren_720s_gt3.json" size="1056">
+  <file name="SetupData\mclaren_720s_gt3.json" size="1096">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>XtpIbILQcanXO++uQlxI7iqd1BjycFl3owXz1MoILIU=</dsig:DigestValue>
+      <dsig:DigestValue>iP6Tl++zngoR3T6WO4yETEzXJZgXJC1yRobjBRX7dqc=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\mercedes_amg_gt3.json" size="1116">
+  <file name="SetupData\mercedes_amg_gt3.json" size="1156">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>qcL2KJJCUfA99ae+Wv4ozbczhEl9F1KRjWvcqB8mSsM=</dsig:DigestValue>
+      <dsig:DigestValue>Gjg3L4wDJQ7W8ATK6fd6pqQrps6NRsZMQBWmT7hvOCI=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\mercedes_amg_gt3_evo.json" size="1116">
+  <file name="SetupData\mercedes_amg_gt3_evo.json" size="1156">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>ycgzwTA3X17dC9W63Wj6V50ZHBzVFvVFzA65qsY9IrQ=</dsig:DigestValue>
+      <dsig:DigestValue>mR88Wi5epgv+RhRxSDyAbKXYq9+yA3BhO+zG31kgp6U=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\mercedes_amg_gt4.json" size="1062">
+  <file name="SetupData\mercedes_amg_gt4.json" size="1102">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>ay7hpwWiUZRsoHOz7HY49lu8gP3s7D/B8Cc7B6P9UPk=</dsig:DigestValue>
+      <dsig:DigestValue>vZKFrMGwXsPShnMOjR+U0AL6DYULAfedPjzudsfLELM=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\nissan_gt_r_gt3_2017.json" size="1054">
+  <file name="SetupData\nissan_gt_r_gt3_2017.json" size="1094">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>kTiowfuqkxlSxJ/QgTiR9H7UCzj6RH6g6wm0ammwDm8=</dsig:DigestValue>
+      <dsig:DigestValue>dJcb8G9iDyiXG7fpY7k7/mgN0CtI9r+GdDZvXNCvhgI=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\nissan_gt_r_gt3_2018.json" size="1056">
+  <file name="SetupData\nissan_gt_r_gt3_2018.json" size="1096">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>lpxaoQCYglnkRy6/QTyBuXh00XBbQT5jU8k/1HB5d+g=</dsig:DigestValue>
+      <dsig:DigestValue>XxYKM+pck2fUmsEqr7SUWA+UpqY1wJQwrlpg6FwADkY=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\porsche_718_cayman_gt4_mr.json" size="1096">
+  <file name="SetupData\porsche_718_cayman_gt4_mr.json" size="1136">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>ygMq+7tB6uY5hpF6GuvtgUgGp4rs6OctlOF0E5Svb+o=</dsig:DigestValue>
+      <dsig:DigestValue>cXk8ku27AhUR//0kGh1JsAJT9bLHPAdxz3rGsxBciZ0=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\porsche_991_gt3_r.json" size="1118">
+  <file name="SetupData\porsche_991_gt3_r.json" size="1158">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>2vN0ZbxwCwMuT+JaUQFhesQVCBuUMs2Rzjg9qDpR2BQ=</dsig:DigestValue>
+      <dsig:DigestValue>LML0XZuZznMr5AqSHjODkk0CiNeBEXFS6qhJ7stCbyU=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\porsche_991ii_gt3_cup.json" size="1037">
+  <file name="SetupData\porsche_991ii_gt3_cup.json" size="1077">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>6wz+3kaxHJ9GmoX1WbQprjdF2/iLRNyZAmsr9+uxin4=</dsig:DigestValue>
+      <dsig:DigestValue>QvylIwqYHDrzAl34klOeW72o8Klc7T3nMDRQAF8C7Mk=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SetupData\porsche_991ii_gt3_r.json" size="1272">
+  <file name="SetupData\porsche_991ii_gt3_r.json" size="1334">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>u90wS4XrG2PPCYrjkx0YE+Z1P9TgW9Ia8XaIfyXVMJM=</dsig:DigestValue>
+      <dsig:DigestValue>3yB6Tqv79aINe3JgU/YB8HxUTMrWBxuJQboTqWBR7Jk=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Syncfusion.Data.WPF.dll" size="274432">
@@ -747,4 +747,4 @@
       <dsig:DigestValue>KNrs7EbOwErUSoS3ZsWb0D7orPPg3a1sfVJQICltM7s=</dsig:DigestValue>
     </hash>
   </file>
-<publisherIdentity name="CN=MIKEHANSON3080\mike" issuerKeyHash="28cd6244b22d6353e587aafb90904369397373e7" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>vht8Rut2fMmvecfcp0YPFu5dKKvW/9+NHpkvLeE3M8w=</DigestValue></Reference></SignedInfo><SignatureValue>W1htl/pKtuXq6c5EjMEyzshpnPAFnSeKeCUwXmX0a0exVgEHkglH3Mi3WwQXCfe95JjG5T39drO25uy79/LEK2gyxQ8DXuRzStkJID4dnmZHm66H4W/W7G7MnKSs1TClMBtsP7KoXQF6WyWVrCoOp4McFEw3hC345vHA5kkug50=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>0YiTqgl8xhVx+TWpW3TTKj7O4rx/P6A+BBlRe/QXcGGWnWsVpG0XMfGCeA++oml4H66xFHzf/dK4t5yspd95W4id/xiB4W2VTUKGxgq4/Z7bkSicI3DVvTJ9lZdZEkFdMa6gHmbfsrPriHKyjOuZSUrbiIbviKU1G6OW06ilJH0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="cc3337e12d2f991e8ddfffd6ab285dee160f46a7dcc779afc97c76eb467c1bbe" Description="" Url=""><as:assemblyIdentity name="ACCSetupManager.exe" version="1.0.0.13" publicKeyToken="cb1ab25c07dc3f87" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=MIKEHANSON3080\mike</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>D89k4pYZps6FFSMZkVZn8snwwKdrV7hcenpUvoxba8M=</DigestValue></Reference></SignedInfo><SignatureValue>h566Usbqov5RH4uHw4gGWEhyzs9wB9FvGzY+mV3pDp6oOJW7EUWSBQJJH3LqZU0rjqbQFtKBGznzxgEBAO3qCI8MatrHTWMyTkL99vvRugh9FonFYcTnXmG4NIas8wHNMK0iC+ga4/CQn+Wx55WlkxSdYRhHGUVVUpReI+Rb72M=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>0YiTqgl8xhVx+TWpW3TTKj7O4rx/P6A+BBlRe/QXcGGWnWsVpG0XMfGCeA++oml4H66xFHzf/dK4t5yspd95W4id/xiB4W2VTUKGxgq4/Z7bkSicI3DVvTJ9lZdZEkFdMa6gHmbfsrPriHKyjOuZSUrbiIbviKU1G6OW06ilJH0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB5TCCAU6gAwIBAgIQWHKiXbiMVb9FOX+5Bs6JjjANBgkqhkiG9w0BAQsFADAxMS8wLQYDVQQDHiYATQBJAEsARQBIAEEATgBTAE8ATgAzADAAOAAwAFwAbQBpAGsAZTAeFw0yMTA0MjQxMDAwMTlaFw0yMjA0MjQxNjAwMTlaMDExLzAtBgNVBAMeJgBNAEkASwBFAEgAQQBOAFMATwBOADMAMAA4ADAAXABtAGkAawBlMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDRiJOqCXzGFXH5NalbdNMqPs7ivH8/oD4EGVF79BdwYZadaxWkbRcx8YJ4D76iaXgfrrEUfN/90ri3nKyl33lbiJ3/GIHhbZVNQobGCrj9ntuRKJwjcNW9Mn2Vl1kSQV0xrqAeZt+ys+uIcrKM65lJStuIhu+IpTUbo5bTqKUkfQIDAQABMA0GCSqGSIb3DQEBCwUAA4GBAMtkW1Co5ADj+IEjNzcvVIs1lAQp3xU0CVhLPhpbkTZAkl5bLHM0kLuLSLtTGnRCirbLji+q2lHir+L3cBw3NkkfJZiDNUumtXpq+i5Y5F4jQMi7ro25lFjZAN+O1FccqPLeONpUGWOI3h26QI0vGLfUdecSrFJm/RG0lrE9K+u4</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
+</asmv1:assembly>

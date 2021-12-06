@@ -7,7 +7,7 @@
       <Style x:Key="ValueTextBlockStyle"
              TargetType="{x:Type TextBlock}">
         <Setter Property="Margin"
-                Value="5" />
+                Value="5,2" />
         <Setter Property="HorizontalAlignment"
                 Value="Left" />
         <Setter Property="VerticalAlignment"
@@ -22,7 +22,7 @@
 
       <Style TargetType="{x:Type TextBlock}">
         <Setter Property="Margin"
-                Value="5" />
+                Value="5,2" />
         <Setter Property="HorizontalAlignment"
                 Value="Stretch" />
         <Setter Property="VerticalAlignment"
